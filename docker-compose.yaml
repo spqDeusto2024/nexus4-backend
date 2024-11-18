@@ -27,7 +27,7 @@ services:
       retries: 55
 
   fastapi:
-    image: fast-api-example:latest
+    image: nexus-4:latest
     container_name: nexus4_fastapi
     restart: always
     ports: 
