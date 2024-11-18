@@ -1,5 +1,11 @@
 from sqlalchemy import Column, Integer, String, Sequence
 from app.mysql.base import Base
+from .familia import Familia
+from .empleo import Empleo
+from .estancia import Estancia
+from .inquilino import Inquilino
+from .recurso import Recurso
+from .roles import Roles
 
 
 class User(Base):

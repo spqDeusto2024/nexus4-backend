@@ -1,3 +1,4 @@
+from app.controllers.handler import Controllers
 from fastapi import FastAPI
 from typing import Union
 from app.controllers import (
@@ -9,9 +10,15 @@ from app.controllers import (
     RolesController,
 )
 from app.mysql.mysql import DatabaseClient
-
+from app.mysql import Familia, Empleo, Estancia, Inquilino, Recurso, Roles
 import app.utils.vars as gb
-import app.models.models as models
+import app.models.familia as familiaModels
+import app.models.empleo as empleoModels
+import app.models.estancia as estanciaModels
+import app.models.inquilino as inquilinoModels
+import app.models.recurso as recursoModels
+import app.models.roles as rolesModels
+
 
 
 def initialize() -> None:
@@ -32,8 +39,9 @@ async def healthz():
   return controllers.healthz()
 
 # FAMILIA
+
 @app.post('/familia/create')
-async def create_familia(body: models.FamiliaRequest):
+async def create_familia(body: familiaModels.FamiliaRequest):
     return FamiliaController.create_familia(body)
 
 
@@ -43,7 +51,7 @@ async def get_all_familias():
 
 
 @app.post('/familia/update')
-async def update_familia(body: models.FamiliaRequest, id: int):
+async def update_familia(body: familiaModels.FamiliaRequest, id: int):
     return FamiliaController.update_familia(body, id)
 
 
@@ -53,7 +61,7 @@ async def delete_familia(id: int):
 
 # INQUILINO
 @app.post('/inquilino/create')
-async def create_inquilino(body: models.InquilinoRequest):
+async def create_inquilino(body: inquilinoModels.InquilinoRequest):
     return InquilinoController.create_inquilino(body)
 
 
@@ -63,7 +71,7 @@ async def get_all_inquilinos():
 
 
 @app.post('/inquilino/update')
-async def update_inquilino(body: models.InquilinoRequest, id: int):
+async def update_inquilino(body: inquilinoModels.InquilinoRequest, id: int):
     return InquilinoController.update_inquilino(body, id)
 
 
@@ -73,7 +81,7 @@ async def delete_inquilino(id: int):
 
 #ESTANCIA
 @app.post('/estancia/create')
-async def create_estancia(body: models.EstanciaRequest):
+async def create_estancia(body: estanciaModels.EstanciaRequest):
     return EstanciaController.create_estancia(body)
 
 
@@ -83,7 +91,7 @@ async def get_all_estancias():
 
 
 @app.post('/estancia/update')
-async def update_estancia(body: models.EstanciaRequest, id: int):
+async def update_estancia(body: estanciaModels.EstanciaRequest, id: int):
     return EstanciaController.update_estancia(body, id)
 
 
@@ -93,7 +101,7 @@ async def delete_estancia(id: int):
 
 #EMPLEO
 @app.post('/empleo/create')
-async def create_empleo(body: models.EmpleoRequest):
+async def create_empleo(body: empleoModels.EmpleoRequest):
     return EmpleoController.create_empleo(body)
 
 
@@ -103,7 +111,7 @@ async def get_all_empleos():
 
 
 @app.post('/empleo/update')
-async def update_empleo(body: models.EmpleoRequest, id: int):
+async def update_empleo(body: empleoModels.EmpleoRequest, id: int):
     return EmpleoController.update_empleo(body, id)
 
 
@@ -113,7 +121,7 @@ async def delete_empleo(id: int):
 
 #RECURSOS
 @app.post('/recurso/create')
-async def create_recurso(body: models.RecursoRequest):
+async def create_recurso(body: recursoModels.RecursoRequest):
     return RecursoController.create_recurso(body)
 
 
@@ -123,7 +131,7 @@ async def get_all_recursos():
 
 
 @app.post('/recurso/update')
-async def update_recurso(body: models.RecursoRequest, id: int):
+async def update_recurso(body: recursoModels.RecursoRequest, id: int):
     return RecursoController.update_recurso(body, id)
 
 
@@ -133,7 +141,7 @@ async def delete_recurso(id: int):
 
 #ROLES
 @app.post('/roles/create')
-async def create_role(body: models.RolesRequest):
+async def create_role(body: rolesModels.RolesRequest):
     return RolesController.create_role(body)
 
 
@@ -143,7 +151,7 @@ async def get_all_roles():
 
 
 @app.post('/roles/update')
-async def update_role(body: models.RolesRequest, id: int):
+async def update_role(body: rolesModels.RolesRequest, id: int):
     return RolesController.update_role(body, id)
 
 
