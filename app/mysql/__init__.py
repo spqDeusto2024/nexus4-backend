@@ -5,3 +5,12 @@ from .inquilino import Inquilino
 from .recurso import Recurso
 from .roles import Roles
 
+__all__ = [
+    "Familia",
+    "Empleo",
+    "Estancia",
+    "Inquilino",
+    "Recurso",
+    "Roles",
+]
+
