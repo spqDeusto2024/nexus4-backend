@@ -10,7 +10,9 @@ class FamiliaController:
         """
         Creates a new Familia in the database
         """
-        body_row = Familia(apellido=body.apellido, id_estancia=body.id_estancia)
+        body_row = Familia(
+            apellido=body.apellido, 
+            id_estancia=body.id_estancia)
 
         db = DatabaseClient(gb.MYSQL_URL)
         with Session(db.engine) as session:

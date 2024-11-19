@@ -1,17 +1,19 @@
 from app.controllers.handler import Controllers
 from fastapi import FastAPI
 from typing import Union
-from app.controllers import (
-    FamiliaController,
-    InquilinoController,
-    EstanciaController,
-    EmpleoController,
-    RecursoController,
-    RolesController,
-)
 from app.mysql.mysql import DatabaseClient
 from app.mysql import Familia, Empleo, Estancia, Inquilino, Recurso, Roles
 import app.utils.vars as gb
+
+#Import all the controllers
+from app.controllers.familia import FamiliaController
+from app.controllers.inquilino import InquilinoController
+from app.controllers.estancia import EstanciaController
+from app.controllers.empleo import EmpleoController
+from app.controllers.recurso import RecursoController
+from app.controllers.roles import RolesController
+
+#Import all the models
 import app.models.familia as familiaModels
 import app.models.empleo as empleoModels
 import app.models.estancia as estanciaModels
@@ -30,6 +32,12 @@ def initialize() -> None:
 
 app = FastAPI()
 controllers = Controllers()
+familia_controller = FamiliaController()
+inquilino_controller = InquilinoController()
+estancia_controller = EstanciaController()
+empleo_controller = EmpleoController()
+recurso_controller = RecursoController()
+roles_controller = RolesController()
 
 initialize()
 
@@ -42,122 +50,122 @@ async def healthz():
 
 @app.post('/familia/create')
 async def create_familia(body: familiaModels.FamiliaRequest):
-    return FamiliaController.create_familia(body)
+    return familia_controller.create_familia(body)
 
 
 @app.get('/familia/get_all')
 async def get_all_familias():
-    return FamiliaController.get_all_familias()
+    return familia_controller.get_all_familias()
 
 
 @app.post('/familia/update')
 async def update_familia(body: familiaModels.FamiliaRequest, id: int):
-    return FamiliaController.update_familia(body, id)
+    return familia_controller.update_familia(body, id)
 
 
 @app.post('/familia/delete')
 async def delete_familia(id: int):
-    return FamiliaController.delete_familia(id)
+    return familia_controller.delete_familia(id)
 
 # INQUILINO
 @app.post('/inquilino/create')
 async def create_inquilino(body: inquilinoModels.InquilinoRequest):
-    return InquilinoController.create_inquilino(body)
+    return inquilino_controller.create_inquilino(body)
 
 
 @app.get('/inquilino/get_all')
 async def get_all_inquilinos():
-    return InquilinoController.get_all_inquilinos()
+    return inquilino_controller.get_all_inquilinos()
 
 
 @app.post('/inquilino/update')
 async def update_inquilino(body: inquilinoModels.InquilinoRequest, id: int):
-    return InquilinoController.update_inquilino(body, id)
+    return inquilino_controller.update_inquilino(body, id)
 
 
 @app.post('/inquilino/delete')
 async def delete_inquilino(id: int):
-    return InquilinoController.delete_inquilino(id)
+    return inquilino_controller.delete_inquilino(id)
 
 #ESTANCIA
 @app.post('/estancia/create')
 async def create_estancia(body: estanciaModels.EstanciaRequest):
-    return EstanciaController.create_estancia(body)
+    return estancia_controller.create_estancia(body)
 
 
 @app.get('/estancia/get_all')
 async def get_all_estancias():
-    return EstanciaController.get_all_estancias()
+    return estancia_controller.get_all_estancias()
 
 
 @app.post('/estancia/update')
 async def update_estancia(body: estanciaModels.EstanciaRequest, id: int):
-    return EstanciaController.update_estancia(body, id)
+    return estancia_controller.update_estancia(body, id)
 
 
 @app.post('/estancia/delete')
 async def delete_estancia(id: int):
-    return EstanciaController.delete_estancia(id)
+    return estancia_controller.delete_estancia(id)
 
 #EMPLEO
 @app.post('/empleo/create')
 async def create_empleo(body: empleoModels.EmpleoRequest):
-    return EmpleoController.create_empleo(body)
+    return empleo_controller.create_empleo(body)
 
 
-@app.get('/empleo/get_all')
+@app.get('/empleo/get_all', summary="Get All Empleos", description="Retrieves all Empleo records from the database.")
 async def get_all_empleos():
-    return EmpleoController.get_all_empleos()
+    return empleo_controller.get_all_empleos()
 
 
 @app.post('/empleo/update')
 async def update_empleo(body: empleoModels.EmpleoRequest, id: int):
-    return EmpleoController.update_empleo(body, id)
+    return empleo_controller.update_empleo(body, id)
 
 
 @app.post('/empleo/delete')
 async def delete_empleo(id: int):
-    return EmpleoController.delete_empleo(id)
+    return empleo_controller.delete_empleo(id)
 
 #RECURSOS
 @app.post('/recurso/create')
 async def create_recurso(body: recursoModels.RecursoRequest):
-    return RecursoController.create_recurso(body)
+    return recurso_controller.create_recurso(body)
 
 
 @app.get('/recurso/get_all')
 async def get_all_recursos():
-    return RecursoController.get_all_recursos()
+    return recurso_controller.get_all_recursos()
 
 
 @app.post('/recurso/update')
 async def update_recurso(body: recursoModels.RecursoRequest, id: int):
-    return RecursoController.update_recurso(body, id)
+    return recurso_controller.update_recurso(body, id)
 
 
 @app.post('/recurso/delete')
 async def delete_recurso(id: int):
-    return RecursoController.delete_recurso(id)
+    return recurso_controller.delete_recurso(id)
 
 #ROLES
 @app.post('/roles/create')
 async def create_role(body: rolesModels.RolesRequest):
-    return RolesController.create_role(body)
+    return roles_controller.create_role(body)
 
 
 @app.get('/roles/get_all')
 async def get_all_roles():
-    return RolesController.get_all_roles()
+    return roles_controller.get_all_roles()
 
 
 @app.post('/roles/update')
 async def update_role(body: rolesModels.RolesRequest, id: int):
-    return RolesController.update_role(body, id)
+    return roles_controller.update_role(body, id)
 
 
 @app.post('/roles/delete')
 async def delete_role(id: int):
-    return RolesController.delete_role(id)
+    return roles_controller.delete_role(id)
 
 
 # @app.post('/user/create')
