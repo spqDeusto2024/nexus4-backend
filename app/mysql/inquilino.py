@@ -8,7 +8,7 @@ class Inquilino(Base):
     nombre = Column(String(50))
     categoria = Column(String(50))
     nacimiento = Column(TIMESTAMP)
-    muerte = Column(TIMESTAMP)
+    muerte = Column(TIMESTAMP, nullable=True)
     familia_id = Column(Integer, ForeignKey("familia.id"))
     empleo_id = Column(Integer, ForeignKey("empleo.id"))
     roles_id = Column(Integer, ForeignKey("roles.id"))

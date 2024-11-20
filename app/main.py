@@ -4,6 +4,8 @@ from typing import Union
 from app.mysql.mysql import DatabaseClient
 from app.mysql import Familia, Empleo, Estancia, Inquilino, Recurso, Roles
 import app.utils.vars as gb
+from datetime import datetime
+from typing import Optional
 
 #Import all the controllers
 from app.controllers.familia import FamiliaController
@@ -86,6 +88,13 @@ async def update_inquilino(body: inquilinoModels.InquilinoRequest, id: int):
 @app.post('/inquilino/delete')
 async def delete_inquilino(id: int):
     return inquilino_controller.delete_inquilino(id)
+
+@app.post('/inquilino/marcar_fallecido')
+async def marcar_fallecido(id: int, fecha_muerte: Optional[datetime] = None):
+    if not fecha_muerte:
+        fecha_muerte = datetime.now()
+    result = inquilino_controller.marcar_como_fallecido(id, fecha_muerte)
+    return result
 
 #ESTANCIA
 @app.post('/estancia/create')
