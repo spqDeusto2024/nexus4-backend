@@ -6,6 +6,7 @@ from .estancia import Estancia
 from .inquilino import Inquilino
 from .recurso import Recurso
 from .roles import Roles
+from .usuarios import Usuarios
 
 
 class User(Base):

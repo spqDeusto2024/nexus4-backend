@@ -14,6 +14,7 @@ from app.controllers.estancia import EstanciaController
 from app.controllers.empleo import EmpleoController
 from app.controllers.recurso import RecursoController
 from app.controllers.roles import RolesController
+from app.controllers.usuarios import UsuariosController
 
 #Import all the models
 import app.models.familia as familiaModels
@@ -22,6 +23,7 @@ import app.models.estancia as estanciaModels
 import app.models.inquilino as inquilinoModels
 import app.models.recurso as recursoModels
 import app.models.roles as rolesModels
+import app.models.usuarios as usuarioModels
 
 
 
@@ -40,6 +42,7 @@ estancia_controller = EstanciaController()
 empleo_controller = EmpleoController()
 recurso_controller = RecursoController()
 roles_controller = RolesController()
+usuario_controller = UsuariosController()
 
 initialize()
 
@@ -176,6 +179,23 @@ async def update_role(body: rolesModels.RolesRequest, id: int):
 async def delete_role(id: int):
     return roles_controller.delete_role(id)
 
+#USUARIOS
+@app.post('/usuario/create')
+async def create_usuario(body: usuarioModels.UsuariosRequest):
+    return usuario_controller.create_usuario(body)
 
-# @app.post('/user/create')
-# def createUser():
+
+@app.get('/usuarios/get_all')
+async def get_all_usuarios():
+    return usuario_controller.get_all_usuarios()
+
+
+@app.post('/usuarios/update')
+async def update_usuarios(body: usuarioModels.UsuariosRequest, id: int):
+    return usuario_controller.update_usuario(body, id)
+
+
+@app.post('/roles/delete')
+async def delete_usuario(id: int):
+    return usuario_controller.delete_usuario(id)
+
