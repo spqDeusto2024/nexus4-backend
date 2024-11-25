@@ -1,5 +1,5 @@
 from app.controllers.handler import Controllers
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
 from typing import Union
 from app.mysql.mysql import DatabaseClient
 from app.mysql import Familia, Empleo, Estancia, Inquilino, Recurso, Roles
@@ -158,6 +158,13 @@ async def update_recurso(body: recursoModels.RecursoRequest, id: int):
 @app.post('/recurso/delete')
 async def delete_recurso(id: int):
     return recurso_controller.delete_recurso(id)
+
+@app.get("/recurso/{id}/status")
+def get_recurso_status(id: int):
+    result = recursoModels.check_recurso_status(id)
+    if "error" in result:
+        raise HTTPException(status_code=404, detail=result["error"])
+    return result
 
 #ROLES
 @app.post('/roles/create')
