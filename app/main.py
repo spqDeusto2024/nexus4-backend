@@ -161,7 +161,7 @@ async def delete_recurso(id: int):
 
 @app.get("/recurso/{id}/status")
 def get_recurso_status(id: int):
-    result = recursoModels.check_recurso_status(id)
+    result = recurso_controller.check_recurso_status(id)
     if "error" in result:
         raise HTTPException(status_code=404, detail=result["error"])
     return result
