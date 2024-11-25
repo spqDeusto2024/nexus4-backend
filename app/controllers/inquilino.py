@@ -58,7 +58,7 @@ class InquilinoController:
             inquilino.empleo_id = body.empleo_id
             inquilino.roles_id = body.roles_id
             inquilino.id_estancia = body.id_estancia
-
+            
             session.commit()
             session.close()
 

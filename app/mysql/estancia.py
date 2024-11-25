@@ -10,7 +10,6 @@ class Estancia(Base):
     personas_actuales = Column (Integer, default=0)
     capacidad_max = Column(Integer)
     recurso_id = Column(Integer, ForeignKey("recurso.id"))
-
     @property
     def personas_actuales(self):
         db = DatabaseClient(gb.MYSQL_URL)

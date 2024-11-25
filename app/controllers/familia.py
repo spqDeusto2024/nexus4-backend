@@ -63,3 +63,4 @@ class FamiliaController:
             session.close()
 
         return {"status": "ok"}
+ 

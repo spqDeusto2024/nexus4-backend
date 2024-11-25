@@ -84,3 +84,4 @@ class EstanciaController:
                 return {"disponible": True}
             else:
                 return {"disponible": False}
+ 

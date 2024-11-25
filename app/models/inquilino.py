@@ -9,6 +9,8 @@ class InquilinoRequest(BaseModel):
     familia_id: int
     empleo_id: int
     roles_id: int
+    id_estancia: Optional[int] = None
 
+ 
 class InquilinoResponse(InquilinoRequest):
     id: int

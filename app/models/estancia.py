@@ -9,3 +9,4 @@ class EstanciaRequest(BaseModel):
 
 class EstanciaResponse(EstanciaRequest):
     id: int
+ 
