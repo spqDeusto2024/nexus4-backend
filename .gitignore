@@ -1,0 +1,34 @@
+# Python
+*.py[cod]
+__pycache__/
+*.so
+
+# Virtual Environment
+venv/
+env/
+ENV/
+.venv/
+.ENV/
+
+# VS Code
+.vscode/
+
+# Pytest
+.cache/
+*.log
+
+# MySQL
+mysql/data/*
+
+# FastAPI
+instance/
+*.db
+
+# Logs
+*.log
+*.out
+*.err
+
+# OS generated files
+.DS_Store
+Thumbs.db
