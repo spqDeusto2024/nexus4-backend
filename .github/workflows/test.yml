@@ -14,47 +14,32 @@ jobs:
   test:
     runs-on: ubuntu-latest
 
-    services:
-      mysql:
-        image: mysql:8.0.31
-        ports:
-          - 3306:3306
-        env:
-          MYSQL_ROOT_PASSWORD: toor
-          MYSQL_DATABASE: nexus4
-          MYSQL_USER: admin_db
-          MYSQL_PASSWORD: admin_db
-        options: >-
-          --health-cmd="mysqladmin ping -h 127.0.0.1 -u admin_db --password=admin_db"
-          --health-interval=10s
-          --health-timeout=5s
-          --health-retries=3
-
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
+      # 1. Check out the code
+      - name: Check out repository
+        uses: actions/checkout@v3
 
-    - name: Set up Python
-      uses: actions/setup-python@v2
-      with:
-        python-version: '3.9'
+      # 2. Set up Docker Compose
+      - name: Set up Docker Compose
+        run: docker-compose up --build -d
 
-    - name: Install dependencies
-      run: |
-        python -m venv venv
-        source venv/bin/activate
-        pip install -r requirements.txt
+      # 3. Wait for MySQL to be ready
+      - name: Wait for MySQL to be ready
+        run: |
+          for i in {1..30}; do
+            docker inspect --format='{{json .State.Health.Status}}' mysql_nexus4 | grep -q "healthy" && break
+            echo "Waiting for MySQL to be ready..."
+            sleep 5
+          done
 
-    - name: Wait for MySQL to be ready
-      run: |
-        while ! mysqladmin ping -h"127.0.0.1" -u admin_db --password=admin_db --silent; do
-          echo "Waiting for database connection..."
-          sleep 2
-        done
+      # 4. Run tests inside the FastAPI container
+      - name: Run API tests
+        run: |
+          docker exec nexus4_fastapi pytest
+        env:
+          DATABASE_URL: mysql://root:toor@mysql_nexus4:3306/nexus4
 
-    - name: Run tests
-      run: |
-        source venv/bin/activate
-        pytest
-      env:
-        DATABASE_URL: mysql://admin_db:admin_db@127.0.0.1:3306/nexus4
+      # 5. Shut down Docker Compose
+      - name: Shut down Docker Compose
+        if: always()
+        run: docker-compose down
