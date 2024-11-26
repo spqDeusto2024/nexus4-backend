@@ -2,6 +2,7 @@ from sqlalchemy.orm import Session
 from app.mysql.mysql import DatabaseClient
 from app.models.inquilino import InquilinoRequest, InquilinoResponse
 from app.mysql.models import Inquilino
+from app.mysql.models import Estancia
 import app.utils.vars as gb
 from datetime import datetime
 from typing import Optional
@@ -101,5 +102,21 @@ class InquilinoController:
 
         return {"status": "Inquilino marcado como fallecido", "id": id}
 
-    #def consultardisponibilidad
-    
+    def consultardisponibilidad (self, estancia_id: int):
+        db = DatabaseClient(gb.MYSQL_URL)
+        with Session(db.engine) as session:
+            # Buscar la estancia por ID
+            estancia = session.query(Estancia).get(estancia_id)
+            if not estancia:
+                return {"error": "Estancia no encontrada"}
+
+            # Obtener personas_actuales y capacidad_maxima
+            personas_actuales = estancia.personas_actuales
+            capacidad_maxima = estancia.capacidad_maxima
+            session.commit()
+            session.close()
+
+        if personas_actuales < capacidad_maxima:
+            return "Hay espacio disponible"
+        else:
+            return "No hay espacio disponible"

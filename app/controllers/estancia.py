@@ -13,7 +13,7 @@ class EstanciaController:
         body_row = Estancia(
             nombre=body.nombre,
             categoria=body.categoria,
-            personas_actuales= body.categoria,
+            personas_actuales= body.personas_actuales,
             capacidad_max=body.capacidad_max,
             recurso_id=body.recurso_id,
         )

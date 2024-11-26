@@ -99,6 +99,11 @@ async def marcar_fallecido(id: int, fecha_muerte: Optional[datetime] = None):
     result = inquilino_controller.marcar_como_fallecido(id, fecha_muerte)
     return result
 
+@app.get('/estancia/consultar_disponibilidad')
+async def consultar_disponibilidad(estancia_id: int):
+    result = inquilino_controller.consultardisponibilidad(estancia_id)
+    return result
+
 #ESTANCIA
 @app.post('/estancia/create')
 async def create_estancia(body: estanciaModels.EstanciaRequest):
