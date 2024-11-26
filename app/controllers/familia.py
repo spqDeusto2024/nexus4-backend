@@ -11,7 +11,6 @@ class FamiliaController:
         Creates a new Familia in the database
         """
         body_row = Familia(apellido=body.apellido)
-
         db = DatabaseClient(gb.MYSQL_URL)
         with Session(db.engine) as session:
             session.add(body_row)

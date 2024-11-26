@@ -3,6 +3,9 @@ from app.mysql.mysql import DatabaseClient
 from app.models.inquilino import InquilinoRequest, InquilinoResponse
 from app.mysql.models import Inquilino
 import app.utils.vars as gb
+from datetime import datetime
+from typing import Optional
+
 
 
 class InquilinoController:
@@ -79,3 +82,21 @@ class InquilinoController:
             session.close()
 
         return {"status": "ok"}
+    
+    def marcar_como_fallecido(self, id: int, fecha_muerte: Optional[datetime] = None):
+
+        """Marks an Inquilino as death."""
+
+        db = DatabaseClient(gb.MYSQL_URL)
+        with Session(db.engine) as session:
+            # Buscar al inquilino por ID
+            inquilino = session.query(Inquilino).get(id)
+            if not inquilino:
+                return {"error": "Inquilino no encontrado"}
+
+            # Actualizar la fecha de fallecimiento
+            inquilino.muerte = fecha_muerte or datetime.now()
+            session.commit()
+            session.close()
+
+        return {"status": "Inquilino marcado como fallecido", "id": id}

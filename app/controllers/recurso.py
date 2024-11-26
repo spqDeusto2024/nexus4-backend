@@ -70,3 +70,21 @@ class RecursoController:
             session.close()
 
         return {"status": "ok"}
+    
+    def check_recurso_status(self, id: int):
+        """
+        Checks if a Recurso record is within the appropriate capacity range
+        """
+        db = DatabaseClient(gb.MYSQL_URL)
+        with Session(db.engine) as session:
+            recurso = session.query(Recurso).get(id)
+            if not recurso:
+                return {"error": "Recurso not found"}
+
+            if recurso.capacidad_actual < recurso.capacidad_min:
+                return {"status": "alert", "message": "Capacidad actual por debajo del mínimo"}
+            elif recurso.capacidad_actual > recurso.capacidad_max:
+                return {"status": "alert", "message": "Capacidad actual por encima del máximo"}
+            else:
+                return {"status": "ok", "message": "Capacidad actual dentro del rango"}
+
