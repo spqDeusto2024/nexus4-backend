@@ -4,6 +4,13 @@ from fastapi.testclient import TestClient
 
 client = TestClient(app)
 
+##DOCUMENTARRRRRRRRRR#######################
+#TRY Y CATCH ES MUY IMPORTANTE
+# 3 puntos: cobertura total, 
+#   si existen y se pueden ejecutar (o se puede ejecutar en github actions y funcionan arriba)
+#   Integración continua
+#   test de integración --> Que se manden todas a la vez
+
 # Variable global para almacenar el ID del recurso
 recurso_id = None
 
@@ -28,7 +35,7 @@ def test_get_all_recursos():
     assert recurso_prueba is not None, "No se encontró el recurso con nombre 'RecursoPrueba'"
     recurso_id = recurso_prueba.get("id")
 
-
+# Un test tiene que ejecutar todos los supuestos o la mayoría HAY QUE HACER CON TRY y CATCH y forzar si funciona o no funciona
 def test_update_recurso():
     global recurso_id
     # Asegurarse de que el recurso se haya creado correctamente
@@ -38,6 +45,8 @@ def test_update_recurso():
     update_response = client.post(f"/recurso/update?id={recurso_id}", json={"nombre": "RecursoPrueba", "capacidad_min": 5, "capacidad_max": 100, "capacidad_actual": 50})
     print("Update response status code:", update_response.status_code)
     print("Update response JSON:", update_response.json())
+    #Puedo probar que un assert sea falso. Cuanto más probado está mejor. Pasar una función para algo que no se puede insertar.
+    #Hay que probar una que funcione y una que no.
     assert update_response.status_code == 200
     assert update_response.json().get("status") == "ok"
 
