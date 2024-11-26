@@ -14,6 +14,6 @@ class DatabaseClient():
     """
     creates tables in database
     """
-    Base.metadata.create_all(self.engine)
+    Base.metadata.create_all(self.engine, checkfirst=True)
     return
     

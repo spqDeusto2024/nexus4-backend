@@ -57,4 +57,4 @@ jobs:
       # 8. Shut down Docker Compose
       - name: Shut down Docker Compose
         if: always()
-        run: docker-compose down
+        run: docker-compose down -v
