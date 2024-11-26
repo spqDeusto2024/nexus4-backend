@@ -10,10 +10,7 @@ class FamiliaController:
         """
         Creates a new Familia in the database
         """
-        body_row = Familia(
-            apellido=body.apellido, 
-            id_estancia=body.id_estancia)
-
+        body_row = Familia(apellido=body.apellido)
         db = DatabaseClient(gb.MYSQL_URL)
         with Session(db.engine) as session:
             session.add(body_row)
@@ -45,7 +42,6 @@ class FamiliaController:
                 return {"error": "Familia not found"}
             
             familia.apellido = body.apellido
-            familia.id_estancia = body.id_estancia
             session.commit()
             session.close()
 
@@ -66,3 +62,4 @@ class FamiliaController:
             session.close()
 
         return {"status": "ok"}
+ 

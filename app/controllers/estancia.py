@@ -13,6 +13,7 @@ class EstanciaController:
         body_row = Estancia(
             nombre=body.nombre,
             categoria=body.categoria,
+            personas_actuales= body.categoria,
             capacidad_max=body.capacidad_max,
             recurso_id=body.recurso_id,
         )
@@ -70,3 +71,17 @@ class EstanciaController:
             session.close()
 
         return {"status": "ok"}
+    
+
+    def consultar_disponibilidad(self, id, numero_personas):
+        db = DatabaseClient(gb.MYSQL_URL)
+        with Session(db.engine) as session:
+            estancia = session.query(Estancia).get(id)
+            if not estancia:
+                return {"error": "Estancia not found"}
+
+            if estancia.personas_actuales < estancia.capacidad_max:
+                return {"disponible": True}
+            else:
+                return {"disponible": False}
+ 
