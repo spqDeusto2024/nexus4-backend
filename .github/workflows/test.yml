@@ -20,8 +20,8 @@ jobs:
         ports:
           - 3306:3306
         env:
-          MYSQL_ROOT_PASSWORD: root
-          MYSQL_DATABASE: test_db
+          MYSQL_ROOT_PASSWORD: toor
+          MYSQL_DATABASE: nexus4
         options: >-
           --health-cmd="mysqladmin ping --silent"
           --health-interval=10s
