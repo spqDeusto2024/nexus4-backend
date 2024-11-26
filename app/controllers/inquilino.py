@@ -100,3 +100,6 @@ class InquilinoController:
             session.close()
 
         return {"status": "Inquilino marcado como fallecido", "id": id}
+
+    #def consultardisponibilidad
+    
