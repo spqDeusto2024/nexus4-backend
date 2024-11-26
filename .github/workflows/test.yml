@@ -26,11 +26,15 @@ jobs:
           sudo chmod +x /usr/local/bin/docker-compose
           docker-compose --version
 
-      # 3. Start Docker Compose
+      # 3. Build Docker Image using build.sh
+      - name: Build Docker Image
+        run: ./build.sh
+
+      # 4. Start Docker Compose
       - name: Start Docker Compose
         run: docker-compose up --build -d
 
-      # 4. Wait for MySQL to be ready
+      # 5. Wait for MySQL to be ready
       - name: Wait for MySQL to be ready
         run: |
           for i in {1..30}; do
@@ -39,14 +43,14 @@ jobs:
             sleep 5
           done
 
-      # 5. Run tests inside the FastAPI container
+      # 6. Run tests inside the FastAPI container
       - name: Run API tests
         run: |
           docker exec nexus4_fastapi pytest
         env:
           DATABASE_URL: mysql://root:toor@mysql_nexus4:3306/nexus4
 
-      # 6. Shut down Docker Compose
+      # 7. Shut down Docker Compose
       - name: Shut down Docker Compose
         if: always()
         run: docker-compose down
