@@ -112,11 +112,38 @@ class InquilinoController:
 
             # Obtener personas_actuales y capacidad_maxima
             personas_actuales = estancia.personas_actuales
-            capacidad_maxima = estancia.capacidad_maxima
+            capacidad_max = estancia.capacidad_max
             session.commit()
             session.close()
 
-        if personas_actuales < capacidad_maxima:
+        if personas_actuales < capacidad_max:
             return "Hay espacio disponible"
         else:
             return "No hay espacio disponible"
+
+    def asignar_estancia(self, inquilino_id: int, estancia_id: int):
+        db = DatabaseClient(gb.MYSQL_URL)
+        with Session(db.engine) as session:
+            # Buscar al inquilino por ID
+            inquilino = session.query(Inquilino).get(inquilino_id)
+            if not inquilino:
+                return {"error": "Inquilino no encontrado"}
+
+            # Buscar la estancia por ID
+            estancia = session.query(Estancia).get(estancia_id)
+            if not estancia:
+                return {"error": "Estancia no encontrada"}
+
+            # Verificar si la estancia ha alcanzado su capacidad máxima
+            if estancia.capacidad_maxima_alcanzada:
+                return {"error": "La capacidad máxima de la estancia ha sido alcanzada"}
+
+            # Asignar la estancia al inquilino
+            inquilino.estancia_id = estancia_id
+            estancia.personas_actuales += 1
+            estancia.actualizar_capacidad_maxima_alcanzada()
+
+            session.commit()
+            session.close()
+
+        return {"status": "Estancia asignada exitosamente", "inquilino_id": inquilino_id, "estancia_id": estancia_id}

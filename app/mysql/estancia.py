@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, ForeignKey, Sequence, TIMESTAMP
+from sqlalchemy import Column, Integer, String, ForeignKey, Sequence, TIMESTAMP, Boolean
 from sqlalchemy.orm import relationship
 from app.mysql.base import Base
 
@@ -10,6 +10,7 @@ class Estancia(Base):
     personas_actuales = Column (Integer, default=0)
     capacidad_max = Column(Integer)
     recurso_id = Column(Integer, ForeignKey("recurso.id"))
+    capacidad_maxima_alcanzada=Column(Boolean, default=False)
     
     @property
     def personas_actuales_calculadas(self):
@@ -23,5 +24,8 @@ class Estancia(Base):
         return (
             f"<Estancia(id='{self.id}', nombre='{self.nombre}', categoria='{self.categoria}', "
             f"capacidad_max='{self.capacidad_max}', recurso_id='{self.recurso_id}')>"
-            f"personas_actuales='{self.personas_actuales_calculadas}')>"
+            f"personas_actuales='{self.personas_actuales_calculadas}', capacidad_maxima_alcanzada='{self.capacidad_maxima_alcanzada})>"
         )
+
+    def actualizar_capacidad_maxima_alcanzada(self):
+        self.actualizar_capacidad_maxima_alcanzada=self.personas_actuales >= self.capacidad_max

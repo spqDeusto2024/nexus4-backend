@@ -6,6 +6,7 @@ class EstanciaRequest(BaseModel):
     personas_actuales : int
     capacidad_max: int
     recurso_id: int
+    capacidad_maxima_alcanzada: bool=False
 
 class EstanciaResponse(EstanciaRequest):
     id: int

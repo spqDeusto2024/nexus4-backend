@@ -104,6 +104,11 @@ async def consultar_disponibilidad(estancia_id: int):
     result = inquilino_controller.consultardisponibilidad(estancia_id)
     return result
 
+@app.post('/inquilino/asignar_estancia')
+async def asignar_estancia(inquilino_id: int, estancia_id: int):
+    result = inquilino_controller.asignar_estancia(inquilino_id, estancia_id)
+    return result
+    
 #ESTANCIA
 @app.post('/estancia/create')
 async def create_estancia(body: estanciaModels.EstanciaRequest):
