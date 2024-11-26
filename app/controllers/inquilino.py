@@ -21,6 +21,7 @@ class InquilinoController:
             familia_id=body.familia_id,
             empleo_id=body.empleo_id,
             roles_id=body.roles_id,
+            id_estancia=body.id_estancia
         )
 
         db = DatabaseClient(gb.MYSQL_URL)
@@ -59,6 +60,8 @@ class InquilinoController:
             inquilino.familia_id = body.familia_id
             inquilino.empleo_id = body.empleo_id
             inquilino.roles_id = body.roles_id
+            inquilino.id_estancia = body.id_estancia
+            
             session.commit()
             session.close()
 
