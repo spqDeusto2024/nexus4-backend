@@ -178,7 +178,11 @@ def get_recurso_status(id: int):
     if "error" in result:
         raise HTTPException(status_code=404, detail=result["error"])
     return result
-
+    
+@app.post('/recurso/modify')
+async def modify_recurso(id: int, cantidad: int):
+    result = recurso_controller.modify_recurso(id, cantidad)
+    return result
 #ROLES
 @app.post('/roles/create')
 async def create_role(body: rolesModels.RolesRequest):
