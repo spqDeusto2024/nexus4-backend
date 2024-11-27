@@ -6,6 +6,9 @@ from app.mysql import Familia, Empleo, Estancia, Inquilino, Recurso, Roles
 import app.utils.vars as gb
 from datetime import datetime
 from typing import Optional
+from fastapi import Depends
+from fastapi.security import OAuth2PasswordRequestForm
+from fastapi.security import OAuth2PasswordRequestForm
 
 #Import all the controllers
 from app.controllers.familia import FamiliaController
@@ -211,8 +214,8 @@ async def get_all_usuarios():
 async def update_usuarios(body: usuarioModels.UsuariosRequest, id: int):
     return usuario_controller.update_usuario(body, id)
 
+@app.post('/usuario/verify')
+async def verify_usuarios(usuario: str, password: str):
+    return usuario_controller.verificar_usuario(usuario, password)
 
-@app.post('/roles/delete')
-async def delete_usuario(id: int):
-    return usuario_controller.delete_usuario(id)
 

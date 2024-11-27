@@ -3,6 +3,8 @@ from app.mysql.mysql import DatabaseClient
 from app.models.usuarios import UsuariosRequest, UsuariosResponse
 from app.mysql.models import Usuarios
 import app.utils.vars as gb
+from datetime import datetime
+from datetime import timezone
 
 
 class UsuariosController:
@@ -63,3 +65,22 @@ class UsuariosController:
             session.close()
 
         return {"status": "ok"}
+    
+    def verificar_usuarios(self, usuario: str, password: str) -> dict:
+        """
+        Verifies if the username and password are correct
+        """
+        db = DatabaseClient(gb.MYSQL_URL)
+        with Session(db.engine) as session:
+            # Busca al usuario por nombre
+            usuario_db = session.query(Usuarios).filter(Usuarios.usuario == usuario).first()
+            session.close()
+
+        # Si no se encuentra el usuario o la contraseña no coincide
+        if not usuario_db or usuario_db.password != password:
+            return {"error": "Credenciales inválidas"}
+
+        # Si las credenciales son válidas
+        return {"status": "ok"}
+    
+    
