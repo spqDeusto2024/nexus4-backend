@@ -1,18 +1,40 @@
+from passlib.context import CryptContext
 from sqlalchemy.orm import Session
 from app.mysql.mysql import DatabaseClient
 from app.models.usuarios import UsuariosRequest, UsuariosResponse
 from app.mysql.models import Usuarios
 import app.utils.vars as gb
 from datetime import datetime
-from datetime import timezone
+import jwt 
+from typing import Optional
+from fastapi import HTTPException, status
+from app.auth import create_access_token, verify_token
 
+
+pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
+
+def hash_password(password: str) -> str:
+        """
+        Devuelve una versión hasheada de la contraseña.
+        """
+        return pwd_context.hash(password)
+
+def verify_password(plain_password: str, hashed_password: str) -> bool:
+        """
+        Compara una contraseña en texto plano con una contraseña hasheada.
+        """
+        return pwd_context.verify(plain_password, hashed_password)
 
 class UsuariosController:
+
     def create_usuario(self, body: UsuariosRequest):
         """
-        Creates a new Usuario in the database
+        Crea un nuevo Usuario en la base de datos con la contraseña hasheada.
         """
-        body_row = Usuarios(usuario=body.usuario, password=body.password)
+        # Hasheamos la contraseña antes de almacenarla
+        hashed_password = hash_password(body.password)
+        
+        body_row = Usuarios(usuario=body.usuario, password=hashed_password)
 
         db = DatabaseClient(gb.MYSQL_URL)
         with Session(db.engine) as session:
@@ -24,7 +46,7 @@ class UsuariosController:
 
     def get_all_usuarios(self):
         """
-        Gets all Usuarios records
+        Obtiene todos los registros de Usuarios.
         """
         db = DatabaseClient(gb.MYSQL_URL)
         with Session(db.engine) as session:
@@ -35,16 +57,16 @@ class UsuariosController:
 
     def update_usuario(self, body: UsuariosRequest, id: int):
         """
-        Updates a Usuarios record by ID
+        Actualiza un registro de Usuario por su ID.
         """
         db = DatabaseClient(gb.MYSQL_URL)
         with Session(db.engine) as session:
             usuario = session.query(Usuarios).get(id)
             if not usuario:
-                return {"error": "Usuario not found"}
+                return {"error": "Usuario no encontrado"}
 
             usuario.usuario = body.usuario
-            usuario.password=body.password
+            usuario.password = hash_password(body.password)  
             session.commit()
             session.close()
 
@@ -52,13 +74,13 @@ class UsuariosController:
 
     def delete_usuario(self, id: int):
         """
-        Deletes a Usuarios record by ID
+        Elimina un registro de Usuario por su ID.
         """
         db = DatabaseClient(gb.MYSQL_URL)
         with Session(db.engine) as session:
             usuario = session.query(Usuarios).get(id)
             if not usuario:
-                return {"error": "Usuario not found"}
+                return {"error": "Usuario no encontrado"}
 
             session.delete(usuario)
             session.commit()
@@ -68,19 +90,30 @@ class UsuariosController:
     
     def verificar_usuarios(self, usuario: str, password: str) -> dict:
         """
-        Verifies if the username and password are correct
+        Verifica si las credenciales del usuario son correctas.
+        Si es así, devuelve el usuario con su id.
         """
         db = DatabaseClient(gb.MYSQL_URL)
         with Session(db.engine) as session:
-            # Busca al usuario por nombre
-            usuario_db = session.query(Usuarios).filter(Usuarios.usuario == usuario).first()
-            session.close()
+            # Busca el usuario por nombre de usuario
+            user = session.query(Usuarios).filter(Usuarios.usuario == usuario).first()
 
-        # Si no se encuentra el usuario o la contraseña no coincide
-        if not usuario_db or usuario_db.password != password:
-            return {"error": "Credenciales inválidas"}
+            # Si el usuario no existe, lanzar una excepción
+            if user is None:
+                raise HTTPException(
+                    status_code=status.HTTP_404_NOT_FOUND,
+                    detail="Usuario no encontrado"
+                )
 
-        # Si las credenciales son válidas
-        return {"status": "ok"}
-    
-    
+            # Verificar la contraseña hasheada usando la función verify_password
+            if not verify_password(password, user.password):  # Aquí se utiliza verify_password
+                raise HTTPException(
+                    status_code=status.HTTP_401_UNAUTHORIZED,
+                    detail="Contraseña incorrecta"
+                )
+
+            # Si la verificación es exitosa, devolver el usuario
+            return {
+                "id": user.id,
+                "usuario": user.usuario
+            }

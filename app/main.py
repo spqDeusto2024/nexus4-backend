@@ -8,7 +8,9 @@ from datetime import datetime
 from typing import Optional
 from fastapi import Depends
 from fastapi.security import OAuth2PasswordRequestForm
-from fastapi.security import OAuth2PasswordRequestForm
+from fastapi import FastAPI, Depends, HTTPException, status
+from fastapi.security import OAuth2PasswordBearer
+from app.auth import create_access_token, verify_token, get_current_user
 
 #Import all the controllers
 from app.controllers.familia import FamiliaController
@@ -29,14 +31,6 @@ import app.models.roles as rolesModels
 import app.models.usuarios as usuarioModels
 
 
-
-def initialize() -> None:
-  # initialize database
-  dbClient = DatabaseClient(gb.MYSQL_URL)
-  dbClient.init_database()
-  return
-
-
 app = FastAPI()
 controllers = Controllers()
 familia_controller = FamiliaController()
@@ -46,6 +40,15 @@ empleo_controller = EmpleoController()
 recurso_controller = RecursoController()
 roles_controller = RolesController()
 usuario_controller = UsuariosController()
+
+def initialize() -> None:
+    # initialize database
+    dbClient = DatabaseClient(gb.MYSQL_URL)
+    dbClient.init_database()
+    return
+
+oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
+
 
 initialize()
 
@@ -204,22 +207,78 @@ async def delete_role(id: int):
     return roles_controller.delete_role(id)
 
 #USUARIOS
-@app.post('/usuario/create' , tags=["Usuario"])
+@app.post('/usuarios/create' , tags=["Usuario"])
 async def create_usuario(body: usuarioModels.UsuariosRequest):
     return usuario_controller.create_usuario(body)
-
-
-@app.get('/usuarios/get_all' , tags=["Usuario"])
-async def get_all_usuarios():
-    return usuario_controller.get_all_usuarios()
-
 
 @app.post('/usuarios/update' , tags=["Usuario"])
 async def update_usuarios(body: usuarioModels.UsuariosRequest, id: int):
     return usuario_controller.update_usuario(body, id)
 
-@app.post('/usuario/verify' , tags=["Usuario"])
-async def verify_usuarios(usuario: str, password: str):
-    return usuario_controller.verificar_usuario(usuario, password)
+@app.get('/usuario/get_all' , tags=["Usuario"])
+async def get_all_usuarios():
+    return usuario_controller.get_all_usuarios()
 
+@app.post('/usuario/delete' , tags=["Usuario"])
+async def delete_usuario(id: int):
+    return usuario_controller.delete_usuario(id)
 
+@app.post("/usuarios/verificar", tags=["Usuario"])
+async def login_for_access_token(form_data: OAuth2PasswordRequestForm = Depends()):
+    """
+    Este endpoint verifica las credenciales del usuario y retorna un token de acceso.
+    """
+    # FastAPI ejecutará `verificar_usuarios` en un pool de subprocesos
+    usuario = usuario_controller.verificar_usuarios(form_data.username, form_data.password)
+
+    # Crear el token de acceso
+    access_token = create_access_token(data={"sub": usuario["usuario"]})
+    return {"access_token": access_token, "token_type": "bearer"}
+
+@app.get('/usuarios/get_all', tags=["Usuario"])
+async def get_all_usuarios(current_user: dict = Depends(get_current_user)):
+    print("Entrando al endpoint '/usuarios/get_all'")  # Depuración
+    try:
+        print(f"Usuario autenticado: {current_user}")  # Depuración
+        return usuario_controller.get_all_usuarios()
+    except HTTPException as e:
+        print(f"Error HTTP: {e.detail}")  # Log de errores HTTP
+        raise e
+    except Exception as ex:
+        print(f"Error inesperado: {ex}")  # Log de errores inesperados
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail="Error al obtener la lista de usuarios",
+        )
+
+@app.get("/usuarios/verify_token", tags=["Usuario"])
+async def verify_user_token(token: str = Depends(oauth2_scheme)):
+    """
+    Este endpoint permite verificar si el token proporcionado es válido.
+    Si el token es válido, devuelve un mensaje indicando que el token está activo.
+    """
+    try:
+        payload = verify_token(token)  
+        return {"status": "ok", "message": "Token válido y activo", "user": payload["sub"]}
+    except HTTPException:
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Token inválido o expirado"
+        )
+    
+"""
+
+@app.post("/token", tags=["Auth"])
+async def login(form_data: OAuth2PasswordRequestForm = Depends()):
+    
+    Este endpoint maneja la autenticación de usuarios y genera un token de acceso."
+    # Verifica el usuario y contraseña usando tu lógica de autenticación
+    usuario = usuario_controller.verificar_usuarios(form_data.username, form_data.password)
+
+    # Si la verificación es exitosa, genera el token
+    access_token = create_access_token(data={"sub": usuario["usuario"]})
+
+    # Retorna el token en el formato esperado por OAuth2PasswordBearer
+    return {"access_token": access_token, "token_type": "bearer"}
+
+    """

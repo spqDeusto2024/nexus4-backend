@@ -4,6 +4,7 @@ from .estancia import Estancia
 from .inquilino import Inquilino
 from .recurso import Recurso
 from .roles import Roles
+from .usuarios import Usuarios
 
 __all__ = [
     "Familia",
@@ -12,5 +13,6 @@ __all__ = [
     "Inquilino",
     "Recurso",
     "Roles",
+    "Usuarios",
 ]
 
