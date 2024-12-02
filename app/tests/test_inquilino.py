@@ -22,11 +22,11 @@ def test_create_inquilino():
         "nombre": "InquilinoPrueba",
         "categoria": "CategoriaPrueba",
         "nacimiento": "1990-01-01",
-        "muerte": "2070-01-01",
+        "muerte": "2024-01-01",
         "familia_id": 1,
-        "empleo_id": 1,
+        "empleo_id": 2,
         "roles_id": 1,
-        "id_estancia": 1
+        "id_estancia": 2
     })
     print("Response status code:", response.status_code)
     print("Response JSON:", response.json())
@@ -58,10 +58,10 @@ def test_update_inquilino():
         "nombre": "InquilinoPruebaActualizado",
         "categoria": "CategoriaPruebaActualizada",
         "nacimiento": "1991-01-01",
-        "muerte": "2071-01-01",
-        "familia_id": 2,
+        "muerte": "2025-01-01",
+        "familia_id": 1,
         "empleo_id": 2,
-        "roles_id": 2,
+        "roles_id": 1,
         "id_estancia": 2
     })
     print("Update response status code:", update_response.status_code)
