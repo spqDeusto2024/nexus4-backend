@@ -120,3 +120,4 @@ class InquilinoController:
             return "Hay espacio disponible"
         else:
             return "No hay espacio disponible"
+        

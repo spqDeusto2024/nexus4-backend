@@ -111,4 +111,5 @@ class EstanciaController:
             session.close()
 
         return {"status": "Estancia asignada exitosamente", "inquilino_id": inquilino_id, "estancia_id": estancia_id}
+    
  
