@@ -84,4 +84,31 @@ class EstanciaController:
                 return {"disponible": True}
             else:
                 return {"disponible": False}
+    
+    def asignar_estancia(self, inquilino_id: int, estancia_id: int):
+        db = DatabaseClient(gb.MYSQL_URL)
+        with Session(db.engine) as session:
+            # Buscar al inquilino por ID
+            inquilino = session.query(Inquilino).get(inquilino_id)
+            if not inquilino:
+                return {"error": "Inquilino no encontrado"}
+
+            # Buscar la estancia por ID
+            estancia = session.query(Estancia).get(estancia_id)
+            if not estancia:
+                return {"error": "Estancia no encontrada"}
+
+            # Verificar si la estancia ha alcanzado su capacidad máxima
+            if estancia.capacidad_maxima_alcanzada:
+                return {"error": "La capacidad máxima de la estancia ha sido alcanzada"}
+
+            # Asignar la estancia al inquilino
+            inquilino.estancia_id = estancia_id
+            estancia.personas_actuales += 1
+            estancia.actualizar_capacidad_maxima_alcanzada()
+
+            session.commit()
+            session.close()
+
+        return {"status": "Estancia asignada exitosamente", "inquilino_id": inquilino_id, "estancia_id": estancia_id}
  
