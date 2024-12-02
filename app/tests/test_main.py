@@ -14,6 +14,7 @@ client = TestClient(app)
 # Variable global para almacenar el ID del recurso
 recurso_id = None
 
+#TESTS RECURSOS
 def test_create_recurso():
     global recurso_id
     response = client.post("/recurso/create", json={"nombre": "RecursoPrueba", "capacidad_min": 10, "capacidad_max": 100, "capacidad_actual": 50})
