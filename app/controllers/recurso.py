@@ -81,13 +81,12 @@ class RecursoController:
             if not recurso:
                 return {"error": "Recurso not found"}
 
-            if recurso.capacidad_actual < recurso.capacidad_min:
+            if recurso.capacidad_minima_alcanzada:
                 return {"status": "alert", "message": "Capacidad actual por debajo del mínimo"}
-            elif recurso.capacidad_actual > recurso.capacidad_max:
+            elif recurso.capacidad_maxima_alcanzada:
                 return {"status": "alert", "message": "Capacidad actual por encima del máximo"}
             else:
                 return {"status": "ok", "message": "Capacidad actual dentro del rango"}
-
     
     def modify_recurso(self, id: int, cantidad: int):
         """
