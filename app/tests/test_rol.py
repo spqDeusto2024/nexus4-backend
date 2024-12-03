@@ -12,10 +12,10 @@ client = TestClient(app)
 #   test de integración --> Que se manden todas a la vez
 
 # Variable global para almacenar el ID del recurso
-rol_id = None
+role_id = None
 
 def test_create_role():
-    global rol_id
+    global role_id
     response = client.post("/role/create", json={
         "nombre": "RolePrueba"
     })
@@ -32,7 +32,7 @@ def test_create_role():
     role_id = rol_prueba.get("id")
 
 def test_get_all_roles():
-    global rol_id
+    global role_id
     response = client.get("/role/get_all")
     print("Response status code:", response.status_code)
     print("Response JSON:", response.json())
@@ -41,6 +41,33 @@ def test_get_all_roles():
         
     # Perform a GET request to retrieve the ID of the role named "RolePrueba"
     roles = response.json()
-    role_prueba = next((rol for rol in roles if rol["nombre"] == "RolePrueba"), None)
-    assert rol_prueba is not None, "No se encontró el rol con nombre 'RolePrueba'"
-    rol_id = rol_prueba.get("id")
+    role_prueba = next((rol for role in roles if role["nombre"] == "RolePrueba"), None)
+    assert role_prueba is not None, "No se encontró el rol con nombre 'RolePrueba'"
+    role_id = role_prueba.get("id")
+
+def test_update_role():
+    global role_id
+    # Asegurarse de que el rol se haya creado correctamente
+    assert role_id is not None, "El ID del rol no se obtuvo correctamente"
+
+    
+    # Actualizar el rol con datos válidos
+        update_response = client.post(f"/role/update?id={role_id}", json={
+            "nombre": "RolePruebaActualizado",
+        })
+        print("Update response status code:", update_response.status_code)
+        print("Update response JSON:", update_response.json())
+        assert update_response.status_code == 200
+        assert update_response.json().get("status") == "ok"
+
+def test_delete_role():
+    global role_id
+    # Asegurarse de que el rol se haya creado correctamente
+    assert role_id is not None, "El ID del rol no se obtuvo correctamente"
+
+    # Eliminar el rol
+    delete_response = client.post(f"/role/delete?id={role_id}")
+    print("Delete response status code:", delete_response.status_code)
+    print("Delete response JSON:", delete_response.json())
+    assert delete_response.status_code == 200
+    assert delete_response.json().get("status") == "ok"
