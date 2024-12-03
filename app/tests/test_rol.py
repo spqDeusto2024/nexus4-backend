@@ -44,3 +44,31 @@ def test_get_all_roles():
     role_prueba = next((rol for rol in roles if rol["nombre"] == "RolePrueba"), None)
     assert rol_prueba is not None, "No se encontró el rol con nombre 'RolePrueba'"
     rol_id = rol_prueba.get("id")
+
+def test_update_role():
+    global rol_id
+    # Asegurarse de que el rol se haya creado correctamente
+    assert rol_id is not None, "El ID del rol no se obtuvo correctamente"
+
+    
+    # Actualizar el rol con datos válidos
+        update_response = client.post(f"/role/update?id={rol_id}", json={
+            "nombre": "RolePruebaActualizado",
+            "descripcion": "Descripción actualizada"
+        })
+        print("Update response status code:", update_response.status_code)
+        print("Update response JSON:", update_response.json())
+        assert update_response.status_code == 200
+        assert update_response.json().get("status") == "ok"
+
+def test_delete_role():
+    global rol_id
+    # Asegurarse de que el rol se haya creado correctamente
+    assert rol_id is not None, "El ID del rol no se obtuvo correctamente"
+
+    # Eliminar el rol
+    delete_response = client.post(f"/role/delete?id={rol_id}")
+    print("Delete response status code:", delete_response.status_code)
+    print("Delete response JSON:", delete_response.json())
+    assert delete_response.status_code == 200
+    assert delete_response.json().get("status") == "ok"
