@@ -9,6 +9,12 @@ class RolesController:
     def create_role(self, body: RolesRequest):
         """
         Creates a new Role in the database
+
+        Args:
+            body (RolesRequest): The request body containing the role data.
+
+        Returns:
+            dict: A dictionary with the status of the creation operation.
         """
         body_row = Roles(nombre=body.nombre)
 
@@ -23,6 +29,9 @@ class RolesController:
     def get_all_roles(self):
         """
         Gets all Role records
+
+        Returns:
+            list: A list of all Role records.
         """
         db = DatabaseClient(gb.MYSQL_URL)
         with Session(db.engine) as session:
@@ -34,6 +43,13 @@ class RolesController:
     def update_role(self, body: RolesRequest, id: int):
         """
         Updates a Role record by ID
+
+        Args:
+            body (RolesRequest): The request body containing the updated role data.
+            id (int): The ID of the role to update.
+
+        Returns:
+            dict: A dictionary with the status of the update
         """
         db = DatabaseClient(gb.MYSQL_URL)
         with Session(db.engine) as session:
@@ -50,6 +66,12 @@ class RolesController:
     def delete_role(self, id: int):
         """
         Deletes a Role record by ID
+
+        Args:
+            id (int): The ID of the role to delete.
+
+        Returns:
+            dict: A dictionary with the status of the delete
         """
         db = DatabaseClient(gb.MYSQL_URL)
         with Session(db.engine) as session:

@@ -3,7 +3,6 @@ networks:
   test:
     name: fastapi-nexus4-network
 
-
 services:
   mysql_db:
     image: mysql:8.0.31
@@ -27,7 +26,7 @@ services:
       retries: 55
 
   fastapi:
-    image: nexus-4:latest
+    image: nexus-4:latest  # Usa la imagen construida por build.sh
     container_name: nexus4_fastapi
     restart: always
     ports: 
@@ -41,3 +40,14 @@ services:
     depends_on:
       mysql_db:
         condition: service_healthy
+
+  sphinx:
+    image: nexus-4:latest  # Usa la misma imagen para Sphinx
+    container_name: nexus4_sphinx
+    command: sphinx-build -b html docs/source docs/build
+    volumes:
+      - ./docs:/code/docs
+    networks:
+      - test
+    depends_on:
+      - fastapi

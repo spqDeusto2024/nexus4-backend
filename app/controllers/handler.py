@@ -13,12 +13,21 @@ class Controllers:
   def healthz(self):
     """
     Checks server status
+
+    Returns:
+      dict: A dictionary with the server status.
     """
     return {"status": "ok"}
   
   def create_user(self, body: models.UserRequest):
     """
     Creates new user in  the database
+
+    Args:
+            body (models.UserRequest): The request body containing the user data.
+
+    Returns:
+      dict: A dictionary with the status of the creation operation.
     """
     body_row = mysql_models.User(name=body.name, fullname=body.fullname, age=body.age)
     
@@ -33,6 +42,9 @@ class Controllers:
   def get_all(self):
     """
     Gets all users
+
+    Returns:
+      list: A list of all user records.
     """
     db = DatabaseClient(gb.MYSQL_URL)
     response: list = []
@@ -45,6 +57,12 @@ class Controllers:
   def delete_user(self, id: int):
     """
     Deletes user by its UID
+
+    Args:
+      id (int): The UID of the user to delete.
+
+    Returns:
+      dict: A dictionary with the status of the delete operation.
     """
     db = DatabaseClient(gb.MYSQL_URL)
     with Session(db.engine) as session:
@@ -58,6 +76,12 @@ class Controllers:
   def update_user(self, body: models.UpdateRequest):
     """
     Updates user by its ID
+
+    Args:
+      body (models.UpdateRequest): The request body containing the updated user data.
+
+    Returns:
+      dict: A dictionary with the status of the update operation.
     """
     db = DatabaseClient(gb.MYSQL_URL)
     with Session(db.engine) as session:

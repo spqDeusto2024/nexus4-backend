@@ -15,13 +15,26 @@ pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
 def hash_password(password: str) -> str:
         """
-        Devuelve una versión hasheada de la contraseña.
+        Returns a hashed version of the password.
+
+        Args:
+            password (str): The plain text password.
+
+        Returns:
+            str: The hashed password.
         """
         return pwd_context.hash(password)
 
 def verify_password(plain_password: str, hashed_password: str) -> bool:
         """
-        Compara una contraseña en texto plano con una contraseña hasheada.
+        Compare the plain text password with the hashed password.
+
+        Args:
+            plain_password (str): The plain text password.
+            hashed_password (str): The hashed password.
+
+        Returns:
+            bool: True if the password matches, False otherwise
         """
         return pwd_context.verify(plain_password, hashed_password)
 
@@ -29,7 +42,13 @@ class UsuariosController:
 
     def create_usuario(self, body: UsuariosRequest):
         """
-        Crea un nuevo Usuario en la base de datos con la contraseña hasheada.
+        Creates a new Usuario in the database.
+
+        Args:
+            body (UsuariosRequest): The request body containing the usuario data.
+
+        Returns:
+            dict: A dictionary with the status of the creation operation.
         """
         # Hasheamos la contraseña antes de almacenarla
         hashed_password = hash_password(body.password)
@@ -46,7 +65,10 @@ class UsuariosController:
 
     def get_all_usuarios(self):
         """
-        Obtiene todos los registros de Usuarios.
+        Gets all Usuario records.
+
+        Returns:
+            list: A list of all Usuario records.
         """
         db = DatabaseClient(gb.MYSQL_URL)
         with Session(db.engine) as session:
@@ -57,16 +79,23 @@ class UsuariosController:
 
     def update_usuario(self, body: UsuariosRequest, id: int):
         """
-        Actualiza un registro de Usuario por su ID.
+        Updates a Usuario record by ID.
+
+        Args:
+            body (UsuariosRequest): The request body containing the updated usuario data.
+            id (int): The ID of the usuario to update.
+
+        Returns:
+            dict: A dictionary with the status of the update operation.
         """
         db = DatabaseClient(gb.MYSQL_URL)
         with Session(db.engine) as session:
             usuario = session.query(Usuarios).get(id)
             if not usuario:
-                return {"error": "Usuario no encontrado"}
+                return {"error": "Usuario not found"}
 
             usuario.usuario = body.usuario
-            usuario.password = hash_password(body.password)  
+            usuario.password = self.hash_password(body.password)
             session.commit()
             session.close()
 
@@ -74,13 +103,19 @@ class UsuariosController:
 
     def delete_usuario(self, id: int):
         """
-        Elimina un registro de Usuario por su ID.
+        Deletes a Usuario record by ID.
+
+        Args:
+            id (int): The ID of the usuario to delete.
+
+        Returns:
+            dict: A dictionary with the status of the delete operation.
         """
         db = DatabaseClient(gb.MYSQL_URL)
         with Session(db.engine) as session:
             usuario = session.query(Usuarios).get(id)
             if not usuario:
-                return {"error": "Usuario no encontrado"}
+                return {"error": "Usuario not found"}
 
             session.delete(usuario)
             session.commit()
@@ -90,8 +125,14 @@ class UsuariosController:
     
     def verificar_usuarios(self, usuario: str, password: str) -> dict:
         """
-        Verifica si las credenciales del usuario son correctas.
-        Si es así, devuelve el usuario con su id.
+        Verify the user's credentials.
+
+        Args:
+            usuario (str): The user's username.
+            password (str): The user's password.
+
+        Returns:
+            dict: A dictionary with the user's ID and username
         """
         db = DatabaseClient(gb.MYSQL_URL)
         with Session(db.engine) as session:

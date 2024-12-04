@@ -13,6 +13,12 @@ class InquilinoController:
     def create_inquilino(self, body: InquilinoRequest):
         """
         Creates a new Inquilino in the database
+
+        Args:
+            body (InquilinoRequest): The request body containing the inquilino data.
+        
+        Returns:
+            dict: A dictionary with the status of the creation operation.
         """
         body_row = Inquilino(
             nombre=body.nombre,
@@ -36,6 +42,10 @@ class InquilinoController:
     def get_all_inquilinos(self):
         """
         Gets all Inquilino records
+
+        Returns:
+            list: A list of all Inquilino records.
+
         """
         db = DatabaseClient(gb.MYSQL_URL)
         with Session(db.engine) as session:
@@ -47,6 +57,13 @@ class InquilinoController:
     def update_inquilino(self, body: InquilinoRequest, id: int):
         """
         Updates an Inquilino record by ID
+
+        Args:
+            body (InquilinoRequest): The request body containing the updated inquilino data.
+            id (int): The ID of the inquilino to update.
+        
+        Returns:
+            dict: A dictionary with the status of the update operation.
         """
         db = DatabaseClient(gb.MYSQL_URL)
         with Session(db.engine) as session:
@@ -71,6 +88,12 @@ class InquilinoController:
     def delete_inquilino(self, id: int):
         """
         Deletes an Inquilino record by ID
+
+        Args:
+            id (int): The ID of the inquilino to delete.
+
+        Returns:
+            dict: A dictionary with the status of the delete operation.
         """
         db = DatabaseClient(gb.MYSQL_URL)
         with Session(db.engine) as session:
@@ -86,7 +109,16 @@ class InquilinoController:
     
     def marcar_como_fallecido(self, id: int, fecha_muerte: Optional[datetime] = None):
 
-        """Marks an Inquilino as death."""
+        """
+        Marks an Inquilino as death.
+
+        Args:
+            id (int): The ID of the inquilino to mark as death.
+            fecha_muerte (datetime): The date of death of the inquilino.
+
+        Returns:
+            dict: A dictionary with the status of the operation
+        """
 
         db = DatabaseClient(gb.MYSQL_URL)
         with Session(db.engine) as session:
@@ -103,6 +135,15 @@ class InquilinoController:
         return {"status": "Inquilino marcado como fallecido", "id": id}
 
     def consultardisponibilidad (self, estancia_id: int):
+        """
+        Checks the availability of an Estancia.
+
+        Args:
+            estancia_id (int): The ID of the estancia to check.
+        
+        Returns:
+            str: A string indicating if there is space available
+        """
         db = DatabaseClient(gb.MYSQL_URL)
         with Session(db.engine) as session:
             # Buscar la estancia por ID

@@ -9,6 +9,12 @@ class EstanciaController:
     def create_estancia(self, body: EstanciaRequest):
         """
         Creates a new Estancia in the database
+
+        Args:
+            body (EstanciaRequest): The request body containing the estancia data.
+
+        Returns:
+            dict: A dictionary with the status of the update operation.
         """
         body_row = Estancia(
             nombre=body.nombre,
@@ -29,6 +35,10 @@ class EstanciaController:
     def get_all_estancias(self):
         """
         Gets all Estancia records
+
+        Returns:
+            list: A list of all Estancia records.
+        
         """
         db = DatabaseClient(gb.MYSQL_URL)
         with Session(db.engine) as session:
@@ -39,7 +49,14 @@ class EstanciaController:
 
     def update_estancia(self, body: EstanciaRequest, id: int):
         """
-        Updates an Estancia record by ID
+        Updates an Estancia record by ID.
+
+        Args:
+            body (EstanciaRequest): The request body containing the updated estancia data.
+            id (int): The ID of the estancia to update.
+
+        Returns:
+            dict: A dictionary with the status of the update operation.
         """
         db = DatabaseClient(gb.MYSQL_URL)
         with Session(db.engine) as session:
@@ -58,7 +75,13 @@ class EstanciaController:
 
     def delete_estancia(self, id: int):
         """
-        Deletes an Estancia record by ID
+        Deletes an Estancia record by ID.
+
+        Args:
+            id (int): The ID of the estancia to delete.
+
+        Returns:
+            dict: A dictionary with the status of the delete operation.
         """
         db = DatabaseClient(gb.MYSQL_URL)
         with Session(db.engine) as session:
@@ -73,19 +96,39 @@ class EstanciaController:
         return {"status": "ok"}
     
 
-    def consultar_disponibilidad(self, id, numero_personas):
+    def consultar_disponibilidad(self, id: int, numero_personas: int):
+        """
+        Checks the availability of an Estancia for a given number of people.
+
+        Args:
+            id (int): The ID of the estancia to check.
+            numero_personas (int): The number of people to check availability for.
+
+        Returns:
+            bool: True if the estancia can accommodate the number of people, False otherwise.
+        """
         db = DatabaseClient(gb.MYSQL_URL)
         with Session(db.engine) as session:
             estancia = session.query(Estancia).get(id)
             if not estancia:
                 return {"error": "Estancia not found"}
 
-            if estancia.personas_actuales < estancia.capacidad_max:
-                return {"disponible": True}
-            else:
-                return {"disponible": False}
+            disponible = estancia.capacidad_max >= numero_personas
+            session.close()
+
+        return disponible
     
     def asignar_estancia(self, inquilino_id: int, estancia_id: int):
+        """
+        Assigns a tenant to a specific estancia.
+
+        Args:
+            inquilino_id (int): The ID of the tenant to assign.
+            estancia_id (int): The ID of the estancia to assign the tenant to.
+
+        Returns:
+            dict: A dictionary with the status of the assignment operation.
+        """
         db = DatabaseClient(gb.MYSQL_URL)
         with Session(db.engine) as session:
             # Buscar al inquilino por ID
@@ -111,5 +154,3 @@ class EstanciaController:
             session.close()
 
         return {"status": "Estancia asignada exitosamente", "inquilino_id": inquilino_id, "estancia_id": estancia_id}
-    
- 

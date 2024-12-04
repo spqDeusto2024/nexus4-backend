@@ -8,7 +8,13 @@ import app.utils.vars as gb
 class FamiliaController:
     def create_familia(self, body: FamiliaRequest):
         """
-        Creates a new Familia in the database
+        Creates a new Familia in the database.
+
+        Args:
+            body (FamiliaRequest): The request body containing the familia data.
+
+        Returns:
+            dict: A dictionary with the status of the creation operation.
         """
         body_row = Familia(apellido=body.apellido)
         db = DatabaseClient(gb.MYSQL_URL)
@@ -21,7 +27,10 @@ class FamiliaController:
 
     def get_all_familias(self):
         """
-        Gets all Familia records
+        Gets all Familia records.
+
+        Returns:
+            list: A list of all Familia records.
         """
         db = DatabaseClient(gb.MYSQL_URL)
         response: list = []
@@ -33,14 +42,21 @@ class FamiliaController:
 
     def update_familia(self, body: FamiliaRequest, id: int):
         """
-        Updates a Familia record by ID
+        Updates a Familia record by ID.
+
+        Args:
+            body (FamiliaRequest): The request body containing the updated familia data.
+            id (int): The ID of the familia to update.
+
+        Returns:
+            dict: A dictionary with the status of the update operation.
         """
         db = DatabaseClient(gb.MYSQL_URL)
         with Session(db.engine) as session:
             familia = session.query(Familia).get(id)
             if not familia:
                 return {"error": "Familia not found"}
-            
+
             familia.apellido = body.apellido
             session.commit()
             session.close()
@@ -62,4 +78,3 @@ class FamiliaController:
             session.close()
 
         return {"status": "ok"}
- 

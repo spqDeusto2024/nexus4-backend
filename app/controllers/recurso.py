@@ -9,6 +9,12 @@ class RecursoController:
     def create_recurso(self, body: RecursoRequest):
         """
         Creates a new Recurso in the database
+
+        Args:
+            body (RecursoRequest): The request body containing the recurso data.
+
+        Returns:
+            dict: A dictionary with the status of the creation operation.
         """
         body_row = Recurso(
             nombre=body.nombre,
@@ -28,6 +34,10 @@ class RecursoController:
     def get_all_recursos(self):
         """
         Gets all Recurso records
+
+        Returns:
+            list: A list of all Recurso records.
+
         """
         db = DatabaseClient(gb.MYSQL_URL)
         with Session(db.engine) as session:
@@ -39,6 +49,13 @@ class RecursoController:
     def update_recurso(self, body: RecursoRequest, id: int):
         """
         Updates a Recurso record by ID
+
+        Args:
+            body (RecursoRequest): The request body containing the updated recurso data.
+            id (int): The ID of the recurso to update.
+
+        Returns:
+            dict: A dictionary with the status of the update operation.
         """
         db = DatabaseClient(gb.MYSQL_URL)
         with Session(db.engine) as session:
@@ -58,6 +75,12 @@ class RecursoController:
     def delete_recurso(self, id: int):
         """
         Deletes a Recurso record by ID
+
+        Args:
+            id (int): The ID of the recurso to delete.
+        
+        Returns:
+            dict: A dictionary with the status of the delete operation.
         """
         db = DatabaseClient(gb.MYSQL_URL)
         with Session(db.engine) as session:
@@ -74,6 +97,12 @@ class RecursoController:
     def check_recurso_status(self, id: int):
         """
         Checks if a Recurso record is within the appropriate capacity range
+
+        Args:
+            id (int): The ID of the recurso to check.
+
+        Returns:
+            dict: A dictionary with the status of the recurso.
         """
         db = DatabaseClient(gb.MYSQL_URL)
         with Session(db.engine) as session:
@@ -91,6 +120,13 @@ class RecursoController:
     def modify_recurso(self, id: int, cantidad: int):
         """
         Modifies the capacidad_actual of a Recurso record by ID
+
+        Args:
+            id (int): The ID of the recurso to modify.
+            cantidad (int): The amount to add or remove from the recurso's capacidad_actual.
+
+        Returns:
+            dict: A dictionary with the status of the modification operation.
         """
         db = DatabaseClient(gb.MYSQL_URL)
         with Session(db.engine) as session:

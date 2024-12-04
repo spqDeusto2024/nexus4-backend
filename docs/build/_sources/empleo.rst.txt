@@ -1,0 +1,7 @@
+Controllers
+=============
+
+.. automodule:: app.controllers.empleo
+    :members:
+    :undoc-members:
+    :show-inheritance:
