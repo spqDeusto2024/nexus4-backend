@@ -16,7 +16,7 @@ role_id = None
 
 def test_create_role():
     global role_id
-    response = client.post("/role/create", json={
+    response = client.post("/roles/create", json={
         "nombre": "RolePrueba"
     })
     print("Response status code:", response.status_code)
@@ -24,16 +24,11 @@ def test_create_role():
     assert response.status_code == 200
     assert response.json().get("status") == "ok"
 
-    # Obtener el ID del rol creado
-    roles_response = client.get("/role/get_all")
-    roles = roles_response.json()
-    rol_prueba = next((rol for rol in roles if rol["nombre"] == "RolePrueba"), None)
-    assert rol_prueba is not None, "No se encontró el rol con nombre 'RolePrueba'"
-    role_id = rol_prueba.get("id")
+        
 
 def test_get_all_roles():
     global role_id
-    response = client.get("/role/get_all")
+    response = client.get("/roles/get_all")
     print("Response status code:", response.status_code)
     print("Response JSON:", response.json())
     assert response.status_code == 200
@@ -41,7 +36,7 @@ def test_get_all_roles():
         
     # Perform a GET request to retrieve the ID of the role named "RolePrueba"
     roles = response.json()
-    role_prueba = next((rol for role in roles if role["nombre"] == "RolePrueba"), None)
+    role_prueba = next((role for role in roles if role["nombre"] == "RolePrueba"), None)
     assert role_prueba is not None, "No se encontró el rol con nombre 'RolePrueba'"
     role_id = role_prueba.get("id")
 
@@ -52,13 +47,13 @@ def test_update_role():
 
     
     # Actualizar el rol con datos válidos
-        update_response = client.post(f"/role/update?id={role_id}", json={
-            "nombre": "RolePruebaActualizado",
-        })
-        print("Update response status code:", update_response.status_code)
-        print("Update response JSON:", update_response.json())
-        assert update_response.status_code == 200
-        assert update_response.json().get("status") == "ok"
+    update_response = client.post(f"/roles/update?id={role_id}", json={
+        "nombre": "RolePruebaActualizado",
+    })
+    print("Update response status code:", update_response.status_code)
+    print("Update response JSON:", update_response.json())
+    assert update_response.status_code == 200
+    assert update_response.json().get("status") == "ok"
 
 def test_delete_role():
     global role_id
@@ -66,7 +61,7 @@ def test_delete_role():
     assert role_id is not None, "El ID del rol no se obtuvo correctamente"
 
     # Eliminar el rol
-    delete_response = client.post(f"/role/delete?id={role_id}")
+    delete_response = client.post(f"/roles/delete?id={role_id}")
     print("Delete response status code:", delete_response.status_code)
     print("Delete response JSON:", delete_response.json())
     assert delete_response.status_code == 200
