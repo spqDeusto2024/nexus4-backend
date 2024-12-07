@@ -43,30 +43,79 @@
 <dt class="sig sig-object py" id="app.controllers.handler.Controllers.create_user">
 <span class="sig-name descname"><span class="pre">create_user</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">body</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">UserRequest</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#app.controllers.handler.Controllers.create_user" title="Link to this definition">¶</a></dt>
 <dd><p>Creates new user in  the database</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>body</strong> (<em>models.UserRequest</em>) – The request body containing the user data.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A dictionary with the status of the creation operation.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="app.controllers.handler.Controllers.delete_user">
 <span class="sig-name descname"><span class="pre">delete_user</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#app.controllers.handler.Controllers.delete_user" title="Link to this definition">¶</a></dt>
 <dd><p>Deletes user by its UID</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>id</strong> (<em>int</em>) – The UID of the user to delete.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A dictionary with the status of the delete operation.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="app.controllers.handler.Controllers.get_all">
 <span class="sig-name descname"><span class="pre">get_all</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#app.controllers.handler.Controllers.get_all" title="Link to this definition">¶</a></dt>
 <dd><p>Gets all users</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>A list of all user records.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>list</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="app.controllers.handler.Controllers.healthz">
 <span class="sig-name descname"><span class="pre">healthz</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#app.controllers.handler.Controllers.healthz" title="Link to this definition">¶</a></dt>
 <dd><p>Checks server status</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>A dictionary with the server status.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>dict</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="app.controllers.handler.Controllers.update_user">
 <span class="sig-name descname"><span class="pre">update_user</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">body</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">UpdateRequest</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#app.controllers.handler.Controllers.update_user" title="Link to this definition">¶</a></dt>
 <dd><p>Updates user by its ID</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>body</strong> (<em>models.UpdateRequest</em>) – The request body containing the updated user data.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A dictionary with the status of the update operation.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
@@ -82,6 +131,17 @@
 <dt class="sig sig-object py" id="app.controllers.empleo.EmpleoController.create_empleo">
 <span class="sig-name descname"><span class="pre">create_empleo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">body</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">EmpleoRequest</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#app.controllers.empleo.EmpleoController.create_empleo" title="Link to this definition">¶</a></dt>
 <dd><p>Creates a new Empleo in the database</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>body</strong> (<em>EmpleoRequest</em>) – The request body containing the empleo data.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A dictionary with the status of the update</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
@@ -105,6 +165,14 @@
 <dt class="sig sig-object py" id="app.controllers.empleo.EmpleoController.get_all_empleos">
 <span class="sig-name descname"><span class="pre">get_all_empleos</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#app.controllers.empleo.EmpleoController.get_all_empleos" title="Link to this definition">¶</a></dt>
 <dd><p>Gets all Empleo records</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>A list of all Empleo records.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>list</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
@@ -139,35 +207,109 @@
 <dl class="py method">
 <dt class="sig sig-object py" id="app.controllers.estancia.EstanciaController.asignar_estancia">
 <span class="sig-name descname"><span class="pre">asignar_estancia</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inquilino_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">estancia_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#app.controllers.estancia.EstanciaController.asignar_estancia" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Assigns a tenant to a specific estancia.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>inquilino_id</strong> (<em>int</em>) – The ID of the tenant to assign.</p></li>
+<li><p><strong>estancia_id</strong> (<em>int</em>) – The ID of the estancia to assign the tenant to.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A dictionary with the status of the assignment operation.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="app.controllers.estancia.EstanciaController.consultar_disponibilidad">
-<span class="sig-name descname"><span class="pre">consultar_disponibilidad</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">numero_personas</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#app.controllers.estancia.EstanciaController.consultar_disponibilidad" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<span class="sig-name descname"><span class="pre">consultar_disponibilidad</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">numero_personas</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#app.controllers.estancia.EstanciaController.consultar_disponibilidad" title="Link to this definition">¶</a></dt>
+<dd><p>Checks the availability of an Estancia for a given number of people.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>id</strong> (<em>int</em>) – The ID of the estancia to check.</p></li>
+<li><p><strong>numero_personas</strong> (<em>int</em>) – The number of people to check availability for.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True if the estancia can accommodate the number of people, False otherwise.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="app.controllers.estancia.EstanciaController.create_estancia">
 <span class="sig-name descname"><span class="pre">create_estancia</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">body</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">EstanciaRequest</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#app.controllers.estancia.EstanciaController.create_estancia" title="Link to this definition">¶</a></dt>
 <dd><p>Creates a new Estancia in the database</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>body</strong> (<em>EstanciaRequest</em>) – The request body containing the estancia data.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A dictionary with the status of the update operation.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="app.controllers.estancia.EstanciaController.delete_estancia">
 <span class="sig-name descname"><span class="pre">delete_estancia</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#app.controllers.estancia.EstanciaController.delete_estancia" title="Link to this definition">¶</a></dt>
-<dd><p>Deletes an Estancia record by ID</p>
+<dd><p>Deletes an Estancia record by ID.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>id</strong> (<em>int</em>) – The ID of the estancia to delete.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A dictionary with the status of the delete operation.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="app.controllers.estancia.EstanciaController.get_all_estancias">
 <span class="sig-name descname"><span class="pre">get_all_estancias</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#app.controllers.estancia.EstanciaController.get_all_estancias" title="Link to this definition">¶</a></dt>
 <dd><p>Gets all Estancia records</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>A list of all Estancia records.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>list</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="app.controllers.estancia.EstanciaController.update_estancia">
 <span class="sig-name descname"><span class="pre">update_estancia</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">body</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">EstanciaRequest</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#app.controllers.estancia.EstanciaController.update_estancia" title="Link to this definition">¶</a></dt>
-<dd><p>Updates an Estancia record by ID</p>
+<dd><p>Updates an Estancia record by ID.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>body</strong> (<em>EstanciaRequest</em>) – The request body containing the updated estancia data.</p></li>
+<li><p><strong>id</strong> (<em>int</em>) – The ID of the estancia to update.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A dictionary with the status of the update operation.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
@@ -182,7 +324,18 @@
 <dl class="py method">
 <dt class="sig sig-object py" id="app.controllers.familia.FamiliaController.create_familia">
 <span class="sig-name descname"><span class="pre">create_familia</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">body</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">FamiliaRequest</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#app.controllers.familia.FamiliaController.create_familia" title="Link to this definition">¶</a></dt>
-<dd><p>Creates a new Familia in the database</p>
+<dd><p>Creates a new Familia in the database.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>body</strong> (<em>FamiliaRequest</em>) – The request body containing the familia data.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A dictionary with the status of the creation operation.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
@@ -194,13 +347,35 @@
 <dl class="py method">
 <dt class="sig sig-object py" id="app.controllers.familia.FamiliaController.get_all_familias">
 <span class="sig-name descname"><span class="pre">get_all_familias</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#app.controllers.familia.FamiliaController.get_all_familias" title="Link to this definition">¶</a></dt>
-<dd><p>Gets all Familia records</p>
+<dd><p>Gets all Familia records.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>A list of all Familia records.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>list</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="app.controllers.familia.FamiliaController.update_familia">
 <span class="sig-name descname"><span class="pre">update_familia</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">body</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">FamiliaRequest</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#app.controllers.familia.FamiliaController.update_familia" title="Link to this definition">¶</a></dt>
-<dd><p>Updates a Familia record by ID</p>
+<dd><p>Updates a Familia record by ID.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>body</strong> (<em>FamiliaRequest</em>) – The request body containing the updated familia data.</p></li>
+<li><p><strong>id</strong> (<em>int</em>) – The ID of the familia to update.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A dictionary with the status of the update operation.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
@@ -215,36 +390,106 @@
 <dl class="py method">
 <dt class="sig sig-object py" id="app.controllers.inquilino.InquilinoController.consultardisponibilidad">
 <span class="sig-name descname"><span class="pre">consultardisponibilidad</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">estancia_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#app.controllers.inquilino.InquilinoController.consultardisponibilidad" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Checks the availability of an Estancia.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>estancia_id</strong> (<em>int</em>) – The ID of the estancia to check.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A string indicating if there is space available</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="app.controllers.inquilino.InquilinoController.create_inquilino">
 <span class="sig-name descname"><span class="pre">create_inquilino</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">body</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">InquilinoRequest</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#app.controllers.inquilino.InquilinoController.create_inquilino" title="Link to this definition">¶</a></dt>
 <dd><p>Creates a new Inquilino in the database</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>body</strong> (<em>InquilinoRequest</em>) – The request body containing the inquilino data.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A dictionary with the status of the creation operation.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="app.controllers.inquilino.InquilinoController.delete_inquilino">
 <span class="sig-name descname"><span class="pre">delete_inquilino</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#app.controllers.inquilino.InquilinoController.delete_inquilino" title="Link to this definition">¶</a></dt>
 <dd><p>Deletes an Inquilino record by ID</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>id</strong> (<em>int</em>) – The ID of the inquilino to delete.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A dictionary with the status of the delete operation.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="app.controllers.inquilino.InquilinoController.get_all_inquilinos">
 <span class="sig-name descname"><span class="pre">get_all_inquilinos</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#app.controllers.inquilino.InquilinoController.get_all_inquilinos" title="Link to this definition">¶</a></dt>
 <dd><p>Gets all Inquilino records</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>A list of all Inquilino records.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>list</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="app.controllers.inquilino.InquilinoController.marcar_como_fallecido">
 <span class="sig-name descname"><span class="pre">marcar_como_fallecido</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fecha_muerte</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">datetime</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#app.controllers.inquilino.InquilinoController.marcar_como_fallecido" title="Link to this definition">¶</a></dt>
 <dd><p>Marks an Inquilino as death.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>id</strong> (<em>int</em>) – The ID of the inquilino to mark as death.</p></li>
+<li><p><strong>fecha_muerte</strong> (<em>datetime</em>) – The date of death of the inquilino.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A dictionary with the status of the operation</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="app.controllers.inquilino.InquilinoController.update_inquilino">
 <span class="sig-name descname"><span class="pre">update_inquilino</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">body</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">InquilinoRequest</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#app.controllers.inquilino.InquilinoController.update_inquilino" title="Link to this definition">¶</a></dt>
 <dd><p>Updates an Inquilino record by ID</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>body</strong> (<em>InquilinoRequest</em>) – The request body containing the updated inquilino data.</p></li>
+<li><p><strong>id</strong> (<em>int</em>) – The ID of the inquilino to update.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A dictionary with the status of the update operation.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
@@ -260,36 +505,105 @@
 <dt class="sig sig-object py" id="app.controllers.recurso.RecursoController.check_recurso_status">
 <span class="sig-name descname"><span class="pre">check_recurso_status</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#app.controllers.recurso.RecursoController.check_recurso_status" title="Link to this definition">¶</a></dt>
 <dd><p>Checks if a Recurso record is within the appropriate capacity range</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>id</strong> (<em>int</em>) – The ID of the recurso to check.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A dictionary with the status of the recurso.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="app.controllers.recurso.RecursoController.create_recurso">
 <span class="sig-name descname"><span class="pre">create_recurso</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">body</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">RecursoRequest</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#app.controllers.recurso.RecursoController.create_recurso" title="Link to this definition">¶</a></dt>
 <dd><p>Creates a new Recurso in the database</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>body</strong> (<em>RecursoRequest</em>) – The request body containing the recurso data.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A dictionary with the status of the creation operation.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="app.controllers.recurso.RecursoController.delete_recurso">
 <span class="sig-name descname"><span class="pre">delete_recurso</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#app.controllers.recurso.RecursoController.delete_recurso" title="Link to this definition">¶</a></dt>
 <dd><p>Deletes a Recurso record by ID</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>id</strong> (<em>int</em>) – The ID of the recurso to delete.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A dictionary with the status of the delete operation.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="app.controllers.recurso.RecursoController.get_all_recursos">
 <span class="sig-name descname"><span class="pre">get_all_recursos</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#app.controllers.recurso.RecursoController.get_all_recursos" title="Link to this definition">¶</a></dt>
 <dd><p>Gets all Recurso records</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>A list of all Recurso records.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>list</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="app.controllers.recurso.RecursoController.modify_recurso">
 <span class="sig-name descname"><span class="pre">modify_recurso</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cantidad</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#app.controllers.recurso.RecursoController.modify_recurso" title="Link to this definition">¶</a></dt>
 <dd><p>Modifies the capacidad_actual of a Recurso record by ID</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>id</strong> (<em>int</em>) – The ID of the recurso to modify.</p></li>
+<li><p><strong>cantidad</strong> (<em>int</em>) – The amount to add or remove from the recurso’s capacidad_actual.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A dictionary with the status of the modification operation.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="app.controllers.recurso.RecursoController.update_recurso">
 <span class="sig-name descname"><span class="pre">update_recurso</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">body</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">RecursoRequest</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#app.controllers.recurso.RecursoController.update_recurso" title="Link to this definition">¶</a></dt>
 <dd><p>Updates a Recurso record by ID</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>body</strong> (<em>RecursoRequest</em>) – The request body containing the updated recurso data.</p></li>
+<li><p><strong>id</strong> (<em>int</em>) – The ID of the recurso to update.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A dictionary with the status of the update operation.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
@@ -305,24 +619,68 @@
 <dt class="sig sig-object py" id="app.controllers.roles.RolesController.create_role">
 <span class="sig-name descname"><span class="pre">create_role</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">body</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">RolesRequest</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#app.controllers.roles.RolesController.create_role" title="Link to this definition">¶</a></dt>
 <dd><p>Creates a new Role in the database</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>body</strong> (<em>RolesRequest</em>) – The request body containing the role data.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A dictionary with the status of the creation operation.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="app.controllers.roles.RolesController.delete_role">
 <span class="sig-name descname"><span class="pre">delete_role</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#app.controllers.roles.RolesController.delete_role" title="Link to this definition">¶</a></dt>
 <dd><p>Deletes a Role record by ID</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>id</strong> (<em>int</em>) – The ID of the role to delete.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A dictionary with the status of the delete</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="app.controllers.roles.RolesController.get_all_roles">
 <span class="sig-name descname"><span class="pre">get_all_roles</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#app.controllers.roles.RolesController.get_all_roles" title="Link to this definition">¶</a></dt>
 <dd><p>Gets all Role records</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>A list of all Role records.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>list</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="app.controllers.roles.RolesController.update_role">
 <span class="sig-name descname"><span class="pre">update_role</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">body</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">RolesRequest</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#app.controllers.roles.RolesController.update_role" title="Link to this definition">¶</a></dt>
 <dd><p>Updates a Role record by ID</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>body</strong> (<em>RolesRequest</em>) – The request body containing the updated role data.</p></li>
+<li><p><strong>id</strong> (<em>int</em>) – The ID of the role to update.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A dictionary with the status of the update</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
@@ -337,32 +695,89 @@
 <dl class="py method">
 <dt class="sig sig-object py" id="app.controllers.usuarios.UsuariosController.create_usuario">
 <span class="sig-name descname"><span class="pre">create_usuario</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">body</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">UsuariosRequest</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#app.controllers.usuarios.UsuariosController.create_usuario" title="Link to this definition">¶</a></dt>
-<dd><p>Crea un nuevo Usuario en la base de datos con la contraseña hasheada.</p>
+<dd><p>Creates a new Usuario in the database.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>body</strong> (<em>UsuariosRequest</em>) – The request body containing the usuario data.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A dictionary with the status of the creation operation.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="app.controllers.usuarios.UsuariosController.delete_usuario">
 <span class="sig-name descname"><span class="pre">delete_usuario</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#app.controllers.usuarios.UsuariosController.delete_usuario" title="Link to this definition">¶</a></dt>
-<dd><p>Elimina un registro de Usuario por su ID.</p>
+<dd><p>Deletes a Usuario record by ID.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>id</strong> (<em>int</em>) – The ID of the usuario to delete.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A dictionary with the status of the delete operation.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="app.controllers.usuarios.UsuariosController.get_all_usuarios">
 <span class="sig-name descname"><span class="pre">get_all_usuarios</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#app.controllers.usuarios.UsuariosController.get_all_usuarios" title="Link to this definition">¶</a></dt>
-<dd><p>Obtiene todos los registros de Usuarios.</p>
+<dd><p>Gets all Usuario records.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>A list of all Usuario records.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>list</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="app.controllers.usuarios.UsuariosController.update_usuario">
 <span class="sig-name descname"><span class="pre">update_usuario</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">body</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">UsuariosRequest</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#app.controllers.usuarios.UsuariosController.update_usuario" title="Link to this definition">¶</a></dt>
-<dd><p>Actualiza un registro de Usuario por su ID.</p>
+<dd><p>Updates a Usuario record by ID.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>body</strong> (<em>UsuariosRequest</em>) – The request body containing the updated usuario data.</p></li>
+<li><p><strong>id</strong> (<em>int</em>) – The ID of the usuario to update.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A dictionary with the status of the update operation.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="app.controllers.usuarios.UsuariosController.verificar_usuarios">
 <span class="sig-name descname"><span class="pre">verificar_usuarios</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">usuario</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">password</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="headerlink" href="#app.controllers.usuarios.UsuariosController.verificar_usuarios" title="Link to this definition">¶</a></dt>
-<dd><p>Verifica si las credenciales del usuario son correctas.
-Si es así, devuelve el usuario con su id.</p>
+<dd><p>Verify the user’s credentials.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>usuario</strong> (<em>str</em>) – The user’s username.</p></li>
+<li><p><strong>password</strong> (<em>str</em>) – The user’s password.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A dictionary with the user’s ID and username</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
@@ -370,13 +785,38 @@ Si es así, devuelve el usuario con su id.</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="app.controllers.usuarios.hash_password">
 <span class="sig-prename descclassname"><span class="pre">app.controllers.usuarios.</span></span><span class="sig-name descname"><span class="pre">hash_password</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">password</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#app.controllers.usuarios.hash_password" title="Link to this definition">¶</a></dt>
-<dd><p>Devuelve una versión hasheada de la contraseña.</p>
+<dd><p>Returns a hashed version of the password.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>password</strong> (<em>str</em>) – The plain text password.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The hashed password.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="app.controllers.usuarios.verify_password">
 <span class="sig-prename descclassname"><span class="pre">app.controllers.usuarios.</span></span><span class="sig-name descname"><span class="pre">verify_password</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">plain_password</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hashed_password</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#app.controllers.usuarios.verify_password" title="Link to this definition">¶</a></dt>
-<dd><p>Compara una contraseña en texto plano con una contraseña hasheada.</p>
+<dd><p>Compare the plain text password with the hashed password.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>plain_password</strong> (<em>str</em>) – The plain text password.</p></li>
+<li><p><strong>hashed_password</strong> (<em>str</em>) – The hashed password.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True if the password matches, False otherwise</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
 </dd></dl>
 
 </section>

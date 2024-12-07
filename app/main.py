@@ -215,25 +215,15 @@ async def create_usuario(body: usuarioModels.UsuariosRequest):
 async def update_usuarios(body: usuarioModels.UsuariosRequest, id: int):
     return usuario_controller.update_usuario(body, id)
 
-@app.get('/usuario/get_all' , tags=["Usuario"])
-async def get_all_usuarios():
-    return usuario_controller.get_all_usuarios()
-
-@app.post('/usuario/delete' , tags=["Usuario"])
-async def delete_usuario(id: int):
-    return usuario_controller.delete_usuario(id)
-
-@app.post("/usuarios/verificar", tags=["Usuario"])
-async def login_for_access_token(form_data: OAuth2PasswordRequestForm = Depends()):
-    """
-    Este endpoint verifica las credenciales del usuario y retorna un token de acceso.
-    """
-    # FastAPI ejecutará `verificar_usuarios` en un pool de subprocesos
-    usuario = usuario_controller.verificar_usuarios(form_data.username, form_data.password)
-
-    # Crear el token de acceso
-    access_token = create_access_token(data={"sub": usuario["usuario"]})
-    return {"access_token": access_token, "token_type": "bearer"}
+@app.post('/usuarios/delete', tags=["Usuario"])
+async def delete_usuario(
+    id: int,
+    current_user: dict = Depends(get_current_user)  # Verificación del token
+):
+    response = usuario_controller.delete_usuario(id)
+    if "error" in response:
+        raise HTTPException(status_code=404, detail=response["error"])
+    return response
 
 @app.get('/usuarios/get_all', tags=["Usuario"])
 async def get_all_usuarios(current_user: dict = Depends(get_current_user)):
@@ -266,19 +256,14 @@ async def verify_user_token(token: str = Depends(oauth2_scheme)):
             detail="Token inválido o expirado"
         )
     
-"""
-
-@app.post("/token", tags=["Auth"])
+@app.post("/usuarios/verificar", tags=["Usuario"])
 async def login(form_data: OAuth2PasswordRequestForm = Depends()):
-    
-    Este endpoint maneja la autenticación de usuarios y genera un token de acceso."
-    # Verifica el usuario y contraseña usando tu lógica de autenticación
+    """
+    Este endpoint verifica las credenciales del usuario y retorna un token de acceso.
+    """
+    # FastAPI ejecutará `verificar_usuarios` en un pool de subprocesos
     usuario = usuario_controller.verificar_usuarios(form_data.username, form_data.password)
 
-    # Si la verificación es exitosa, genera el token
+    # Crear el token de acceso
     access_token = create_access_token(data={"sub": usuario["usuario"]})
-
-    # Retorna el token en el formato esperado por OAuth2PasswordBearer
     return {"access_token": access_token, "token_type": "bearer"}
-
-    """
