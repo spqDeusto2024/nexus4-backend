@@ -1,72 +1,72 @@
-Controllers
-===========
+Models
+======
 
 .. toctree::
    :maxdepth: 2
    :caption: Related:
 
-   models
+   controllers
 
-Handler Module
+Empleo Models
 -------------
 
-.. automodule:: app.controllers.handler
+.. automodule:: app.models.empleo
     :members:
     :undoc-members:
     :show-inheritance:
 
-Empleo Module
--------------
+Familia Models
+--------------
 
-.. automodule:: app.controllers.empleo
+.. automodule:: app.models.familia
     :members:
     :undoc-members:
     :show-inheritance:
 
-Estancia Module
+Usuario Models
+--------------
+
+.. automodule:: app.models.usuarios
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+Estancia Models
 ---------------
 
-.. automodule:: app.controllers.estancia
+.. automodule:: app.models.estancia
     :members:
     :undoc-members:
     :show-inheritance:
 
-Familia Module
---------------
-
-.. automodule:: app.controllers.familia
-    :members:
-    :undoc-members:
-    :show-inheritance:
-
-Inquilino Module
+Inquilino Models
 ----------------
 
-.. automodule:: app.controllers.inquilino
+.. automodule:: app.models.inquilino
     :members:
     :undoc-members:
     :show-inheritance:
 
-Recurso Module
+General Models
 --------------
 
-.. automodule:: app.controllers.recurso
+.. automodule:: app.models.models
     :members:
     :undoc-members:
     :show-inheritance:
 
-Roles Module
+Recurso Models
+--------------
+
+.. automodule:: app.models.recurso
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+Roles Models
 ------------
 
-.. automodule:: app.controllers.roles
-    :members:
-    :undoc-members:
-    :show-inheritance:
-
-User Module
------------
-
-.. automodule:: app.controllers.usuarios
+.. automodule:: app.models.roles
     :members:
     :undoc-members:
     :show-inheritance:

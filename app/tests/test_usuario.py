@@ -4,12 +4,61 @@ from fastapi.testclient import TestClient
 
 client = TestClient(app)
 
+# Variable global para almacenar el token de autenticación
+auth_token = None
+
+def test_verificar_usuarios():
+    global usuario_id, auth_token
+    # Asegurarse de que el usuario se haya creado correctamente
+    assert usuario_id is not None, "El ID del usuario no se obtuvo correctamente"
+
+    # Verificar el usuario con las credenciales correctas
+    response = client.post("/usuarios/verificar", data={
+        "username": "UsuarioPrueba",
+        "password": "123"
+    })
+    print("Verify response status code:", response.status_code)
+    print("Verify response JSON:", response.json())
+    assert response.status_code == 200
+    token_data = response.json()
+    assert "access_token" in token_data
+    assert token_data["token_type"] == "bearer"
+
+    # Almacenar el token de autenticación
+    auth_token = token_data["access_token"]
+
+    # Verificar el usuario con una contraseña incorrecta
+    response = client.post("/usuarios/verificar", data={
+        "username": "UsuarioPrueba",
+        "password": "incorrecta"
+    })
+    print("Verify incorrect password response status code:", response.status_code)
+    print("Verify incorrect password response JSON:", response.json())
+    assert response.status_code == 401
+    assert response.json()["detail"] == "Contraseña incorrecta"
+
+    # Verificar un usuario que no existe
+    response = client.post("/usuarios/verificar", data={
+        "username": "UsuarioNoExistente",
+        "password": "123"
+    })
+    print("Verify non-existent user response status code:", response.status_code)
+    print("Verify non-existent user response JSON:", response.json())
+    assert response.status_code == 404
+    assert response.json()["detail"] == "Usuario no encontrado"
+
 def test_create_usuario():
-    global usuario_id
+    global usuario_id, auth_token
+
+    # Asegurarse de que el token de autenticación se haya obtenido correctamente
+    assert auth_token is not None, "El token de autenticación no se obtuvo correctamente"
+
+    # Usar el token de autenticación para crear un nuevo usuario
+    headers = {"Authorization": f"Bearer {auth_token}"}
     response = client.post("/usuarios/create", json={
         "usuario": "UsuarioPrueba",
         "password": "123"
-    })
+    }, headers=headers)
     print("Response status code:", response.status_code)
     print("Response JSON:", response.json())
     assert response.status_code == 200
@@ -44,43 +93,6 @@ def test_update_usuario():
     print("Update response JSON:", update_response.json())
     assert update_response.status_code == 200
     assert update_response.json().get("status") == "ok"
-
-def test_verificar_usuarios():
-    global usuario_id
-    # Asegurarse de que el usuario se haya creado correctamente
-    assert usuario_id is not None, "El ID del usuario no se obtuvo correctamente"
-
-    # Verificar el usuario con las credenciales correctas
-    response = client.post("/usuarios/verificar", data={
-        "username": "UsuarioPrueba",
-        "password": "123"
-    })
-    print("Verify response status code:", response.status_code)
-    print("Verify response JSON:", response.json())
-    assert response.status_code == 200
-    token_data = response.json()
-    assert "access_token" in token_data
-    assert token_data["token_type"] == "bearer"
-
-    # Verificar el usuario con una contraseña incorrecta
-    response = client.post("/usuarios/verificar", data={
-        "username": "UsuarioPrueba",
-        "password": "incorrecta"
-    })
-    print("Verify incorrect password response status code:", response.status_code)
-    print("Verify incorrect password response JSON:", response.json())
-    assert response.status_code == 401
-    assert response.json()["detail"] == "Contraseña incorrecta"
-
-    # Verificar un usuario que no existe
-    response = client.post("/usuarios/verificar", data={
-        "username": "UsuarioNoExistente",
-        "password": "123"
-    })
-    print("Verify non-existent user response status code:", response.status_code)
-    print("Verify non-existent user response JSON:", response.json())
-    assert response.status_code == 404
-    assert response.json()["detail"] == "Usuario no encontrado"
 
 def test_delete_usuario():
     global usuario_id
