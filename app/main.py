@@ -207,14 +207,20 @@ async def delete_role(id: int):
     return roles_controller.delete_role(id)
 
 #USUARIOS
-@app.post('/usuarios/create' , tags=["Usuario"])
-async def create_usuario(body: usuarioModels.UsuariosRequest):
+@app.post('/usuarios/create', tags=["Usuario"])
+async def create_usuario(
+    body: usuarioModels.UsuariosRequest,
+    current_user: dict = Depends(get_current_user)  # Verificación del token
+):
     return usuario_controller.create_usuario(body)
 
-@app.post('/usuarios/update' , tags=["Usuario"])
-async def update_usuarios(body: usuarioModels.UsuariosRequest, id: int):
+@app.post('/usuarios/update', tags=["Usuario"])
+async def update_usuarios(
+    body: usuarioModels.UsuariosRequest,
+    id: int,
+    current_user: dict = Depends(get_current_user)  # Verificación del token
+):
     return usuario_controller.update_usuario(body, id)
-
 @app.post('/usuarios/delete', tags=["Usuario"])
 async def delete_usuario(
     id: int,
