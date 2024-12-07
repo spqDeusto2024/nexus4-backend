@@ -10,7 +10,7 @@ empleo_id = None
 def test_create_empleo():
     global empleo_id
     # Datos del empleo para crear
-    data = {"empleo": "Programador", "edad_minima": 18, "id_estancia": 1}
+    data = {"empleo": "Picador", "edad_minima": 18, "id_estancia": 1}
     
     response = client.post("/empleo/create", json=data)
     
@@ -31,8 +31,8 @@ def test_get_all_empleos():
     
     # Realizar una solicitud GET para obtener el ID del empleo con nombre "Programador"
     empleos = response.json()
-    empleo_prueba = next((empleo for empleo in empleos if empleo["empleo"] == "Programador"), None)
-    assert empleo_prueba is not None, "No se encontró el empleo con nombre 'Programador'"
+    empleo_prueba = next((empleo for empleo in empleos if empleo["empleo"] == "Picador"), None)
+    assert empleo_prueba is not None, "No se encontró el empleo con nombre 'Picador'"
     empleo_id = empleo_prueba.get("id")
 
 # Test para actualizar empleo

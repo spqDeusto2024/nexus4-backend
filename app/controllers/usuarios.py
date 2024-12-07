@@ -88,14 +88,16 @@ class UsuariosController:
         Returns:
             dict: A dictionary with the status of the update operation.
         """
+        print("inside")
         db = DatabaseClient(gb.MYSQL_URL)
         with Session(db.engine) as session:
             usuario = session.query(Usuarios).get(id)
             if not usuario:
                 return {"error": "Usuario not found"}
 
+            # Actualiza los campos del usuario
             usuario.usuario = body.usuario
-            usuario.password = self.hash_password(body.password)
+            usuario.password = hash_password(body.password)  # Usar directamente la función global
             session.commit()
             session.close()
 
@@ -111,6 +113,7 @@ class UsuariosController:
         Returns:
             dict: A dictionary with the status of the delete operation.
         """
+        print("Dentro de delete")
         db = DatabaseClient(gb.MYSQL_URL)
         with Session(db.engine) as session:
             usuario = session.query(Usuarios).get(id)
