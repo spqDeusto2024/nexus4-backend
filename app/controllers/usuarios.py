@@ -51,6 +51,7 @@ class UsuariosController:
             dict: A dictionary with the status of the creation operation.
         """
         # Hasheamos la contraseña antes de almacenarla
+        id = None
         hashed_password = hash_password(body.password)
         
         body_row = Usuarios(usuario=body.usuario, password=hashed_password)
@@ -59,9 +60,10 @@ class UsuariosController:
         with Session(db.engine) as session:
             session.add(body_row)
             session.commit()
+            id = body_row.id
             session.close()
 
-        return {"status": "ok"}
+        return {"status": "ok", "id": id}
 
     def get_all_usuarios(self):
         """

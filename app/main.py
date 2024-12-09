@@ -209,8 +209,7 @@ async def delete_role(id: int):
 #USUARIOS
 @app.post('/usuarios/create', tags=["Usuario"])
 async def create_usuario(
-    body: usuarioModels.UsuariosRequest,
-    current_user: dict = Depends(get_current_user)  # Verificación del token
+    body: usuarioModels.UsuariosRequest
 ):
     return usuario_controller.create_usuario(body)
 
