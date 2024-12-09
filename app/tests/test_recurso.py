@@ -32,7 +32,7 @@ def test_update_recurso():
     assert recurso_id is not None, "El ID del recurso no se obtuvo correctamente"
 
     # Actualizar el recurso
-    update_response = client.post(f"/recurso/update?id={recurso_id}", json={"nombre": "RecursoPrueba", "capacidad_min": 5, "capacidad_max": 100, "capacidad_actual": 50})
+    update_response = client.put(f"/recurso/update/{recurso_id}", json={"nombre": "RecursoPrueba", "capacidad_min": 5, "capacidad_max": 100, "capacidad_actual": 50})
     print("Update response status code:", update_response.status_code)
     print("Update response JSON:", update_response.json())
     #Puedo probar que un assert sea falso. Cuanto más probado está mejor. Pasar una función para algo que no se puede insertar.
@@ -56,6 +56,6 @@ def test_delete_recurso():
     assert recurso_id is not None, "El ID del recurso no se obtuvo correctamente"
 
     # Eliminar el recurso
-    delete_response = client.post(f"/recurso/delete?id={recurso_id}")
+    delete_response = client.delete(f"/recurso/delete/{recurso_id}")
     assert delete_response.status_code == 200
     assert delete_response.json().get("status") == "ok"
