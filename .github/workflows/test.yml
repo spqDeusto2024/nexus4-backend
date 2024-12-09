@@ -51,7 +51,7 @@ jobs:
       # 7. Import SQL dump into MySQL
       - name: Import database
         run: |
-          docker exec -i mysql_nexus4 mysql -u root -p toor nexus4 < ./BBDD.sql
+          docker exec -i mysql_nexus4 mysql -u root -ptoor nexus4 < ./BBDD.sql
 
       # 8. Run tests inside the FastAPI container
       - name: Run API tests
