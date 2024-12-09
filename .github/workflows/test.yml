@@ -47,14 +47,20 @@ jobs:
             sleep 5
           done
 
-      # 7. Run tests inside the FastAPI container
+        
+      # 7. Import SQL dump into MySQL
+      - name: Import database
+        run: |
+          docker exec -i mysql_nexus4 mysql -u root -p toor nexus4 < ./BBDD.sql
+
+      # 8. Run tests inside the FastAPI container
       - name: Run API tests
         run: |
           docker exec nexus4_fastapi pytest
         env:
           DATABASE_URL: mysql://root:toor@mysql_nexus4:3306/nexus4
 
-      # 8. Shut down Docker Compose
+      # 9. Shut down Docker Compose
       - name: Shut down Docker Compose
         if: always()
         run: docker-compose down -v

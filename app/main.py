@@ -85,13 +85,9 @@ async def get_all_familias():
 async def update_familia(body: familiaModels.FamiliaRequest, id: int):
     return familia_controller.update_familia(body, id)
 
-@app.delete('/familia/delete/{id}', tags=["Familia"])
+@app.post('/familia/delete', tags=["Familia"])
 async def delete_familia(id: int):
     return familia_controller.delete_familia(id)
-
-"""@app.post('/familia/delete', tags=["Familia"])
-async def delete_familia(id: int):
-    return familia_controller.delete_familia(id)"""
 
 # INQUILINO
 @app.post('/inquilino/create', tags=["Inquilino"])
