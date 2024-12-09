@@ -232,7 +232,7 @@ async def update_usuarios(
 ):
     return usuario_controller.update_usuario(body, id)
 @app.post('/usuarios/delete', tags=["Usuario"])
-async def delete_usuario(
+async def delete_usuario( 
     id: int,
     current_user: dict = Depends(get_current_user)  # Verificación del token
 ):
