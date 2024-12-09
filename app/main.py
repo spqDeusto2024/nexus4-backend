@@ -81,9 +81,13 @@ async def get_all_familias():
     return familia_controller.get_all_familias()
 
 
-@app.post('/familia/update', tags=["Familia"])
-async def update_familia(body: familiaModels.FamiliaRequest, id: int):
+@app.put('/familia/update/{id}', tags=["Familia"])
+async def update_familia(id: int, body: familiaModels.FamiliaRequest):
     return familia_controller.update_familia(body, id)
+
+@app.delete('/familia/delete/{id}', tags=["Familia"])
+async def delete_familia(id: int):
+    return familia_controller.delete_familia(id)
 
 @app.post('/familia/delete', tags=["Familia"])
 async def delete_familia(id: int):
@@ -100,12 +104,12 @@ async def get_all_inquilinos():
     return inquilino_controller.get_all_inquilinos()
 
 
-@app.post('/inquilino/update' , tags=["Inquilino"])
+@app.put('/inquilino/update/{id}' , tags=["Inquilino"])
 async def update_inquilino(body: inquilinoModels.InquilinoRequest, id: int):
     return inquilino_controller.update_inquilino(body, id)
 
 
-@app.post('/inquilino/delete' , tags=["Inquilino"])
+@app.delete('/inquilino/delete/{id}' , tags=["Inquilino"])
 async def delete_inquilino(id: int):
     return inquilino_controller.delete_inquilino(id)
 
@@ -137,12 +141,12 @@ async def get_all_estancias():
     return estancia_controller.get_all_estancias()
 
 
-@app.post('/estancia/update', tags=["Estancia"])
+@app.put('/estancia/update/{id}', tags=["Estancia"])
 async def update_estancia(body: estanciaModels.EstanciaRequest, id: int):
     return estancia_controller.update_estancia(body, id)
 
 
-@app.post('/estancia/delete', tags=["Estancia"])
+@app.delete('/estancia/delete/{id}', tags=["Estancia"])
 async def delete_estancia(id: int):
     return estancia_controller.delete_estancia(id)
 
@@ -157,12 +161,12 @@ async def get_all_empleos():
     return empleo_controller.get_all_empleos()
 
 
-@app.post('/empleo/update', tags=["Empleo"])
+@app.put('/empleo/update/{id}', tags=["Empleo"])
 async def update_empleo(body: empleoModels.EmpleoRequest, id: int):
     return empleo_controller.update_empleo(body, id)
 
 
-@app.post('/empleo/delete', tags=["Empleo"])
+@app.delete('/empleo/delete/{id}', tags=["Empleo"])
 async def delete_empleo(id: int):
     return empleo_controller.delete_empleo(id)
 
@@ -177,12 +181,12 @@ async def get_all_recursos():
     return recurso_controller.get_all_recursos()
 
 
-@app.post('/recurso/update', tags=["Recurso"])
+@app.put('/recurso/update/{id}', tags=["Recurso"])
 async def update_recurso(body: recursoModels.RecursoRequest, id: int):
     return recurso_controller.update_recurso(body, id)
 
 
-@app.post('/recurso/delete' , tags=["Recurso"])
+@app.delete('/recurso/delete/{id}' , tags=["Recurso"])
 async def delete_recurso(id: int):
     return recurso_controller.delete_recurso(id)
 
@@ -208,19 +212,20 @@ async def get_all_roles():
     return roles_controller.get_all_roles()
 
 
-@app.post('/roles/update' , tags=["Roles"])
+@app.put('/roles/update/{id}' , tags=["Roles"])
 async def update_role(body: rolesModels.RolesRequest, id: int):
     return roles_controller.update_role(body, id)
 
 
-@app.post('/roles/delete' , tags=["Roles"])
+@app.delete('/roles/delete/{id}' , tags=["Roles"])
 async def delete_role(id: int):
     return roles_controller.delete_role(id)
 
-#USUARIOS
+#USUARIOS 
 @app.post('/usuarios/create', tags=["Usuario"])
 async def create_usuario(
-    body: usuarioModels.UsuariosRequest
+    body: usuarioModels.UsuariosRequest,
+    current_user: dict = Depends(get_current_user)  # Verificación del token
 ):
     return usuario_controller.create_usuario(body)
 
@@ -232,7 +237,7 @@ async def update_usuarios(
 ):
     return usuario_controller.update_usuario(body, id)
 @app.post('/usuarios/delete', tags=["Usuario"])
-async def delete_usuario( 
+async def delete_usuario(
     id: int,
     current_user: dict = Depends(get_current_user)  # Verificación del token
 ):
