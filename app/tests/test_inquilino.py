@@ -54,7 +54,7 @@ def test_update_inquilino():
     assert inquilino_id is not None, "El ID del inquilino no se obtuvo correctamente"
 
     # Actualizar el inquilino
-    update_response = client.post(f"/inquilino/update?id={inquilino_id}", json={
+    update_response = client.put(f"/inquilino/update/{inquilino_id}", json={
         "nombre": "InquilinoPruebaActualizado",
         "categoria": "CategoriaPruebaActualizada",
         "nacimiento": "1991-01-01",
@@ -77,6 +77,6 @@ def test_delete_inquilino():
     assert inquilino_id is not None, "El ID del inquilino no se obtuvo correctamente"
 
     # Eliminar el inquilino
-    delete_response = client.post(f"/inquilino/delete?id={inquilino_id}")
+    delete_response = client.delete(f"/inquilino/delete/{inquilino_id}")
     assert delete_response.status_code == 200
     assert delete_response.json().get("status") == "ok"

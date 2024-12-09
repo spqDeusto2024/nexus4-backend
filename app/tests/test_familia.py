@@ -40,7 +40,7 @@ def test_update_familia():
 
     # Actualizar los datos de la familia
     data = {"apellido": "González"}
-    response = client.post(f"/familia/update?id={familia_id}", json=data)
+    response = client.put(f"/familia/update/{familia_id}", json=data)
 
     # Verificar que la respuesta sea exitosa
     print("Update response status code:", response.status_code)

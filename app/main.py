@@ -130,6 +130,7 @@ async def asignar_estancia(inquilino_id: int, estancia_id: int):
     result = inquilino_controller.asignar_estancia(inquilino_id, estancia_id)
     return result
     
+
 #ESTANCIA
 @app.post('/estancia/create', tags=["Estancia"])
 async def create_estancia(body: estanciaModels.EstanciaRequest):
@@ -224,8 +225,7 @@ async def delete_role(id: int):
 #USUARIOS 
 @app.post('/usuarios/create', tags=["Usuario"])
 async def create_usuario(
-    body: usuarioModels.UsuariosRequest,
-    current_user: dict = Depends(get_current_user)  # Verificación del token
+    body: usuarioModels.UsuariosRequest
 ):
     return usuario_controller.create_usuario(body)
 

@@ -47,7 +47,7 @@ def test_update_role():
 
     
     # Actualizar el rol con datos válidos
-    update_response = client.post(f"/roles/update?id={role_id}", json={
+    update_response = client.put(f"/roles/update/{role_id}", json={
         "nombre": "RolePruebaActualizado",
     })
     print("Update response status code:", update_response.status_code)
@@ -61,7 +61,7 @@ def test_delete_role():
     assert role_id is not None, "El ID del rol no se obtuvo correctamente"
 
     # Eliminar el rol
-    delete_response = client.post(f"/roles/delete?id={role_id}")
+    delete_response = client.delete(f"/roles/delete/{role_id}")
     print("Delete response status code:", delete_response.status_code)
     print("Delete response JSON:", delete_response.json())
     assert delete_response.status_code == 200

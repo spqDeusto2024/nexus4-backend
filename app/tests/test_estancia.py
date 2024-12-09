@@ -39,7 +39,7 @@ def test_update_estancia():
     assert estancia_id is not None, "El ID de la estancia no se obtuvo correctamente"
 
     # Actualizar la estancia con datos válidos
-    update_response = client.post(f"/estancia/update?id={estancia_id}", json={
+    update_response = client.put(f"/estancia/update/{estancia_id}", json={
         "nombre": "EstanciaPruebaActualizada",
         "categoria": "CategoriaActualizada",
         "personas_actuales": 10,

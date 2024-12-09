@@ -43,7 +43,7 @@ def test_update_empleo():
 
     # Actualizar los datos del empleo
     data = {"empleo": "Desarrollador", "edad_minima": 21, "id_estancia": 1}
-    response = client.post(f"/empleo/update?id={empleo_id}", json=data)
+    response = client.put(f"/empleo/update/{empleo_id}", json=data)
 
     # Verificar que la respuesta sea exitosa
     print("Update response status code:", response.status_code)
@@ -69,7 +69,7 @@ def test_delete_empleo():
     assert empleo_id is not None, "El ID del empleo no se obtuvo correctamente"
 
     # Eliminar el empleo
-    delete_response = client.post(f"/empleo/delete?id={empleo_id}")
+    delete_response = client.delete(f"/empleo/delete/{empleo_id}")
     print("Delete response status code:", delete_response.status_code)
     print("Delete response JSON:", delete_response.json())
 
