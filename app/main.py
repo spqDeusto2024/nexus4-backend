@@ -12,6 +12,9 @@ from fastapi import FastAPI, Depends, HTTPException, status
 from fastapi.security import OAuth2PasswordBearer
 from app.auth import create_access_token, verify_token, get_current_user
 
+from fastapi.middleware.cors import CORSMiddleware
+
+
 #Import all the controllers
 from app.controllers.familia import FamiliaController
 from app.controllers.inquilino import InquilinoController
@@ -31,7 +34,7 @@ import app.models.roles as rolesModels
 import app.models.usuarios as usuarioModels
 
 
-app = FastAPI()
+app = FastAPI() 
 controllers = Controllers()
 familia_controller = FamiliaController()
 inquilino_controller = InquilinoController()
@@ -40,6 +43,15 @@ empleo_controller = EmpleoController()
 recurso_controller = RecursoController()
 roles_controller = RolesController()
 usuario_controller = UsuariosController()
+
+# Configuración de CORS
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Permite todas las orígenes, puedes restringirlo a tu dominio específico
+    allow_credentials=True,
+    allow_methods=["*"],  # Permite todos los métodos HTTP
+    allow_headers=["*"],  # Permite todos los encabezados
+)
 
 def initialize() -> None:
     # initialize database
@@ -73,10 +85,13 @@ async def get_all_familias():
 async def update_familia(body: familiaModels.FamiliaRequest, id: int):
     return familia_controller.update_familia(body, id)
 
-
-@app.post('/familia/delete', tags=["Familia"])
+@app.delete('/familia/delete/{id}', tags=["Familia"])
 async def delete_familia(id: int):
     return familia_controller.delete_familia(id)
+
+"""@app.post('/familia/delete', tags=["Familia"])
+async def delete_familia(id: int):
+    return familia_controller.delete_familia(id)"""
 
 # INQUILINO
 @app.post('/inquilino/create', tags=["Inquilino"])
