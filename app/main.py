@@ -66,46 +66,46 @@ initialize()
 
 
 @app.get('/healthz')
-async def healthz():
+async def healthz(current_user: dict = Depends(get_current_user)):
   return controllers.healthz()
 
 # FAMILIA
 
 @app.post('/familia/create', tags=["Familia"])
-async def create_familia(body: familiaModels.FamiliaRequest):
+async def create_familia(body: familiaModels.FamiliaRequest, current_user: dict = Depends(get_current_user)):
     return familia_controller.create_familia(body)
 
 
 @app.get('/familia/get_all', tags=["Familia"])
-async def get_all_familias():
+async def get_all_familias(current_user: dict = Depends(get_current_user)):
     return familia_controller.get_all_familias()
 
 
 @app.put('/familia/update/{id}', tags=["Familia"])
-async def update_familia(id: int, body: familiaModels.FamiliaRequest):
+async def update_familia(id: int, body: familiaModels.FamiliaRequest, current_user: dict = Depends(get_current_user)):
     return familia_controller.update_familia(body, id)
 
 @app.delete('/familia/delete/{id}', tags=["Familia"])
-async def delete_familia(id: int):
+async def delete_familia(id: int, current_user: dict = Depends(get_current_user)):
     return familia_controller.delete_familia(id)
 
 @app.post('/familia/delete', tags=["Familia"])
-async def delete_familia(id: int):
+async def delete_familia(id: int, current_user: dict = Depends(get_current_user)):
     return familia_controller.delete_familia(id)
 
 # INQUILINO
 @app.post('/inquilino/create', tags=["Inquilino"])
-async def create_inquilino(body: inquilinoModels.InquilinoRequest):
+async def create_inquilino(body: inquilinoModels.InquilinoRequest, current_user: dict = Depends(get_current_user)):
     return inquilino_controller.create_inquilino(body)
 
 
 @app.get('/inquilino/get_all', tags=["Inquilino"])
-async def get_all_inquilinos():
+async def get_all_inquilinos(current_user: dict = Depends(get_current_user)):
     return inquilino_controller.get_all_inquilinos()
 
 
 @app.put('/inquilino/update/{id}' , tags=["Inquilino"])
-async def update_inquilino(body: inquilinoModels.InquilinoRequest, id: int):
+async def update_inquilino(body: inquilinoModels.InquilinoRequest, id: int, current_user: dict = Depends(get_current_user)):
     return inquilino_controller.update_inquilino(body, id)
 
 
@@ -114,61 +114,61 @@ async def delete_inquilino(id: int):
     return inquilino_controller.delete_inquilino(id)
 
 @app.post('/inquilino/marcar_fallecido', tags=["Inquilino"])
-async def marcar_fallecido(id: int, fecha_muerte: Optional[datetime] = None):
+async def marcar_fallecido(id: int, fecha_muerte: Optional[datetime] = None, current_user: dict = Depends(get_current_user)):
     if not fecha_muerte:
         fecha_muerte = datetime.now()
     result = inquilino_controller.marcar_como_fallecido(id, fecha_muerte)
     return result
 
 @app.get('/estancia/consultar_disponibilidad', tags=["Estancia"])
-async def consultar_disponibilidad(estancia_id: int):
+async def consultar_disponibilidad(estancia_id: int, current_user: dict = Depends(get_current_user)):
     result = inquilino_controller.consultardisponibilidad(estancia_id)
     return result
 
 @app.post('/inquilino/asignar_estancia', tags=["Inquilino"])
-async def asignar_estancia(inquilino_id: int, estancia_id: int):
+async def asignar_estancia(inquilino_id: int, estancia_id: int, current_user: dict = Depends(get_current_user)):
     result = inquilino_controller.asignar_estancia(inquilino_id, estancia_id)
     return result
     
 
 #ESTANCIA
 @app.post('/estancia/create', tags=["Estancia"])
-async def create_estancia(body: estanciaModels.EstanciaRequest):
+async def create_estancia(body: estanciaModels.EstanciaRequest, current_user: dict = Depends(get_current_user)):
     return estancia_controller.create_estancia(body)
 
 
 @app.get('/estancia/get_all', tags=["Estancia"])
-async def get_all_estancias():
+async def get_all_estancias(current_user: dict = Depends(get_current_user)):
     return estancia_controller.get_all_estancias()
 
 
 @app.put('/estancia/update/{id}', tags=["Estancia"])
-async def update_estancia(body: estanciaModels.EstanciaRequest, id: int):
+async def update_estancia(body: estanciaModels.EstanciaRequest, id: int, current_user: dict = Depends(get_current_user)):
     return estancia_controller.update_estancia(body, id)
 
 
 @app.delete('/estancia/delete/{id}', tags=["Estancia"])
-async def delete_estancia(id: int):
+async def delete_estancia(id: int, current_user: dict = Depends(get_current_user)):
     return estancia_controller.delete_estancia(id)
 
 #EMPLEO
 @app.post('/empleo/create', tags=["Empleo"])
-async def create_empleo(body: empleoModels.EmpleoRequest):
+async def create_empleo(body: empleoModels.EmpleoRequest, sscurrent_user: dict = Depends(get_current_user)):
     return empleo_controller.create_empleo(body)
 
 
 @app.get('/empleo/get_all', summary="Get All Empleos", description="Retrieves all Empleo records from the database.", tags=["Empleo"])
-async def get_all_empleos():
+async def get_all_empleos(current_user: dict = Depends(get_current_user)):
     return empleo_controller.get_all_empleos()
 
 
 @app.put('/empleo/update/{id}', tags=["Empleo"])
-async def update_empleo(body: empleoModels.EmpleoRequest, id: int):
+async def update_empleo(body: empleoModels.EmpleoRequest, id: int, current_user: dict = Depends(get_current_user)):
     return empleo_controller.update_empleo(body, id)
 
 
 @app.delete('/empleo/delete/{id}', tags=["Empleo"])
-async def delete_empleo(id: int):
+async def delete_empleo(id: int, current_user: dict = Depends(get_current_user)):
     return empleo_controller.delete_empleo(id)
 
 #RECURSOS
@@ -178,48 +178,48 @@ async def create_recurso(body: recursoModels.RecursoRequest):
 
 
 @app.get('/recurso/get_all', tags=["Recurso"])
-async def get_all_recursos():
+async def get_all_recursos(current_user: dict = Depends(get_current_user)):
     return recurso_controller.get_all_recursos()
 
 
 @app.put('/recurso/update/{id}', tags=["Recurso"])
-async def update_recurso(body: recursoModels.RecursoRequest, id: int):
+async def update_recurso(body: recursoModels.RecursoRequest, id: int, current_user: dict = Depends(get_current_user)):
     return recurso_controller.update_recurso(body, id)
 
 
 @app.delete('/recurso/delete/{id}' , tags=["Recurso"])
-async def delete_recurso(id: int):
+async def delete_recurso(id: int,current_user: dict = Depends(get_current_user)):
     return recurso_controller.delete_recurso(id)
 
 @app.get("/recurso/{id}/status" , tags=["Recurso"])
-def get_recurso_status(id: int):
+def get_recurso_status(id: int, current_user: dict = Depends(get_current_user)):
     result = recurso_controller.check_recurso_status(id)
     if "error" in result:
         raise HTTPException(status_code=404, detail=result["error"])
     return result
     
 @app.post('/recurso/modify' , tags=["Recurso"])
-async def modify_recurso(id: int, cantidad: int):
+async def modify_recurso(id: int, cantidad: int,current_user: dict = Depends(get_current_user)):
     result = recurso_controller.modify_recurso(id, cantidad)
     return result
 #ROLES
 @app.post('/roles/create' , tags=["Roles"])
-async def create_role(body: rolesModels.RolesRequest):
+async def create_role(body: rolesModels.RolesRequest, current_user: dict = Depends(get_current_user)):
     return roles_controller.create_role(body)
 
 
 @app.get('/roles/get_all' , tags=["Roles"])
-async def get_all_roles():
+async def get_all_roles(current_user: dict = Depends(get_current_user)):
     return roles_controller.get_all_roles()
 
 
 @app.put('/roles/update/{id}' , tags=["Roles"])
-async def update_role(body: rolesModels.RolesRequest, id: int):
+async def update_role(body: rolesModels.RolesRequest, id: int, current_user: dict = Depends(get_current_user)):
     return roles_controller.update_role(body, id)
 
 
 @app.delete('/roles/delete/{id}' , tags=["Roles"])
-async def delete_role(id: int):
+async def delete_role(id: int, current_user: dict = Depends(get_current_user)):
     return roles_controller.delete_role(id)
 
 #USUARIOS 
