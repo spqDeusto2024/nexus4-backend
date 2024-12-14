@@ -53,7 +53,7 @@ class RolesController:
         """
         db = DatabaseClient(gb.MYSQL_URL)
         with Session(db.engine) as session:
-            role = session.query(Roles).get(id)
+            role = session.get(Roles, id)
             if not role:
                 return {"error": "Role not found"}
 
@@ -75,7 +75,7 @@ class RolesController:
         """
         db = DatabaseClient(gb.MYSQL_URL)
         with Session(db.engine) as session:
-            role = session.query(Roles).get(id)
+            role = session.get(Roles, id)
             if not role:
                 return {"error": "Role not found"}
 

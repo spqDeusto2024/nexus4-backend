@@ -4,20 +4,36 @@ from fastapi.testclient import TestClient
 
 client = TestClient(app)
 
-##DOCUMENTARRRRRRRRRR#######################
-#TRY Y CATCH ES MUY IMPORTANTE
-# 3 puntos: cobertura total, 
-#   si existen y se pueden ejecutar (o se puede ejecutar en github actions y funcionan arriba)
-#   Integración continua
-#   test de integración --> Que se manden todas a la vez
-
 # Variable global para almacenar el ID del recurso
 inquilino_id = None
+auth_token = None
 
-#TESTS INQUILINOS
+def get_auth_token():
+    global auth_token
+    if auth_token is not None:
+        return auth_token
+
+    # Crear un nuevo usuario sin necesidad de autenticación
+    response = client.post("/usuarios/create", json={
+        "usuario": "UsuarioPrueba",
+        "password": "123"
+    })
+    assert response.status_code == 200
+    assert response.json().get("status") == "ok"
+
+    # Obtener el token de autenticación para el usuario creado
+    response = client.post("usuarios/verificar", data={"username": "UsuarioPrueba", "password": "123"})
+    assert response.status_code == 200
+    auth_token = response.json().get("access_token")
+    assert auth_token is not None, "El token de autenticación no se obtuvo correctamente"
+
+    return auth_token
 
 def test_create_inquilino():
     global inquilino_id
+    global auth_token
+    auth_token = get_auth_token()
+    headers = {"Authorization": f"Bearer {auth_token}"}
     response = client.post("/inquilino/create", json={
         "nombre": "InquilinoPrueba",
         "categoria": "CategoriaPrueba",
@@ -27,7 +43,7 @@ def test_create_inquilino():
         "empleo_id": 2,
         "roles_id": 1,
         "id_estancia": 2
-    })
+    }, headers=headers)
     print("Response status code:", response.status_code)
     print("Response JSON:", response.json())
     assert response.status_code == 200
@@ -35,7 +51,9 @@ def test_create_inquilino():
 
 def test_get_all_inquilinos():
     global inquilino_id
-    response = client.get("/inquilino/get_all")
+    global auth_token
+    headers = {"Authorization": f"Bearer {auth_token}"}
+    response = client.get("/inquilino/get_all", headers=headers)
     print("Response status code:", response.status_code)
     print("Response JSON:", response.json())
     assert response.status_code == 200
@@ -53,6 +71,8 @@ def test_update_inquilino():
     # Asegurarse de que el inquilino se haya creado correctamente
     assert inquilino_id is not None, "El ID del inquilino no se obtuvo correctamente"
 
+    global auth_token
+    headers = {"Authorization": f"Bearer {auth_token}"}
     # Actualizar el inquilino
     update_response = client.put(f"/inquilino/update/{inquilino_id}", json={
         "nombre": "InquilinoPruebaActualizado",
@@ -63,7 +83,7 @@ def test_update_inquilino():
         "empleo_id": 2,
         "roles_id": 1,
         "id_estancia": 2
-    })
+    },headers=headers)
     print("Update response status code:", update_response.status_code)
     print("Update response JSON:", update_response.json())
     # Probar que la actualización fue exitosa
@@ -75,8 +95,10 @@ def test_delete_inquilino():
     global inquilino_id
     # Asegurarse de que el inquilino se haya creado correctamente
     assert inquilino_id is not None, "El ID del inquilino no se obtuvo correctamente"
+    global auth_token
+    headers = {"Authorization": f"Bearer {auth_token}"}
 
     # Eliminar el inquilino
-    delete_response = client.delete(f"/inquilino/delete/{inquilino_id}")
+    delete_response = client.delete(f"/inquilino/delete/{inquilino_id}", headers=headers)
     assert delete_response.status_code == 200
     assert delete_response.json().get("status") == "ok"

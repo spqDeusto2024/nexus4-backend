@@ -67,7 +67,7 @@ class InquilinoController:
         """
         db = DatabaseClient(gb.MYSQL_URL)
         with Session(db.engine) as session:
-            inquilino = session.query(Inquilino).get(id)
+            inquilino = session.get(Inquilino,id)
             if not inquilino:
                 return {"error": "Inquilino not found"}
 
@@ -97,7 +97,7 @@ class InquilinoController:
         """
         db = DatabaseClient(gb.MYSQL_URL)
         with Session(db.engine) as session:
-            inquilino = session.query(Inquilino).get(id)
+            inquilino = session.get(Inquilino,id)
             if not inquilino:
                 return {"error": "Inquilino not found"}
 
@@ -123,7 +123,7 @@ class InquilinoController:
         db = DatabaseClient(gb.MYSQL_URL)
         with Session(db.engine) as session:
             # Buscar al inquilino por ID
-            inquilino = session.query(Inquilino).get(id)
+            inquilino = session.get(Inquilino,id)
             if not inquilino:
                 return {"error": "Inquilino no encontrado"}
 
@@ -147,7 +147,7 @@ class InquilinoController:
         db = DatabaseClient(gb.MYSQL_URL)
         with Session(db.engine) as session:
             # Buscar la estancia por ID
-            estancia = session.query(Estancia).get(estancia_id)
+            estancia = session.get(Inquilino,estancia_id)
             if not estancia:
                 return {"error": "Estancia no encontrada"}
 

@@ -1,4 +1,4 @@
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, ConfigDict
 
 class EmpleoRequest(BaseModel):
     """
@@ -14,14 +14,15 @@ class EmpleoRequest(BaseModel):
     edad_minima: int = Field(..., description="Edad mínima requerida para el empleo")
     id_estancia: int = Field(..., description="ID de la estancia asociada")
 
-    class Config:
-        json_schema_extra = {
+    model_config = ConfigDict(
+        json_schema_extra={
             "example": {
                 "empleo": "Ingeniero",
                 "edad_minima": 25,
                 "id_estancia": 1
             }
         }
+    )
 
 class EmpleoResponse(EmpleoRequest):
     """
@@ -34,8 +35,8 @@ class EmpleoResponse(EmpleoRequest):
     
     id: int = Field(..., description="ID del empleo")
 
-    class Config:
-        json_schema_extra = {
+    model_config = ConfigDict(
+        json_schema_extra={
             "example": {
                 "id": 1,
                 "empleo": "Ingeniero",
@@ -43,3 +44,4 @@ class EmpleoResponse(EmpleoRequest):
                 "id_estancia": 1
             }
         }
+    )

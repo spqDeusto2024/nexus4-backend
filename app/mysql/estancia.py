@@ -25,7 +25,7 @@ class Estancia(Base):
     categoria = Column(String(50))
     personas_actuales = Column (Integer, default=0)
     capacidad_max = Column(Integer)
-    recurso_id = Column(Integer, ForeignKey("recurso.id"))
+    recurso_id = Column(Integer, ForeignKey("recurso.id", ondelete="CASCADE"))
     capacidad_maxima_alcanzada=Column(Boolean, default=False)
     
     @property

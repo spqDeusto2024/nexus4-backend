@@ -1,9 +1,11 @@
 import jwt
+from jwt import ExpiredSignatureError, InvalidTokenError
 from datetime import datetime, timedelta
 from typing import Dict
 from fastapi.security import OAuth2PasswordBearer
 from fastapi import Depends
 from app.utils.vars import SECRET_KEY, ALGORITHM  
+from fastapi import HTTPException, status
 
 
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")  
@@ -33,7 +35,7 @@ def verify_token(token: str) -> dict:
             status_code=status.HTTP_401_UNAUTHORIZED,
             detail="El token ha expirado."
         )
-    except jwt.JWTError as e:
+    except jwt.InvalidTokenError as e:
         print(f"Error al decodificar el token: {e}")  # Log adicional
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,

@@ -1,4 +1,5 @@
 from sqlalchemy.orm import Session
+from sqlalchemy import select
 from app.mysql.mysql import DatabaseClient
 from app.models.empleo import EmpleoRequest, EmpleoResponse
 from app.mysql.models import Empleo
@@ -39,7 +40,7 @@ class EmpleoController:
         """
         db = DatabaseClient(gb.MYSQL_URL)
         with Session(db.engine) as session:
-            response = session.query(Empleo).all()
+            response = session.execute(select(Empleo)).scalars().all()
             session.close()
 
         return response
@@ -57,7 +58,7 @@ class EmpleoController:
         """
         db = DatabaseClient(gb.MYSQL_URL)
         with Session(db.engine) as session:
-            empleo = session.query(Empleo).get(id)
+            empleo = session.get(Empleo,id)
             if not empleo:
                 return {"error": "Empleo not found"}
 
@@ -81,7 +82,7 @@ class EmpleoController:
         """
         db = DatabaseClient(gb.MYSQL_URL)
         with Session(db.engine) as session:
-            empleo = session.query(Empleo).get(id)
+            empleo = session.get(Empleo,id)
             if not empleo:
                 return {"error": "Empleo not found"}
 

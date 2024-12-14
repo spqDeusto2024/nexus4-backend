@@ -53,7 +53,7 @@ class FamiliaController:
         """
         db = DatabaseClient(gb.MYSQL_URL)
         with Session(db.engine) as session:
-            familia = session.query(Familia).get(id)
+            familia = session.get(Familia, id)
             if not familia:
                 return {"error": "Familia not found"}
 
@@ -69,7 +69,7 @@ class FamiliaController:
         """
         db = DatabaseClient(gb.MYSQL_URL)
         with Session(db.engine) as session:
-            familia = session.query(Familia).get(id)
+            familia = session.get(Familia, id)
             if not familia:
                 return {"error": "Familia not found"}
             

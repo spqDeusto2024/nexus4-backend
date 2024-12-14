@@ -1,4 +1,5 @@
 from sqlalchemy.orm import Session
+from app.mysql.estancia import Estancia
 from app.mysql.mysql import DatabaseClient
 from app.models.recurso import RecursoRequest, RecursoResponse
 from app.mysql.models import Recurso
@@ -84,10 +85,12 @@ class RecursoController:
         """
         db = DatabaseClient(gb.MYSQL_URL)
         with Session(db.engine) as session:
-            recurso = session.query(Recurso).get(id)
+            recurso = session.get(Recurso, id)
             if not recurso:
                 return {"error": "Recurso not found"}
-
+            
+            # Suponiendo que existe una tabla `OtraTabla` con una clave foránea hacia `Recurso`
+            session.query(Estancia).filter(Estancia.recurso_id == id).delete()
             session.delete(recurso)
             session.commit()
             session.close()

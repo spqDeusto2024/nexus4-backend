@@ -21,7 +21,7 @@ class Empleo(Base):
     id = Column(Integer, primary_key=True)
     empleo = Column(String(50))
     edad_minima = Column(Integer)
-    id_estancia = Column(Integer, ForeignKey("estancia.id"))
+    id_estancia = Column(Integer, ForeignKey("estancia.id", ondelete="CASCADE"))
 
     def __repr__(self) -> str:
         return (

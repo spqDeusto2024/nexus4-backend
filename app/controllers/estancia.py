@@ -1,8 +1,11 @@
 from sqlalchemy.orm import Session
+from sqlalchemy import select
 from app.mysql.mysql import DatabaseClient
 from app.models.estancia import EstanciaRequest, EstanciaResponse
 from app.mysql.models import Estancia
 import app.utils.vars as gb
+from app.mysql.empleo import Empleo
+from app.mysql.inquilino import Inquilino
 
 
 class EstanciaController:
@@ -42,7 +45,7 @@ class EstanciaController:
         """
         db = DatabaseClient(gb.MYSQL_URL)
         with Session(db.engine) as session:
-            response = session.query(Estancia).all()
+            response = session.execute(select(Estancia)).scalars().all()
             session.close()
 
         return response
@@ -60,7 +63,7 @@ class EstanciaController:
         """
         db = DatabaseClient(gb.MYSQL_URL)
         with Session(db.engine) as session:
-            estancia = session.query(Estancia).get(id)
+            estancia = session.get(Estancia, id)
             if not estancia:
                 return {"error": "Estancia not found"}
 
@@ -85,9 +88,13 @@ class EstanciaController:
         """
         db = DatabaseClient(gb.MYSQL_URL)
         with Session(db.engine) as session:
-            estancia = session.query(Estancia).get(id)
+            estancia = session.get(Estancia, id)
             if not estancia:
                 return {"error": "Estancia not found"}
+            
+            # Eliminar referencias en las tablas relacionadas
+            session.query(Empleo).filter(Empleo.id_estancia == id).delete()
+            session.query(Inquilino).filter(Inquilino.id_estancia == id).delete()
 
             session.delete(estancia)
             session.commit()
@@ -109,7 +116,7 @@ class EstanciaController:
         """
         db = DatabaseClient(gb.MYSQL_URL)
         with Session(db.engine) as session:
-            estancia = session.query(Estancia).get(id)
+            estancia = session.get(Estancia, id)
             if not estancia:
                 return {"error": "Estancia not found"}
 
@@ -132,12 +139,12 @@ class EstanciaController:
         db = DatabaseClient(gb.MYSQL_URL)
         with Session(db.engine) as session:
             # Buscar al inquilino por ID
-            inquilino = session.query(Inquilino).get(inquilino_id)
+            inquilino = session.get(Estancia, inquilino_id)
             if not inquilino:
                 return {"error": "Inquilino no encontrado"}
 
             # Buscar la estancia por ID
-            estancia = session.query(Estancia).get(estancia_id)
+            estancia = session.get(Estancia, estancia_id)
             if not estancia:
                 return {"error": "Estancia no encontrada"}
 

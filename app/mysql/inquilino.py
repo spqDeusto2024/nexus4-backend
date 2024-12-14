@@ -34,10 +34,10 @@ class Inquilino(Base):
     categoria = Column(String(50))
     nacimiento = Column(TIMESTAMP)
     muerte = Column(TIMESTAMP, nullable=True)
-    familia_id = Column(Integer, ForeignKey("familia.id"))
-    empleo_id = Column(Integer, ForeignKey("empleo.id"))
-    roles_id = Column(Integer, ForeignKey("roles.id"))
-    id_estancia = Column(Integer, ForeignKey("estancia.id"))
+    familia_id = Column(Integer, ForeignKey("familia.id", ondelete="CASCADE"))
+    empleo_id = Column(Integer, ForeignKey("empleo.id", ondelete="CASCADE"))
+    roles_id = Column(Integer, ForeignKey("roles.id", ondelete="CASCADE"))
+    id_estancia = Column(Integer, ForeignKey("estancia.id", ondelete="CASCADE"))
     
     def __repr__(self) -> str:
         return (

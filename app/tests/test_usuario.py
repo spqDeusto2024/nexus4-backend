@@ -4,6 +4,7 @@ from fastapi.testclient import TestClient
 
 client = TestClient(app)
 
+
 # Variable global para almacenar el token de autenticación
 auth_token = None
 usuario_id = None
