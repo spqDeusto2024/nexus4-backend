@@ -3,6 +3,31 @@ from sqlalchemy.orm import relationship
 from app.mysql.base import Base
 
 class Inquilino(Base):
+    """
+    Representa la tabla 'inquilino' en la base de datos 
+
+    Attributes:
+    ----------
+    id : int
+        ID del inquilino
+    nombre : str
+        Nombre del inquilino
+    categoria : str
+        Categoría del inquilino
+    nacimiento : TIMESTAMP
+        Fecha de nacimiento del inquilino
+    muerte : TIMESTAMP
+        Fecha de muerte del inquilino
+    familia_id : int
+        ID de la familia asociada
+    empleo_id : int
+        ID del empleo asociado
+    roles_id : int
+        ID del rol asociado
+    id_estancia : int
+        ID de la estancia asociada
+    """
+    
     __tablename__ = "inquilino"
     id = Column(Integer, primary_key=True)
     nombre = Column(String(50))

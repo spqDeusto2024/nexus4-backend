@@ -3,6 +3,27 @@ from sqlalchemy.orm import relationship
 from app.mysql.base import Base
 
 class Recurso(Base):
+    """
+    Representa la tabla 'recurso' en la base de datos
+
+    Attributes:
+    ----------
+    id : int
+        ID del recurso
+    nombre : str
+        Nombre del recurso
+    capacidad_min : int
+        Capacidad mínima del recurso
+    capacidad_max : int
+        Capacidad máxima del recurso
+    capacidad_actual : int
+        Capacidad actual del recurso
+    capacidad_maxima_alcanzada : bool
+        Indica si la capacidad máxima del recurso ha sido alcanzada
+    capacidad_minima_alcanzada : bool
+        Indica si la capacidad mínima del recurso ha sido alcanzada
+    """
+    
     __tablename__ = "recurso"
     id = Column(Integer, primary_key=True)
     nombre = Column(String(50))

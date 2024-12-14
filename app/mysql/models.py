@@ -10,6 +10,20 @@ from .usuarios import Usuarios
 
 
 class User(Base):
+  """
+  Representa la tabla 'users' en la base de datos
+
+  Attributes:
+  ----------
+  id : int
+      ID del usuario
+  name : str
+      Nombre del usuario
+  fullname : str
+      Apellido del usuario
+  age : int
+      Edad del usuario
+  """    
   __tablename__ = "users"
   id = Column(Integer, Sequence("user_id_seq"), primary_key=True)
   name = Column(String(50))

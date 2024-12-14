@@ -4,7 +4,8 @@ class EmpleoRequest(BaseModel):
     """
     Data model for creating a empleo
 
-    Attributes:
+    Attributes
+    ----------
         empleo (str): Nombre del empleo
         edad_minima (int): Edad mínima requerida para el empleo
         id_estancia (int): ID de la estancia asociada
@@ -14,7 +15,7 @@ class EmpleoRequest(BaseModel):
     id_estancia: int = Field(..., description="ID de la estancia asociada")
 
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "empleo": "Ingeniero",
                 "edad_minima": 25,
@@ -27,13 +28,14 @@ class EmpleoResponse(EmpleoRequest):
     Data model for the empleo response
 
     Attributes:
+    ----------
         id (int): ID del empleo
     """
     
     id: int = Field(..., description="ID del empleo")
 
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "id": 1,
                 "empleo": "Ingeniero",

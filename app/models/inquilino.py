@@ -6,6 +6,7 @@ class InquilinoRequest(BaseModel):
     Represents a request to create or update an Inquilino record.
 
     Attributes:
+    ----------
         nombre (str): The name of the Inquilino.
         categoria (str): The category of the Inquilino.
         nacimiento (str): The birth date of the Inquilino.
@@ -31,6 +32,7 @@ class InquilinoResponse(InquilinoRequest):
     Represents a response containing Inquilino data.
 
     Attributes:
+    ----------
         id (int): The ID of the Inquilino.
     """
     

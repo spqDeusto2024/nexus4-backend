@@ -5,6 +5,7 @@ class EstanciaRequest(BaseModel):
     Represents a request to create or update an Estancia record.
 
     Attributes:
+    ----------
         nombre (str): The name of the Estancia.
         categoria (str): The category of the Estancia.
         personas_actuales (int): The number of people currently in the Estancia.
@@ -24,6 +25,7 @@ class EstanciaResponse(EstanciaRequest):
     Represents a response containing Estancia data.
 
     Attributes:
+    ----------
         id (int): The ID of the Estancia.
     """
     id: int

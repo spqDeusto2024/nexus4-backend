@@ -11,6 +11,7 @@ COPY docs/requirements.txt /code/docs/
 # Instala las dependencias
 RUN pip install --no-cache-dir -r requirements.txt
 RUN pip install --no-cache-dir -r docs/requirements.txt
+RUN pip install sphinx furo
 
 # Copia el resto del código de la aplicación
 COPY . /code/

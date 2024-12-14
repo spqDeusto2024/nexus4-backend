@@ -1,6 +1,9 @@
 Models
 ======
 
+.. toctree::
+   :maxdepth: 2
+
 Empleo Models
 -------------
 

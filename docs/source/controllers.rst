@@ -3,12 +3,9 @@ Controllers
 
 .. toctree::
    :maxdepth: 2
-   :caption: Related:
-
-   models
 
 Handler Module
--------------
+---------------
 
 .. automodule:: app.controllers.handler
     :members:

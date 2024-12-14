@@ -1,44 +1,287 @@
-<!DOCTYPE html>
+<!doctype html>
+<html class="no-js" lang="en" data-content_root="./">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Classes" href="classes.html" /><link rel="prev" title="Controllers" href="controllers.html" />
 
-<html lang="en" data-content_root="./">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="shortcut icon" href="_static/favicon.png"/><!-- Generated with Sphinx 7.4.7 and Furo 2024.08.06 -->
+        <title>Models - Nexus4 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=354aac6f" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=302659d7" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=b848741e" />
+    
+    
 
-    <title>Models &#8212; Nexus4  documentation</title>
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=d1102ebc" />
-    <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=12dfc556" />
-    <script src="_static/documentation_options.js?v=5929fcd5"></script>
-    <script src="_static/doctools.js?v=9a2dae69"></script>
-    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="Controllers" href="controllers.html" />
-   
-  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+
+<style>
+  body {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
   
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
 
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="index.html"><div class="brand">Nexus4  documentation</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
   
   
-
-  </head><body>
+  <span class="sidebar-brand-text">Nexus4  documentation</span>
   
+</a><form class="sidebar-search-container" method="get" action="search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="execution.html">Execution</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="controllers.html">Controllers</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Controllers</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l1 current has-children"><a class="current reference internal" href="#">Models</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of Models</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="classes.html">Classes</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle navigation of Classes</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l1 current has-children"><a class="reference internal" href="modules.html">Modules</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle navigation of Modules</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l2 has-children"><a class="reference internal" href="controllers.html">Controllers</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><div class="visually-hidden">Toggle navigation of Controllers</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2 current has-children current-page"><a class="current reference internal" href="#">Models</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" role="switch" type="checkbox"/><label for="toctree-checkbox-6"><div class="visually-hidden">Toggle navigation of Models</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="classes.html">Classes</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" role="switch" type="checkbox"/><label for="toctree-checkbox-7"><div class="visually-hidden">Toggle navigation of Classes</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="simple">
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">FAQ</a></li>
+</ul>
 
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          
+</div>
+</div>
 
-          <div class="body" role="main">
-            
-  <section id="models">
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="view-this-page">
+  <a class="muted-link" href="_sources/models.rst.txt" title="View this page">
+    <svg><use href="#svg-eye"></use></svg>
+    <span class="visually-hidden">View this page</span>
+  </a>
+</div>
+<div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          <section id="models">
 <h1>Models<a class="headerlink" href="#models" title="Link to this heading">¶</a></h1>
+<div class="toctree-wrapper compound">
+</div>
 <section id="module-app.models.empleo">
 <span id="empleo-models"></span><h2>Empleo Models<a class="headerlink" href="#module-app.models.empleo" title="Link to this heading">¶</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="app.models.empleo.EmpleoRequest">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">app.models.empleo.</span></span><span class="sig-name descname"><span class="pre">EmpleoRequest</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">empleo</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">edad_minima</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_estancia</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#app.models.empleo.EmpleoRequest" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">BaseModel</span></code></p>
+<p>Data model for creating a empleo</p>
+<dl class="simple">
+<dt>Attributes</dt><dd><p>empleo (str): Nombre del empleo
+edad_minima (int): Edad mínima requerida para el empleo
+id_estancia (int): ID de la estancia asociada</p>
+</dd>
+</dl>
 <dl class="py class">
 <dt class="sig sig-object py" id="app.models.empleo.EmpleoRequest.Config">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Config</span></span><a class="headerlink" href="#app.models.empleo.EmpleoRequest.Config" title="Link to this definition">¶</a></dt>
@@ -77,6 +320,18 @@
 <dt class="sig sig-object py" id="app.models.empleo.EmpleoResponse">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">app.models.empleo.</span></span><span class="sig-name descname"><span class="pre">EmpleoResponse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">empleo</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">edad_minima</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_estancia</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#app.models.empleo.EmpleoResponse" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#app.models.empleo.EmpleoRequest" title="app.models.empleo.EmpleoRequest"><code class="xref py py-class docutils literal notranslate"><span class="pre">EmpleoRequest</span></code></a></p>
+<p>Data model for the empleo response</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.empleo.EmpleoResponse.id">
+<span class="sig-name descname"><span class="pre">id</span></span><a class="headerlink" href="#app.models.empleo.EmpleoResponse.id" title="Link to this definition">¶</a></dt>
+<dd><p>ID del empleo</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="app.models.empleo.EmpleoResponse.Config">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Config</span></span><a class="headerlink" href="#app.models.empleo.EmpleoResponse.Config" title="Link to this definition">¶</a></dt>
@@ -89,8 +344,8 @@
 </dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="app.models.empleo.EmpleoResponse.id">
-<span class="sig-name descname"><span class="pre">id</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#app.models.empleo.EmpleoResponse.id" title="Link to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="id0">
+<span class="sig-name descname"><span class="pre">id</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#id0" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -108,9 +363,21 @@
 <dt class="sig sig-object py" id="app.models.familia.FamiliaRequest">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">app.models.familia.</span></span><span class="sig-name descname"><span class="pre">FamiliaRequest</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">apellido</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#app.models.familia.FamiliaRequest" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">BaseModel</span></code></p>
+<p>Represents a request to create or update a Familia record.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="app.models.familia.FamiliaRequest.apellido">
-<span class="sig-name descname"><span class="pre">apellido</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#app.models.familia.FamiliaRequest.apellido" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">apellido</span></span><a class="headerlink" href="#app.models.familia.FamiliaRequest.apellido" title="Link to this definition">¶</a></dt>
+<dd><p>The last name of the family.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id1">
+<span class="sig-name descname"><span class="pre">apellido</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#id1" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -125,9 +392,21 @@
 <dt class="sig sig-object py" id="app.models.familia.FamiliaResponse">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">app.models.familia.</span></span><span class="sig-name descname"><span class="pre">FamiliaResponse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">apellido</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#app.models.familia.FamiliaResponse" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#app.models.familia.FamiliaRequest" title="app.models.familia.FamiliaRequest"><code class="xref py py-class docutils literal notranslate"><span class="pre">FamiliaRequest</span></code></a></p>
+<p>Represents a response containing Familia data.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="app.models.familia.FamiliaResponse.id">
-<span class="sig-name descname"><span class="pre">id</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#app.models.familia.FamiliaResponse.id" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">id</span></span><a class="headerlink" href="#app.models.familia.FamiliaResponse.id" title="Link to this definition">¶</a></dt>
+<dd><p>The ID of the Familia.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id2">
+<span class="sig-name descname"><span class="pre">id</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#id2" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -145,6 +424,29 @@
 <dt class="sig sig-object py" id="app.models.usuarios.UsuariosRequest">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">app.models.usuarios.</span></span><span class="sig-name descname"><span class="pre">UsuariosRequest</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">usuario</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">password</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#app.models.usuarios.UsuariosRequest" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">BaseModel</span></code></p>
+<p>Represents a request to create or update a Usuario record.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.usuarios.UsuariosRequest.usuario">
+<span class="sig-name descname"><span class="pre">usuario</span></span><a class="headerlink" href="#app.models.usuarios.UsuariosRequest.usuario" title="Link to this definition">¶</a></dt>
+<dd><p>The username of the Usuario.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.usuarios.UsuariosRequest.password">
+<span class="sig-name descname"><span class="pre">password</span></span><a class="headerlink" href="#app.models.usuarios.UsuariosRequest.password" title="Link to this definition">¶</a></dt>
+<dd><p>The password of the Usuario</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
 <dl class="py attribute">
 <dt class="sig sig-object py" id="app.models.usuarios.UsuariosRequest.model_config">
 <span class="sig-name descname"><span class="pre">model_config</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ClassVar</span><span class="p"><span class="pre">[</span></span><span class="pre">ConfigDict</span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{}</span></em><a class="headerlink" href="#app.models.usuarios.UsuariosRequest.model_config" title="Link to this definition">¶</a></dt>
@@ -152,13 +454,13 @@
 </dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="app.models.usuarios.UsuariosRequest.password">
-<span class="sig-name descname"><span class="pre">password</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#app.models.usuarios.UsuariosRequest.password" title="Link to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="id3">
+<span class="sig-name descname"><span class="pre">password</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#id3" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="app.models.usuarios.UsuariosRequest.usuario">
-<span class="sig-name descname"><span class="pre">usuario</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#app.models.usuarios.UsuariosRequest.usuario" title="Link to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="id4">
+<span class="sig-name descname"><span class="pre">usuario</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#id4" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -167,9 +469,21 @@
 <dt class="sig sig-object py" id="app.models.usuarios.UsuariosResponse">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">app.models.usuarios.</span></span><span class="sig-name descname"><span class="pre">UsuariosResponse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">usuario</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">password</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#app.models.usuarios.UsuariosResponse" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#app.models.usuarios.UsuariosRequest" title="app.models.usuarios.UsuariosRequest"><code class="xref py py-class docutils literal notranslate"><span class="pre">UsuariosRequest</span></code></a></p>
+<p>Represents a response containing Usuario data.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="app.models.usuarios.UsuariosResponse.id">
-<span class="sig-name descname"><span class="pre">id</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#app.models.usuarios.UsuariosResponse.id" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">id</span></span><a class="headerlink" href="#app.models.usuarios.UsuariosResponse.id" title="Link to this definition">¶</a></dt>
+<dd><p>The ID of the Usuario.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id5">
+<span class="sig-name descname"><span class="pre">id</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#id5" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -187,19 +501,86 @@
 <dt class="sig sig-object py" id="app.models.estancia.EstanciaRequest">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">app.models.estancia.</span></span><span class="sig-name descname"><span class="pre">EstanciaRequest</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nombre</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">categoria</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">personas_actuales</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">capacidad_max</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">recurso_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">capacidad_maxima_alcanzada</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#app.models.estancia.EstanciaRequest" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">BaseModel</span></code></p>
+<p>Represents a request to create or update an Estancia record.</p>
 <dl class="py attribute">
-<dt class="sig sig-object py" id="app.models.estancia.EstanciaRequest.capacidad_max">
-<span class="sig-name descname"><span class="pre">capacidad_max</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#app.models.estancia.EstanciaRequest.capacidad_max" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="app.models.estancia.EstanciaRequest.capacidad_maxima_alcanzada">
-<span class="sig-name descname"><span class="pre">capacidad_maxima_alcanzada</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#app.models.estancia.EstanciaRequest.capacidad_maxima_alcanzada" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dt class="sig sig-object py" id="app.models.estancia.EstanciaRequest.nombre">
+<span class="sig-name descname"><span class="pre">nombre</span></span><a class="headerlink" href="#app.models.estancia.EstanciaRequest.nombre" title="Link to this definition">¶</a></dt>
+<dd><p>The name of the Estancia.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="app.models.estancia.EstanciaRequest.categoria">
-<span class="sig-name descname"><span class="pre">categoria</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#app.models.estancia.EstanciaRequest.categoria" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">categoria</span></span><a class="headerlink" href="#app.models.estancia.EstanciaRequest.categoria" title="Link to this definition">¶</a></dt>
+<dd><p>The category of the Estancia.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.estancia.EstanciaRequest.personas_actuales">
+<span class="sig-name descname"><span class="pre">personas_actuales</span></span><a class="headerlink" href="#app.models.estancia.EstanciaRequest.personas_actuales" title="Link to this definition">¶</a></dt>
+<dd><p>The number of people currently in the Estancia.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.estancia.EstanciaRequest.capacidad_max">
+<span class="sig-name descname"><span class="pre">capacidad_max</span></span><a class="headerlink" href="#app.models.estancia.EstanciaRequest.capacidad_max" title="Link to this definition">¶</a></dt>
+<dd><p>The maximum capacity of the Estancia.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.estancia.EstanciaRequest.recurso_id">
+<span class="sig-name descname"><span class="pre">recurso_id</span></span><a class="headerlink" href="#app.models.estancia.EstanciaRequest.recurso_id" title="Link to this definition">¶</a></dt>
+<dd><p>The ID of the resource associated with the Estancia.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.estancia.EstanciaRequest.capacidad_maxima_alcanzada">
+<span class="sig-name descname"><span class="pre">capacidad_maxima_alcanzada</span></span><a class="headerlink" href="#app.models.estancia.EstanciaRequest.capacidad_maxima_alcanzada" title="Link to this definition">¶</a></dt>
+<dd><p>Whether the maximum capacity of the Estancia has</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id6">
+<span class="sig-name descname"><span class="pre">capacidad_max</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#id6" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id7">
+<span class="sig-name descname"><span class="pre">capacidad_maxima_alcanzada</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#id7" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id8">
+<span class="sig-name descname"><span class="pre">categoria</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#id8" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -209,18 +590,18 @@
 </dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="app.models.estancia.EstanciaRequest.nombre">
-<span class="sig-name descname"><span class="pre">nombre</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#app.models.estancia.EstanciaRequest.nombre" title="Link to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="id9">
+<span class="sig-name descname"><span class="pre">nombre</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#id9" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="app.models.estancia.EstanciaRequest.personas_actuales">
-<span class="sig-name descname"><span class="pre">personas_actuales</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#app.models.estancia.EstanciaRequest.personas_actuales" title="Link to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="id10">
+<span class="sig-name descname"><span class="pre">personas_actuales</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#id10" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="app.models.estancia.EstanciaRequest.recurso_id">
-<span class="sig-name descname"><span class="pre">recurso_id</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#app.models.estancia.EstanciaRequest.recurso_id" title="Link to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="id11">
+<span class="sig-name descname"><span class="pre">recurso_id</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#id11" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -229,9 +610,21 @@
 <dt class="sig sig-object py" id="app.models.estancia.EstanciaResponse">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">app.models.estancia.</span></span><span class="sig-name descname"><span class="pre">EstanciaResponse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nombre</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">categoria</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">personas_actuales</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">capacidad_max</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">recurso_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">capacidad_maxima_alcanzada</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#app.models.estancia.EstanciaResponse" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#app.models.estancia.EstanciaRequest" title="app.models.estancia.EstanciaRequest"><code class="xref py py-class docutils literal notranslate"><span class="pre">EstanciaRequest</span></code></a></p>
+<p>Represents a response containing Estancia data.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="app.models.estancia.EstanciaResponse.id">
-<span class="sig-name descname"><span class="pre">id</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#app.models.estancia.EstanciaResponse.id" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">id</span></span><a class="headerlink" href="#app.models.estancia.EstanciaResponse.id" title="Link to this definition">¶</a></dt>
+<dd><p>The ID of the Estancia.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id12">
+<span class="sig-name descname"><span class="pre">id</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#id12" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -249,24 +642,113 @@
 <dt class="sig sig-object py" id="app.models.inquilino.InquilinoRequest">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">app.models.inquilino.</span></span><span class="sig-name descname"><span class="pre">InquilinoRequest</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nombre</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">categoria</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nacimiento</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">muerte</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">familia_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">empleo_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">roles_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_estancia</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#app.models.inquilino.InquilinoRequest" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">BaseModel</span></code></p>
+<p>Represents a request to create or update an Inquilino record.</p>
 <dl class="py attribute">
-<dt class="sig sig-object py" id="app.models.inquilino.InquilinoRequest.categoria">
-<span class="sig-name descname"><span class="pre">categoria</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#app.models.inquilino.InquilinoRequest.categoria" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dt class="sig sig-object py" id="app.models.inquilino.InquilinoRequest.nombre">
+<span class="sig-name descname"><span class="pre">nombre</span></span><a class="headerlink" href="#app.models.inquilino.InquilinoRequest.nombre" title="Link to this definition">¶</a></dt>
+<dd><p>The name of the Inquilino.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="app.models.inquilino.InquilinoRequest.empleo_id">
-<span class="sig-name descname"><span class="pre">empleo_id</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#app.models.inquilino.InquilinoRequest.empleo_id" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dt class="sig sig-object py" id="app.models.inquilino.InquilinoRequest.categoria">
+<span class="sig-name descname"><span class="pre">categoria</span></span><a class="headerlink" href="#app.models.inquilino.InquilinoRequest.categoria" title="Link to this definition">¶</a></dt>
+<dd><p>The category of the Inquilino.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.inquilino.InquilinoRequest.nacimiento">
+<span class="sig-name descname"><span class="pre">nacimiento</span></span><a class="headerlink" href="#app.models.inquilino.InquilinoRequest.nacimiento" title="Link to this definition">¶</a></dt>
+<dd><p>The birth date of the Inquilino.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.inquilino.InquilinoRequest.muerte">
+<span class="sig-name descname"><span class="pre">muerte</span></span><a class="headerlink" href="#app.models.inquilino.InquilinoRequest.muerte" title="Link to this definition">¶</a></dt>
+<dd><p>The death date of the Inquilino.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="app.models.inquilino.InquilinoRequest.familia_id">
-<span class="sig-name descname"><span class="pre">familia_id</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#app.models.inquilino.InquilinoRequest.familia_id" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<span class="sig-name descname"><span class="pre">familia_id</span></span><a class="headerlink" href="#app.models.inquilino.InquilinoRequest.familia_id" title="Link to this definition">¶</a></dt>
+<dd><p>The ID of the family associated with the Inquilino.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.inquilino.InquilinoRequest.empleo_id">
+<span class="sig-name descname"><span class="pre">empleo_id</span></span><a class="headerlink" href="#app.models.inquilino.InquilinoRequest.empleo_id" title="Link to this definition">¶</a></dt>
+<dd><p>The ID of the job associated with the Inquilino.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.inquilino.InquilinoRequest.roles_id">
+<span class="sig-name descname"><span class="pre">roles_id</span></span><a class="headerlink" href="#app.models.inquilino.InquilinoRequest.roles_id" title="Link to this definition">¶</a></dt>
+<dd><p>The ID of the roles associated with the Inquilino.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="app.models.inquilino.InquilinoRequest.id_estancia">
-<span class="sig-name descname"><span class="pre">id_estancia</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#app.models.inquilino.InquilinoRequest.id_estancia" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">id_estancia</span></span><a class="headerlink" href="#app.models.inquilino.InquilinoRequest.id_estancia" title="Link to this definition">¶</a></dt>
+<dd><p>The ID of the stay associated with the Inquilino.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id13">
+<span class="sig-name descname"><span class="pre">categoria</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#id13" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id14">
+<span class="sig-name descname"><span class="pre">empleo_id</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#id14" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id15">
+<span class="sig-name descname"><span class="pre">familia_id</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#id15" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id16">
+<span class="sig-name descname"><span class="pre">id_estancia</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#id16" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -276,23 +758,23 @@
 </dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="app.models.inquilino.InquilinoRequest.muerte">
-<span class="sig-name descname"><span class="pre">muerte</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#app.models.inquilino.InquilinoRequest.muerte" title="Link to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="id17">
+<span class="sig-name descname"><span class="pre">muerte</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#id17" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="app.models.inquilino.InquilinoRequest.nacimiento">
-<span class="sig-name descname"><span class="pre">nacimiento</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#app.models.inquilino.InquilinoRequest.nacimiento" title="Link to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="id18">
+<span class="sig-name descname"><span class="pre">nacimiento</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#id18" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="app.models.inquilino.InquilinoRequest.nombre">
-<span class="sig-name descname"><span class="pre">nombre</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#app.models.inquilino.InquilinoRequest.nombre" title="Link to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="id19">
+<span class="sig-name descname"><span class="pre">nombre</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#id19" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="app.models.inquilino.InquilinoRequest.roles_id">
-<span class="sig-name descname"><span class="pre">roles_id</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#app.models.inquilino.InquilinoRequest.roles_id" title="Link to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="id20">
+<span class="sig-name descname"><span class="pre">roles_id</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#id20" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -301,9 +783,21 @@
 <dt class="sig sig-object py" id="app.models.inquilino.InquilinoResponse">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">app.models.inquilino.</span></span><span class="sig-name descname"><span class="pre">InquilinoResponse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nombre</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">categoria</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nacimiento</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">muerte</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">familia_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">empleo_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">roles_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_estancia</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#app.models.inquilino.InquilinoResponse" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#app.models.inquilino.InquilinoRequest" title="app.models.inquilino.InquilinoRequest"><code class="xref py py-class docutils literal notranslate"><span class="pre">InquilinoRequest</span></code></a></p>
+<p>Represents a response containing Inquilino data.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="app.models.inquilino.InquilinoResponse.id">
-<span class="sig-name descname"><span class="pre">id</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#app.models.inquilino.InquilinoResponse.id" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">id</span></span><a class="headerlink" href="#app.models.inquilino.InquilinoResponse.id" title="Link to this definition">¶</a></dt>
+<dd><p>The ID of the Inquilino.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id21">
+<span class="sig-name descname"><span class="pre">id</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#id21" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -321,9 +815,21 @@
 <dt class="sig sig-object py" id="app.models.models.DeleteRequest">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">app.models.models.</span></span><span class="sig-name descname"><span class="pre">DeleteRequest</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#app.models.models.DeleteRequest" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">BaseModel</span></code></p>
+<p>Represents a request to delete a User record.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="app.models.models.DeleteRequest.id">
-<span class="sig-name descname"><span class="pre">id</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#app.models.models.DeleteRequest.id" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">id</span></span><a class="headerlink" href="#app.models.models.DeleteRequest.id" title="Link to this definition">¶</a></dt>
+<dd><p>The ID of the User.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id22">
+<span class="sig-name descname"><span class="pre">id</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#id22" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -338,9 +844,32 @@
 <dt class="sig sig-object py" id="app.models.models.UpdateRequest">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">app.models.models.</span></span><span class="sig-name descname"><span class="pre">UpdateRequest</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">update</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#app.models.models.UserRequest" title="app.models.models.UserRequest"><span class="pre">UserRequest</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#app.models.models.UpdateRequest" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">BaseModel</span></code></p>
+<p>Represents a request to update a User record.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="app.models.models.UpdateRequest.id">
-<span class="sig-name descname"><span class="pre">id</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#app.models.models.UpdateRequest.id" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">id</span></span><a class="headerlink" href="#app.models.models.UpdateRequest.id" title="Link to this definition">¶</a></dt>
+<dd><p>The ID of the User.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.models.UpdateRequest.update">
+<span class="sig-name descname"><span class="pre">update</span></span><a class="headerlink" href="#app.models.models.UpdateRequest.update" title="Link to this definition">¶</a></dt>
+<dd><p>The request body containing the updated user data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#app.models.models.UserRequest" title="app.models.models.UserRequest">UserRequest</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id23">
+<span class="sig-name descname"><span class="pre">id</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#id23" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -350,8 +879,8 @@
 </dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="app.models.models.UpdateRequest.update">
-<span class="sig-name descname"><span class="pre">update</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#app.models.models.UserRequest" title="app.models.models.UserRequest"><span class="pre">UserRequest</span></a></em><a class="headerlink" href="#app.models.models.UpdateRequest.update" title="Link to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="id24">
+<span class="sig-name descname"><span class="pre">update</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#app.models.models.UserRequest" title="app.models.models.UserRequest"><span class="pre">UserRequest</span></a></em><a class="headerlink" href="#id24" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -360,14 +889,48 @@
 <dt class="sig sig-object py" id="app.models.models.UserRequest">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">app.models.models.</span></span><span class="sig-name descname"><span class="pre">UserRequest</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fullname</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">age</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#app.models.models.UserRequest" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">BaseModel</span></code></p>
+<p>Represents a request to create or update a User record.</p>
 <dl class="py attribute">
-<dt class="sig sig-object py" id="app.models.models.UserRequest.age">
-<span class="sig-name descname"><span class="pre">age</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#app.models.models.UserRequest.age" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dt class="sig sig-object py" id="app.models.models.UserRequest.username">
+<span class="sig-name descname"><span class="pre">username</span></span><a class="headerlink" href="#app.models.models.UserRequest.username" title="Link to this definition">¶</a></dt>
+<dd><p>The username of the User.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="app.models.models.UserRequest.fullname">
-<span class="sig-name descname"><span class="pre">fullname</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#app.models.models.UserRequest.fullname" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">fullname</span></span><a class="headerlink" href="#app.models.models.UserRequest.fullname" title="Link to this definition">¶</a></dt>
+<dd><p>The full name of the User.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.models.UserRequest.age">
+<span class="sig-name descname"><span class="pre">age</span></span><a class="headerlink" href="#app.models.models.UserRequest.age" title="Link to this definition">¶</a></dt>
+<dd><p>The age of the User.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id25">
+<span class="sig-name descname"><span class="pre">age</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#id25" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id26">
+<span class="sig-name descname"><span class="pre">fullname</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#id26" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -390,29 +953,96 @@
 <dt class="sig sig-object py" id="app.models.recurso.RecursoRequest">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">app.models.recurso.</span></span><span class="sig-name descname"><span class="pre">RecursoRequest</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nombre</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">capacidad_min</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">capacidad_max</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">capacidad_actual</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">capacidad_maxima_alcanzada</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">capacidad_minima_alcanzada</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#app.models.recurso.RecursoRequest" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">BaseModel</span></code></p>
+<p>Represents a request to create or update a Recurso record.</p>
 <dl class="py attribute">
-<dt class="sig sig-object py" id="app.models.recurso.RecursoRequest.capacidad_actual">
-<span class="sig-name descname"><span class="pre">capacidad_actual</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#app.models.recurso.RecursoRequest.capacidad_actual" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="app.models.recurso.RecursoRequest.capacidad_max">
-<span class="sig-name descname"><span class="pre">capacidad_max</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#app.models.recurso.RecursoRequest.capacidad_max" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="app.models.recurso.RecursoRequest.capacidad_maxima_alcanzada">
-<span class="sig-name descname"><span class="pre">capacidad_maxima_alcanzada</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#app.models.recurso.RecursoRequest.capacidad_maxima_alcanzada" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dt class="sig sig-object py" id="app.models.recurso.RecursoRequest.nombre">
+<span class="sig-name descname"><span class="pre">nombre</span></span><a class="headerlink" href="#app.models.recurso.RecursoRequest.nombre" title="Link to this definition">¶</a></dt>
+<dd><p>The name of the Recurso.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="app.models.recurso.RecursoRequest.capacidad_min">
-<span class="sig-name descname"><span class="pre">capacidad_min</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#app.models.recurso.RecursoRequest.capacidad_min" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<span class="sig-name descname"><span class="pre">capacidad_min</span></span><a class="headerlink" href="#app.models.recurso.RecursoRequest.capacidad_min" title="Link to this definition">¶</a></dt>
+<dd><p>The minimum capacity of the Recurso.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.recurso.RecursoRequest.capacidad_max">
+<span class="sig-name descname"><span class="pre">capacidad_max</span></span><a class="headerlink" href="#app.models.recurso.RecursoRequest.capacidad_max" title="Link to this definition">¶</a></dt>
+<dd><p>The maximum capacity of the Recurso.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.recurso.RecursoRequest.capacidad_actual">
+<span class="sig-name descname"><span class="pre">capacidad_actual</span></span><a class="headerlink" href="#app.models.recurso.RecursoRequest.capacidad_actual" title="Link to this definition">¶</a></dt>
+<dd><p>The current capacity of the Recurso.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.recurso.RecursoRequest.capacidad_maxima_alcanzada">
+<span class="sig-name descname"><span class="pre">capacidad_maxima_alcanzada</span></span><a class="headerlink" href="#app.models.recurso.RecursoRequest.capacidad_maxima_alcanzada" title="Link to this definition">¶</a></dt>
+<dd><p>Whether the maximum capacity of the Recurso has been reached.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="app.models.recurso.RecursoRequest.capacidad_minima_alcanzada">
-<span class="sig-name descname"><span class="pre">capacidad_minima_alcanzada</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#app.models.recurso.RecursoRequest.capacidad_minima_alcanzada" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">capacidad_minima_alcanzada</span></span><a class="headerlink" href="#app.models.recurso.RecursoRequest.capacidad_minima_alcanzada" title="Link to this definition">¶</a></dt>
+<dd><p>Whether the minimum capacity of the Recurso has been reached.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id27">
+<span class="sig-name descname"><span class="pre">capacidad_actual</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#id27" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id28">
+<span class="sig-name descname"><span class="pre">capacidad_max</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#id28" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id29">
+<span class="sig-name descname"><span class="pre">capacidad_maxima_alcanzada</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#id29" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id30">
+<span class="sig-name descname"><span class="pre">capacidad_min</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#id30" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id31">
+<span class="sig-name descname"><span class="pre">capacidad_minima_alcanzada</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#id31" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -422,8 +1052,8 @@
 </dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="app.models.recurso.RecursoRequest.nombre">
-<span class="sig-name descname"><span class="pre">nombre</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#app.models.recurso.RecursoRequest.nombre" title="Link to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="id32">
+<span class="sig-name descname"><span class="pre">nombre</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#id32" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -432,9 +1062,21 @@
 <dt class="sig sig-object py" id="app.models.recurso.RecursoResponse">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">app.models.recurso.</span></span><span class="sig-name descname"><span class="pre">RecursoResponse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nombre</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">capacidad_min</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">capacidad_max</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">capacidad_actual</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">capacidad_maxima_alcanzada</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">capacidad_minima_alcanzada</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#app.models.recurso.RecursoResponse" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#app.models.recurso.RecursoRequest" title="app.models.recurso.RecursoRequest"><code class="xref py py-class docutils literal notranslate"><span class="pre">RecursoRequest</span></code></a></p>
+<p>Represents a response containing Recurso data.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="app.models.recurso.RecursoResponse.id">
-<span class="sig-name descname"><span class="pre">id</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#app.models.recurso.RecursoResponse.id" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">id</span></span><a class="headerlink" href="#app.models.recurso.RecursoResponse.id" title="Link to this definition">¶</a></dt>
+<dd><p>The ID of the Recurso.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id33">
+<span class="sig-name descname"><span class="pre">id</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#id33" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -452,6 +1094,18 @@
 <dt class="sig sig-object py" id="app.models.roles.RolesRequest">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">app.models.roles.</span></span><span class="sig-name descname"><span class="pre">RolesRequest</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nombre</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#app.models.roles.RolesRequest" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">BaseModel</span></code></p>
+<p>Represents a request to create or update a Roles record.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.roles.RolesRequest.nombre">
+<span class="sig-name descname"><span class="pre">nombre</span></span><a class="headerlink" href="#app.models.roles.RolesRequest.nombre" title="Link to this definition">¶</a></dt>
+<dd><p>The name of the role.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
 <dl class="py attribute">
 <dt class="sig sig-object py" id="app.models.roles.RolesRequest.model_config">
 <span class="sig-name descname"><span class="pre">model_config</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ClassVar</span><span class="p"><span class="pre">[</span></span><span class="pre">ConfigDict</span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{}</span></em><a class="headerlink" href="#app.models.roles.RolesRequest.model_config" title="Link to this definition">¶</a></dt>
@@ -459,8 +1113,8 @@
 </dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="app.models.roles.RolesRequest.nombre">
-<span class="sig-name descname"><span class="pre">nombre</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#app.models.roles.RolesRequest.nombre" title="Link to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="id34">
+<span class="sig-name descname"><span class="pre">nombre</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#id34" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -469,9 +1123,21 @@
 <dt class="sig sig-object py" id="app.models.roles.RolesResponse">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">app.models.roles.</span></span><span class="sig-name descname"><span class="pre">RolesResponse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nombre</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#app.models.roles.RolesResponse" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#app.models.roles.RolesRequest" title="app.models.roles.RolesRequest"><code class="xref py py-class docutils literal notranslate"><span class="pre">RolesRequest</span></code></a></p>
+<p>Represents a response containing Roles data.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="app.models.roles.RolesResponse.id">
-<span class="sig-name descname"><span class="pre">id</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#app.models.roles.RolesResponse.id" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">id</span></span><a class="headerlink" href="#app.models.roles.RolesResponse.id" title="Link to this definition">¶</a></dt>
+<dd><p>The ID of the Roles.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id35">
+<span class="sig-name descname"><span class="pre">id</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#id35" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -485,83 +1151,253 @@
 </section>
 </section>
 
-
-          </div>
-          
-        </div>
+        </article>
       </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="Main">
-        <div class="sphinxsidebarwrapper">
-<h1 class="logo"><a href="index.html">Nexus4</a></h1>
-
-
-
-
-
-
-
-
-<h3>Navigation</h3>
-<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
-<ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="controllers.html">Controllers</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Models</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#module-app.models.empleo">Empleo Models</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#module-app.models.familia">Familia Models</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#module-app.models.usuarios">Usuario Models</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#module-app.models.estancia">Estancia Models</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#module-app.models.inquilino">Inquilino Models</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#module-app.models.models">General Models</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#module-app.models.recurso">Recurso Models</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#module-app.models.roles">Roles Models</a></li>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="classes.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Classes</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="controllers.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Controllers</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2024, Group4
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Models</a><ul>
+<li><a class="reference internal" href="#module-app.models.empleo">Empleo Models</a><ul>
+<li><a class="reference internal" href="#app.models.empleo.EmpleoRequest"><code class="docutils literal notranslate"><span class="pre">EmpleoRequest</span></code></a><ul>
+<li><a class="reference internal" href="#app.models.empleo.EmpleoRequest.Config"><code class="docutils literal notranslate"><span class="pre">EmpleoRequest.Config</span></code></a><ul>
+<li><a class="reference internal" href="#app.models.empleo.EmpleoRequest.Config.schema_extra"><code class="docutils literal notranslate"><span class="pre">EmpleoRequest.Config.schema_extra</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#app.models.empleo.EmpleoRequest.edad_minima"><code class="docutils literal notranslate"><span class="pre">EmpleoRequest.edad_minima</span></code></a></li>
+<li><a class="reference internal" href="#app.models.empleo.EmpleoRequest.empleo"><code class="docutils literal notranslate"><span class="pre">EmpleoRequest.empleo</span></code></a></li>
+<li><a class="reference internal" href="#app.models.empleo.EmpleoRequest.id_estancia"><code class="docutils literal notranslate"><span class="pre">EmpleoRequest.id_estancia</span></code></a></li>
+<li><a class="reference internal" href="#app.models.empleo.EmpleoRequest.model_config"><code class="docutils literal notranslate"><span class="pre">EmpleoRequest.model_config</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#app.models.empleo.EmpleoResponse"><code class="docutils literal notranslate"><span class="pre">EmpleoResponse</span></code></a><ul>
+<li><a class="reference internal" href="#app.models.empleo.EmpleoResponse.id"><code class="docutils literal notranslate"><span class="pre">EmpleoResponse.id</span></code></a></li>
+<li><a class="reference internal" href="#app.models.empleo.EmpleoResponse.Config"><code class="docutils literal notranslate"><span class="pre">EmpleoResponse.Config</span></code></a><ul>
+<li><a class="reference internal" href="#app.models.empleo.EmpleoResponse.Config.schema_extra"><code class="docutils literal notranslate"><span class="pre">EmpleoResponse.Config.schema_extra</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id0"><code class="docutils literal notranslate"><span class="pre">EmpleoResponse.id</span></code></a></li>
+<li><a class="reference internal" href="#app.models.empleo.EmpleoResponse.model_config"><code class="docutils literal notranslate"><span class="pre">EmpleoResponse.model_config</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-app.models.familia">Familia Models</a><ul>
+<li><a class="reference internal" href="#app.models.familia.FamiliaRequest"><code class="docutils literal notranslate"><span class="pre">FamiliaRequest</span></code></a><ul>
+<li><a class="reference internal" href="#app.models.familia.FamiliaRequest.apellido"><code class="docutils literal notranslate"><span class="pre">FamiliaRequest.apellido</span></code></a></li>
+<li><a class="reference internal" href="#id1"><code class="docutils literal notranslate"><span class="pre">FamiliaRequest.apellido</span></code></a></li>
+<li><a class="reference internal" href="#app.models.familia.FamiliaRequest.model_config"><code class="docutils literal notranslate"><span class="pre">FamiliaRequest.model_config</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#app.models.familia.FamiliaResponse"><code class="docutils literal notranslate"><span class="pre">FamiliaResponse</span></code></a><ul>
+<li><a class="reference internal" href="#app.models.familia.FamiliaResponse.id"><code class="docutils literal notranslate"><span class="pre">FamiliaResponse.id</span></code></a></li>
+<li><a class="reference internal" href="#id2"><code class="docutils literal notranslate"><span class="pre">FamiliaResponse.id</span></code></a></li>
+<li><a class="reference internal" href="#app.models.familia.FamiliaResponse.model_config"><code class="docutils literal notranslate"><span class="pre">FamiliaResponse.model_config</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-app.models.usuarios">Usuario Models</a><ul>
+<li><a class="reference internal" href="#app.models.usuarios.UsuariosRequest"><code class="docutils literal notranslate"><span class="pre">UsuariosRequest</span></code></a><ul>
+<li><a class="reference internal" href="#app.models.usuarios.UsuariosRequest.usuario"><code class="docutils literal notranslate"><span class="pre">UsuariosRequest.usuario</span></code></a></li>
+<li><a class="reference internal" href="#app.models.usuarios.UsuariosRequest.password"><code class="docutils literal notranslate"><span class="pre">UsuariosRequest.password</span></code></a></li>
+<li><a class="reference internal" href="#app.models.usuarios.UsuariosRequest.model_config"><code class="docutils literal notranslate"><span class="pre">UsuariosRequest.model_config</span></code></a></li>
+<li><a class="reference internal" href="#id3"><code class="docutils literal notranslate"><span class="pre">UsuariosRequest.password</span></code></a></li>
+<li><a class="reference internal" href="#id4"><code class="docutils literal notranslate"><span class="pre">UsuariosRequest.usuario</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#app.models.usuarios.UsuariosResponse"><code class="docutils literal notranslate"><span class="pre">UsuariosResponse</span></code></a><ul>
+<li><a class="reference internal" href="#app.models.usuarios.UsuariosResponse.id"><code class="docutils literal notranslate"><span class="pre">UsuariosResponse.id</span></code></a></li>
+<li><a class="reference internal" href="#id5"><code class="docutils literal notranslate"><span class="pre">UsuariosResponse.id</span></code></a></li>
+<li><a class="reference internal" href="#app.models.usuarios.UsuariosResponse.model_config"><code class="docutils literal notranslate"><span class="pre">UsuariosResponse.model_config</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-app.models.estancia">Estancia Models</a><ul>
+<li><a class="reference internal" href="#app.models.estancia.EstanciaRequest"><code class="docutils literal notranslate"><span class="pre">EstanciaRequest</span></code></a><ul>
+<li><a class="reference internal" href="#app.models.estancia.EstanciaRequest.nombre"><code class="docutils literal notranslate"><span class="pre">EstanciaRequest.nombre</span></code></a></li>
+<li><a class="reference internal" href="#app.models.estancia.EstanciaRequest.categoria"><code class="docutils literal notranslate"><span class="pre">EstanciaRequest.categoria</span></code></a></li>
+<li><a class="reference internal" href="#app.models.estancia.EstanciaRequest.personas_actuales"><code class="docutils literal notranslate"><span class="pre">EstanciaRequest.personas_actuales</span></code></a></li>
+<li><a class="reference internal" href="#app.models.estancia.EstanciaRequest.capacidad_max"><code class="docutils literal notranslate"><span class="pre">EstanciaRequest.capacidad_max</span></code></a></li>
+<li><a class="reference internal" href="#app.models.estancia.EstanciaRequest.recurso_id"><code class="docutils literal notranslate"><span class="pre">EstanciaRequest.recurso_id</span></code></a></li>
+<li><a class="reference internal" href="#app.models.estancia.EstanciaRequest.capacidad_maxima_alcanzada"><code class="docutils literal notranslate"><span class="pre">EstanciaRequest.capacidad_maxima_alcanzada</span></code></a></li>
+<li><a class="reference internal" href="#id6"><code class="docutils literal notranslate"><span class="pre">EstanciaRequest.capacidad_max</span></code></a></li>
+<li><a class="reference internal" href="#id7"><code class="docutils literal notranslate"><span class="pre">EstanciaRequest.capacidad_maxima_alcanzada</span></code></a></li>
+<li><a class="reference internal" href="#id8"><code class="docutils literal notranslate"><span class="pre">EstanciaRequest.categoria</span></code></a></li>
+<li><a class="reference internal" href="#app.models.estancia.EstanciaRequest.model_config"><code class="docutils literal notranslate"><span class="pre">EstanciaRequest.model_config</span></code></a></li>
+<li><a class="reference internal" href="#id9"><code class="docutils literal notranslate"><span class="pre">EstanciaRequest.nombre</span></code></a></li>
+<li><a class="reference internal" href="#id10"><code class="docutils literal notranslate"><span class="pre">EstanciaRequest.personas_actuales</span></code></a></li>
+<li><a class="reference internal" href="#id11"><code class="docutils literal notranslate"><span class="pre">EstanciaRequest.recurso_id</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#app.models.estancia.EstanciaResponse"><code class="docutils literal notranslate"><span class="pre">EstanciaResponse</span></code></a><ul>
+<li><a class="reference internal" href="#app.models.estancia.EstanciaResponse.id"><code class="docutils literal notranslate"><span class="pre">EstanciaResponse.id</span></code></a></li>
+<li><a class="reference internal" href="#id12"><code class="docutils literal notranslate"><span class="pre">EstanciaResponse.id</span></code></a></li>
+<li><a class="reference internal" href="#app.models.estancia.EstanciaResponse.model_config"><code class="docutils literal notranslate"><span class="pre">EstanciaResponse.model_config</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-app.models.inquilino">Inquilino Models</a><ul>
+<li><a class="reference internal" href="#app.models.inquilino.InquilinoRequest"><code class="docutils literal notranslate"><span class="pre">InquilinoRequest</span></code></a><ul>
+<li><a class="reference internal" href="#app.models.inquilino.InquilinoRequest.nombre"><code class="docutils literal notranslate"><span class="pre">InquilinoRequest.nombre</span></code></a></li>
+<li><a class="reference internal" href="#app.models.inquilino.InquilinoRequest.categoria"><code class="docutils literal notranslate"><span class="pre">InquilinoRequest.categoria</span></code></a></li>
+<li><a class="reference internal" href="#app.models.inquilino.InquilinoRequest.nacimiento"><code class="docutils literal notranslate"><span class="pre">InquilinoRequest.nacimiento</span></code></a></li>
+<li><a class="reference internal" href="#app.models.inquilino.InquilinoRequest.muerte"><code class="docutils literal notranslate"><span class="pre">InquilinoRequest.muerte</span></code></a></li>
+<li><a class="reference internal" href="#app.models.inquilino.InquilinoRequest.familia_id"><code class="docutils literal notranslate"><span class="pre">InquilinoRequest.familia_id</span></code></a></li>
+<li><a class="reference internal" href="#app.models.inquilino.InquilinoRequest.empleo_id"><code class="docutils literal notranslate"><span class="pre">InquilinoRequest.empleo_id</span></code></a></li>
+<li><a class="reference internal" href="#app.models.inquilino.InquilinoRequest.roles_id"><code class="docutils literal notranslate"><span class="pre">InquilinoRequest.roles_id</span></code></a></li>
+<li><a class="reference internal" href="#app.models.inquilino.InquilinoRequest.id_estancia"><code class="docutils literal notranslate"><span class="pre">InquilinoRequest.id_estancia</span></code></a></li>
+<li><a class="reference internal" href="#id13"><code class="docutils literal notranslate"><span class="pre">InquilinoRequest.categoria</span></code></a></li>
+<li><a class="reference internal" href="#id14"><code class="docutils literal notranslate"><span class="pre">InquilinoRequest.empleo_id</span></code></a></li>
+<li><a class="reference internal" href="#id15"><code class="docutils literal notranslate"><span class="pre">InquilinoRequest.familia_id</span></code></a></li>
+<li><a class="reference internal" href="#id16"><code class="docutils literal notranslate"><span class="pre">InquilinoRequest.id_estancia</span></code></a></li>
+<li><a class="reference internal" href="#app.models.inquilino.InquilinoRequest.model_config"><code class="docutils literal notranslate"><span class="pre">InquilinoRequest.model_config</span></code></a></li>
+<li><a class="reference internal" href="#id17"><code class="docutils literal notranslate"><span class="pre">InquilinoRequest.muerte</span></code></a></li>
+<li><a class="reference internal" href="#id18"><code class="docutils literal notranslate"><span class="pre">InquilinoRequest.nacimiento</span></code></a></li>
+<li><a class="reference internal" href="#id19"><code class="docutils literal notranslate"><span class="pre">InquilinoRequest.nombre</span></code></a></li>
+<li><a class="reference internal" href="#id20"><code class="docutils literal notranslate"><span class="pre">InquilinoRequest.roles_id</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#app.models.inquilino.InquilinoResponse"><code class="docutils literal notranslate"><span class="pre">InquilinoResponse</span></code></a><ul>
+<li><a class="reference internal" href="#app.models.inquilino.InquilinoResponse.id"><code class="docutils literal notranslate"><span class="pre">InquilinoResponse.id</span></code></a></li>
+<li><a class="reference internal" href="#id21"><code class="docutils literal notranslate"><span class="pre">InquilinoResponse.id</span></code></a></li>
+<li><a class="reference internal" href="#app.models.inquilino.InquilinoResponse.model_config"><code class="docutils literal notranslate"><span class="pre">InquilinoResponse.model_config</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-app.models.models">General Models</a><ul>
+<li><a class="reference internal" href="#app.models.models.DeleteRequest"><code class="docutils literal notranslate"><span class="pre">DeleteRequest</span></code></a><ul>
+<li><a class="reference internal" href="#app.models.models.DeleteRequest.id"><code class="docutils literal notranslate"><span class="pre">DeleteRequest.id</span></code></a></li>
+<li><a class="reference internal" href="#id22"><code class="docutils literal notranslate"><span class="pre">DeleteRequest.id</span></code></a></li>
+<li><a class="reference internal" href="#app.models.models.DeleteRequest.model_config"><code class="docutils literal notranslate"><span class="pre">DeleteRequest.model_config</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#app.models.models.UpdateRequest"><code class="docutils literal notranslate"><span class="pre">UpdateRequest</span></code></a><ul>
+<li><a class="reference internal" href="#app.models.models.UpdateRequest.id"><code class="docutils literal notranslate"><span class="pre">UpdateRequest.id</span></code></a></li>
+<li><a class="reference internal" href="#app.models.models.UpdateRequest.update"><code class="docutils literal notranslate"><span class="pre">UpdateRequest.update</span></code></a></li>
+<li><a class="reference internal" href="#id23"><code class="docutils literal notranslate"><span class="pre">UpdateRequest.id</span></code></a></li>
+<li><a class="reference internal" href="#app.models.models.UpdateRequest.model_config"><code class="docutils literal notranslate"><span class="pre">UpdateRequest.model_config</span></code></a></li>
+<li><a class="reference internal" href="#id24"><code class="docutils literal notranslate"><span class="pre">UpdateRequest.update</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#app.models.models.UserRequest"><code class="docutils literal notranslate"><span class="pre">UserRequest</span></code></a><ul>
+<li><a class="reference internal" href="#app.models.models.UserRequest.username"><code class="docutils literal notranslate"><span class="pre">UserRequest.username</span></code></a></li>
+<li><a class="reference internal" href="#app.models.models.UserRequest.fullname"><code class="docutils literal notranslate"><span class="pre">UserRequest.fullname</span></code></a></li>
+<li><a class="reference internal" href="#app.models.models.UserRequest.age"><code class="docutils literal notranslate"><span class="pre">UserRequest.age</span></code></a></li>
+<li><a class="reference internal" href="#id25"><code class="docutils literal notranslate"><span class="pre">UserRequest.age</span></code></a></li>
+<li><a class="reference internal" href="#id26"><code class="docutils literal notranslate"><span class="pre">UserRequest.fullname</span></code></a></li>
+<li><a class="reference internal" href="#app.models.models.UserRequest.model_config"><code class="docutils literal notranslate"><span class="pre">UserRequest.model_config</span></code></a></li>
+<li><a class="reference internal" href="#app.models.models.UserRequest.name"><code class="docutils literal notranslate"><span class="pre">UserRequest.name</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-app.models.recurso">Recurso Models</a><ul>
+<li><a class="reference internal" href="#app.models.recurso.RecursoRequest"><code class="docutils literal notranslate"><span class="pre">RecursoRequest</span></code></a><ul>
+<li><a class="reference internal" href="#app.models.recurso.RecursoRequest.nombre"><code class="docutils literal notranslate"><span class="pre">RecursoRequest.nombre</span></code></a></li>
+<li><a class="reference internal" href="#app.models.recurso.RecursoRequest.capacidad_min"><code class="docutils literal notranslate"><span class="pre">RecursoRequest.capacidad_min</span></code></a></li>
+<li><a class="reference internal" href="#app.models.recurso.RecursoRequest.capacidad_max"><code class="docutils literal notranslate"><span class="pre">RecursoRequest.capacidad_max</span></code></a></li>
+<li><a class="reference internal" href="#app.models.recurso.RecursoRequest.capacidad_actual"><code class="docutils literal notranslate"><span class="pre">RecursoRequest.capacidad_actual</span></code></a></li>
+<li><a class="reference internal" href="#app.models.recurso.RecursoRequest.capacidad_maxima_alcanzada"><code class="docutils literal notranslate"><span class="pre">RecursoRequest.capacidad_maxima_alcanzada</span></code></a></li>
+<li><a class="reference internal" href="#app.models.recurso.RecursoRequest.capacidad_minima_alcanzada"><code class="docutils literal notranslate"><span class="pre">RecursoRequest.capacidad_minima_alcanzada</span></code></a></li>
+<li><a class="reference internal" href="#id27"><code class="docutils literal notranslate"><span class="pre">RecursoRequest.capacidad_actual</span></code></a></li>
+<li><a class="reference internal" href="#id28"><code class="docutils literal notranslate"><span class="pre">RecursoRequest.capacidad_max</span></code></a></li>
+<li><a class="reference internal" href="#id29"><code class="docutils literal notranslate"><span class="pre">RecursoRequest.capacidad_maxima_alcanzada</span></code></a></li>
+<li><a class="reference internal" href="#id30"><code class="docutils literal notranslate"><span class="pre">RecursoRequest.capacidad_min</span></code></a></li>
+<li><a class="reference internal" href="#id31"><code class="docutils literal notranslate"><span class="pre">RecursoRequest.capacidad_minima_alcanzada</span></code></a></li>
+<li><a class="reference internal" href="#app.models.recurso.RecursoRequest.model_config"><code class="docutils literal notranslate"><span class="pre">RecursoRequest.model_config</span></code></a></li>
+<li><a class="reference internal" href="#id32"><code class="docutils literal notranslate"><span class="pre">RecursoRequest.nombre</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#app.models.recurso.RecursoResponse"><code class="docutils literal notranslate"><span class="pre">RecursoResponse</span></code></a><ul>
+<li><a class="reference internal" href="#app.models.recurso.RecursoResponse.id"><code class="docutils literal notranslate"><span class="pre">RecursoResponse.id</span></code></a></li>
+<li><a class="reference internal" href="#id33"><code class="docutils literal notranslate"><span class="pre">RecursoResponse.id</span></code></a></li>
+<li><a class="reference internal" href="#app.models.recurso.RecursoResponse.model_config"><code class="docutils literal notranslate"><span class="pre">RecursoResponse.model_config</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-app.models.roles">Roles Models</a><ul>
+<li><a class="reference internal" href="#app.models.roles.RolesRequest"><code class="docutils literal notranslate"><span class="pre">RolesRequest</span></code></a><ul>
+<li><a class="reference internal" href="#app.models.roles.RolesRequest.nombre"><code class="docutils literal notranslate"><span class="pre">RolesRequest.nombre</span></code></a></li>
+<li><a class="reference internal" href="#app.models.roles.RolesRequest.model_config"><code class="docutils literal notranslate"><span class="pre">RolesRequest.model_config</span></code></a></li>
+<li><a class="reference internal" href="#id34"><code class="docutils literal notranslate"><span class="pre">RolesRequest.nombre</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#app.models.roles.RolesResponse"><code class="docutils literal notranslate"><span class="pre">RolesResponse</span></code></a><ul>
+<li><a class="reference internal" href="#app.models.roles.RolesResponse.id"><code class="docutils literal notranslate"><span class="pre">RolesResponse.id</span></code></a></li>
+<li><a class="reference internal" href="#id35"><code class="docutils literal notranslate"><span class="pre">RolesResponse.id</span></code></a></li>
+<li><a class="reference internal" href="#app.models.roles.RolesResponse.model_config"><code class="docutils literal notranslate"><span class="pre">RolesResponse.model_config</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
 
-<div class="relations">
-<h3>Related Topics</h3>
-<ul>
-  <li><a href="index.html">Documentation overview</a><ul>
-      <li>Previous: <a href="controllers.html" title="previous chapter">Controllers</a></li>
-  </ul></li>
-</ul>
-</div>
-<search id="searchbox" style="display: none" role="search">
-  <h3 id="searchlabel">Quick search</h3>
-    <div class="searchformwrapper">
-    <form class="search" action="search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
-      <input type="submit" value="Go" />
-    </form>
-    </div>
-</search>
-<script>document.getElementById('searchbox').style.display = "block"</script>
-
-
-
-
-
-
-
-
+          </div>
         </div>
       </div>
-      <div class="clearer"></div>
-    </div>
-    <div class="footer">
-      &#169;2024, Group4.
       
-      |
-      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 7.4.7</a>
-      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 0.7.16</a>
       
-      |
-      <a href="_sources/models.rst.txt"
-          rel="nofollow">Page source</a>
-    </div>
-
-    
-
-    
-  </body>
+    </aside>
+  </div>
+</div><script src="_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/scripts/furo.js?v=5fa4622c"></script>
+    </body>
 </html>

@@ -5,6 +5,7 @@ class RecursoRequest(BaseModel):
     Represents a request to create or update a Recurso record.
 
     Attributes:
+    ----------
         nombre (str): The name of the Recurso.
         capacidad_min (int): The minimum capacity of the Recurso.
         capacidad_max (int): The maximum capacity of the Recurso.
@@ -24,6 +25,7 @@ class RecursoResponse(RecursoRequest):
     Represents a response containing Recurso data.
 
     Attributes:
+    ----------
         id (int): The ID of the Recurso.
     """
     id: int

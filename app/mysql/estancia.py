@@ -3,6 +3,22 @@ from sqlalchemy.orm import relationship
 from app.mysql.base import Base
 
 class Estancia(Base):
+    """
+    Representa la tabla 'estancia' en la base de datos
+
+    Attributes:
+    ----------
+    id : int
+        ID de la estancia
+    nombre : str
+        Nombre de la estancia
+    categoria : str
+        Categoría de la estancia
+    capacidad_max : int
+        Capacidad máxima de la estancia
+    recurso_id : int
+        ID del recurso asociado
+    """
     __tablename__ = "estancia"
     id = Column(Integer, primary_key=True)
     nombre = Column(String(50))

@@ -1,8 +1,11 @@
 Controllers
 ===========
 
+.. toctree::
+   :maxdepth: 2
+
 Handler Module
--------------
+---------------
 
 .. automodule:: app.controllers.handler
     :members:
@@ -26,7 +29,7 @@ Estancia Module
     :show-inheritance:
 
 Familia Module
----------------
+--------------
 
 .. automodule:: app.controllers.familia
     :members:
