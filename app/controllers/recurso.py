@@ -149,10 +149,14 @@ class RecursoController:
             recurso.actualizar_capacidad_minima_alcanzada()
             session.commit()
 
-            # Accede a los atributos antes de cerrar la sesión
+             # Accede a los atributos antes de cerrar la sesión
             nombre_recurso = recurso.nombre
+            session.close()
+
+
+    
 
         return {
             "status": "ok",
-            "message": f'La capacidad de "{recurso.nombre}" ha pasado de {capacidad_anterior} a {nueva_capacidad}.'
+            "message": f'La capacidad de "{nombre_recurso}" ha pasado de {capacidad_anterior} a {nueva_capacidad}.'
         }

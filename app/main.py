@@ -23,6 +23,10 @@ from app.controllers.empleo import EmpleoController
 from app.controllers.recurso import RecursoController
 from app.controllers.roles import RolesController
 from app.controllers.usuarios import UsuariosController
+from pydantic import BaseModel
+class ModifyRecursoRequest(BaseModel):
+    id : int
+    cantidad : int
 
 #Import all the models
 import app.models.familia as familiaModels
@@ -198,10 +202,14 @@ def get_recurso_status(id: int, current_user: dict = Depends(get_current_user)):
         raise HTTPException(status_code=404, detail=result["error"])
     return result
     
-@app.post('/recurso/modify' , tags=["Recurso"])
-async def modify_recurso(id: int, cantidad: int,current_user: dict = Depends(get_current_user)):
-    result = recurso_controller.modify_recurso(id, cantidad)
+# Endpoint para modificar recurso
+@app.post('/recurso/modify', tags=["Recurso"])
+async def modify_recurso(request: ModifyRecursoRequest):
+    result = recurso_controller.modify_recurso(request.id, request.cantidad)
+    if "error" in result:
+        raise HTTPException(status_code=400, detail=result["error"])
     return result
+
 #ROLES
 @app.post('/roles/create' , tags=["Roles"])
 async def create_role(body: rolesModels.RolesRequest, current_user: dict = Depends(get_current_user)):
