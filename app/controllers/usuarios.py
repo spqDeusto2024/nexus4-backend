@@ -93,7 +93,7 @@ class UsuariosController:
         print("inside")
         db = DatabaseClient(gb.MYSQL_URL)
         with Session(db.engine) as session:
-            usuario = session.query(Usuarios).get(id)
+            usuario = session.get(Usuarios,id)
             if not usuario:
                 return {"error": "Usuario not found"}
 
@@ -118,7 +118,7 @@ class UsuariosController:
         print("Dentro de delete")
         db = DatabaseClient(gb.MYSQL_URL)
         with Session(db.engine) as session:
-            usuario = session.query(Usuarios).get(id)
+            usuario = session.get(Usuarios, id)
             if not usuario:
                 return {"error": "Usuario not found"}
 
