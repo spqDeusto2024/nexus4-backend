@@ -1,0 +1,18 @@
+# Excluir datos de MySQL que no son necesarios para la construcción
+mysql/data
+
+# Excluir archivos de configuración locales
+*.env
+*.log
+
+# Excluir carpetas de control de versiones
+.git
+.gitignore
+
+# Excluir archivos de compilación innecesarios
+__pycache__/
+*.pyc
+*.pyo
+
+# Excluir otros archivos que no necesitas en el contexto
+node_modules/
