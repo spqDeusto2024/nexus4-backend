@@ -68,6 +68,14 @@ def test_update_recurso():
     assert update_response.status_code == 200
     assert update_response.json().get("status") == "ok"
 
+def test_update_recurso_not_found():
+    global auth_token
+    headers = {"Authorization": f"Bearer {auth_token}"}
+    # Actualizar un recurso que no existe
+    update_response = client.put("/recurso/update/999999", json={"nombre": "RecursoPrueba", "capacidad_min": 5, "capacidad_max": 100, "capacidad_actual": 50},headers=headers)
+    assert update_response.status_code == 200
+    assert update_response.json().get("error") == "Recurso not found"
+
 def test_get_recurso_status():
     global recurso_id
     # Asegurarse de que el recurso se haya creado correctamente
@@ -79,6 +87,14 @@ def test_get_recurso_status():
     assert status_response.status_code == 200
     assert status_response.json().get("status") in ["ok", "alert"]
 
+def test_recurso_status_not_found():
+    global auth_token
+    headers = {"Authorization": f"Bearer {auth_token}"}
+    # Obtener el estado de un recurso que no existe
+    status_response = client.get("/recurso/999999/status", headers=headers)
+    assert status_response.status_code == 404
+
+
 def test_modify_recurso():
     global recurso_id
     global auth_token
@@ -88,6 +104,14 @@ def test_modify_recurso():
 
     assert modify_response.status_code == 200
     assert modify_response.json().get("status") == "ok"
+
+def test_modify_recurso_not_found():
+    global auth_token
+    headers = {"Authorization": f"Bearer {auth_token}"}
+    # Modificar un recurso que no existe
+    modify_response = client.post("/recurso/modify", json={"id": 99999, "cantidad": 10}, headers=headers)
+    assert modify_response.status_code == 400
+
 
 def test_delete_recurso():
     global recurso_id
@@ -99,3 +123,11 @@ def test_delete_recurso():
     delete_response = client.delete(f"/recurso/delete/{recurso_id}",headers=headers)
     assert delete_response.status_code == 200
     assert delete_response.json().get("status") == "ok"
+
+def test_delete_recurso_not_found():
+    global auth_token
+    headers = {"Authorization": f"Bearer {auth_token}"}
+    # Eliminar un recurso que no existe
+    delete_response = client.delete("/recurso/delete/999999",headers=headers)
+    assert delete_response.status_code == 200
+    assert delete_response.json().get("error") == "Recurso not found"

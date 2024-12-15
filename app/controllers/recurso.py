@@ -112,7 +112,7 @@ class RecursoController:
             recurso = session.get(Recurso, id)
             if not recurso:
                 return {"error": "Recurso not found"}
-
+            
             if recurso.capacidad_minima_alcanzada:
                 return {"status": "alert", "message": "Capacidad actual por debajo del mínimo"}
             elif recurso.capacidad_maxima_alcanzada:
@@ -133,7 +133,7 @@ class RecursoController:
         """
         db = DatabaseClient(gb.MYSQL_URL)
         with Session(db.engine) as session:
-            recurso = session.query(Recurso).get(id)
+            recurso = session.get(Recurso, id)
             if not recurso:
                 return {"error": "Recurso not found"}
 
