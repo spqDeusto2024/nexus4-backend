@@ -127,7 +127,7 @@ async def consultar_disponibilidad(estancia_id: int, current_user: dict = Depend
 
 @app.post('/inquilino/asignar_estancia', tags=["Inquilino"])
 async def asignar_estancia(inquilino_id: int, estancia_id: int, current_user: dict = Depends(get_current_user)):
-    result = inquilino_controller.asignar_estancia(inquilino_id, estancia_id)
+    result = estancia_controller.asignar_estancia(inquilino_id, estancia_id)
     return result
     
 

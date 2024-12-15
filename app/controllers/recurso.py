@@ -60,7 +60,7 @@ class RecursoController:
         """
         db = DatabaseClient(gb.MYSQL_URL)
         with Session(db.engine) as session:
-            recurso = session.query(Recurso).get(id)
+            recurso = session.get(Recurso,id)
             if not recurso:
                 return {"error": "Recurso not found"}
 
@@ -109,7 +109,7 @@ class RecursoController:
         """
         db = DatabaseClient(gb.MYSQL_URL)
         with Session(db.engine) as session:
-            recurso = session.query(Recurso).get(id)
+            recurso = session.get(Recurso, id)
             if not recurso:
                 return {"error": "Recurso not found"}
 

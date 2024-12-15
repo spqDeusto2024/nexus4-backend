@@ -44,6 +44,16 @@ def test_create_empleo():
     assert response.status_code == 200  
     response_data = response.json()
 
+def test_create_empleo_sin_autenticacion():
+    global empleo_id
+    # Datos del empleo para crear
+    data = {"empleo": "Picador", "edad_minima": 18, "id_estancia": 1}
+    
+    response = client.post("/empleo/create", json=data)
+    
+    # Verificar que la respuesta sea exitosa
+    assert response.status_code == 401  # Unauthorized
+
 # Test para obtener todos los empleos
 def test_get_all_empleos():
     global empleo_id
@@ -62,6 +72,15 @@ def test_get_all_empleos():
     empleo_prueba = next((empleo for empleo in empleos if empleo["empleo"] == "Picador"), None)
     assert empleo_prueba is not None, "No se encontró el empleo con nombre 'Picador'"
     empleo_id = empleo_prueba.get("id")
+
+def test_get_all_empleos_sin_autenticacion():
+    global empleo_id
+    response = client.get("/empleo/get_all")
+    print("Response status code:", response.status_code)
+    print("Response JSON:", response.json())
+    
+    # Verificar que la respuesta sea exitosa
+    assert response.status_code == 401
 
 # Test para actualizar empleo
 def test_update_empleo():
@@ -93,6 +112,36 @@ def test_update_empleo():
     # Comprobar que la respuesta indica éxito
     assert status == "ok", f"Esperado 'ok', pero recibí: {status}"
 
+def test_update_empleo_sin_autenticacion():
+    global empleo_id
+    # Asegurarse de que el ID del empleo se haya creado correctamente
+    assert empleo_id is not None, "El ID del empleo no se obtuvo correctamente"
+
+    # Actualizar los datos del empleo
+    data = {"empleo": "Desarrollador", "edad_minima": 21, "id_estancia": 1}
+    response = client.put(f"/empleo/update/{empleo_id}", json=data)
+
+    # Verificar que la respuesta sea exitosa
+    print("Update response status code:", response.status_code)
+    print("Update response JSON:", response.json())
+    assert response.status_code == 401
+
+def test_update_empleo_not_found():
+    global auth_token
+    headers =   {"Authorization": f"Bearer {auth_token}"}
+    # Usar un ID de empleo ficticio que no exista
+    non_existent_empleo_id = 99999  # Asegúrate de que este ID no existe en tu base de datos
+
+    # Actualizar los datos del empleo con el ID ficticio
+    data = {"empleo": "Desarrollador", "edad_minima": 21, "id_estancia": 1}
+    response = client.put(f"/empleo/update/{non_existent_empleo_id}", json=data, headers=headers)
+
+    # Verificar que la respuesta indique "Empleo not found"
+    print("Update response status code:", response.status_code)
+    print("Update response JSON:", response.json())
+    assert response.json().get("error") == "Empleo not found", "El mensaje de error no es el esperado"
+
+
 # Test para eliminar empleo
 def test_delete_empleo():
     global empleo_id
@@ -112,3 +161,31 @@ def test_delete_empleo():
 
     # Comprobar que el estado de la respuesta sea "ok"
     assert delete_response.json().get("status") == "ok", "El empleo no se eliminó correctamente"
+
+def test_delete_empleo_sin_autenticacion():
+    global empleo_id
+    # Asegurarse de que el ID del empleo se haya creado correctamente
+    assert empleo_id is not None, "El ID del empleo no se obtuvo correctamente"
+
+    # Eliminar el empleo
+    delete_response = client.delete(f"/empleo/delete/{empleo_id}")
+    print("Delete response status code:", delete_response.status_code)
+    print("Delete response JSON:", delete_response.json())
+
+    # Verificar que la respuesta sea exitosa
+    assert delete_response.status_code == 401
+
+def test_delete_empleo_not_found():
+    global auth_token
+    headers = {"Authorization": f"Bearer {auth_token}"}
+
+    # Usar un ID de empleo ficticio que no exista
+    non_existent_empleo_id = 99999  # Asegúrate de que este ID no existe en tu base de datos
+
+    # Intentar eliminar un empleo con el ID ficticio
+    delete_response = client.delete(f"/empleo/delete/{non_existent_empleo_id}", headers=headers)
+    print("Delete response status code:", delete_response.status_code)
+    print("Delete response JSON:", delete_response.json())
+
+    # Verificar que la respuesta indique "Empleo not found"
+    assert delete_response.json().get("error") == "Empleo not found", "El mensaje de error no es el esperado"

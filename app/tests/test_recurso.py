@@ -31,7 +31,7 @@ def test_create_recurso():
     global auth_token
     auth_token = get_auth_token()
     headers = {"Authorization": f"Bearer {auth_token}"}
-    response = client.post("/recurso/create", json={"nombre": "RecursoPrueba", "capacidad_min": 10, "capacidad_max": 100, "capacidad_actual": 50}, headers=headers)
+    response = client.post("/recurso/create", json={"nombre": "RecursoPrueba2", "capacidad_min": 10, "capacidad_max": 100, "capacidad_actual": 50}, headers=headers)
     print("Response status code:", response.status_code)
     print("Response JSON:", response.json())
     assert response.status_code == 200
@@ -48,7 +48,7 @@ def test_get_all_recursos():
         
     # Perform a GET request to retrieve the ID of the resource named "RecursoPrueba"
     recursos = response.json()
-    recurso_prueba = next((recurso for recurso in recursos if recurso["nombre"] == "RecursoPrueba"), None)
+    recurso_prueba = next((recurso for recurso in recursos if recurso["nombre"] == "RecursoPrueba2"), None)
     assert recurso_prueba is not None, "No se encontró el recurso con nombre 'RecursoPrueba'"
     recurso_id = recurso_prueba.get("id")
 
@@ -78,6 +78,16 @@ def test_get_recurso_status():
     status_response = client.get(f"/recurso/{recurso_id}/status", headers=headers)
     assert status_response.status_code == 200
     assert status_response.json().get("status") in ["ok", "alert"]
+
+def test_modify_recurso():
+    global recurso_id
+    global auth_token
+    headers = {"Authorization": f"Bearer {auth_token}"}
+
+    modify_response = client.post(f"/recurso/modify", json={"id": recurso_id, "cantidad": 10}, headers=headers)   
+
+    assert modify_response.status_code == 200
+    assert modify_response.json().get("status") == "ok"
 
 def test_delete_recurso():
     global recurso_id
