@@ -276,54 +276,6 @@
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">app.controllers.handler.</span></span><span class="sig-name descname"><span class="pre">Controllers</span></span><a class="headerlink" href="#app.controllers.handler.Controllers" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <dl class="py method">
-<dt class="sig sig-object py" id="app.controllers.handler.Controllers.create_user">
-<span class="sig-name descname"><span class="pre">create_user</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">body</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="models.html#app.models.models.UserRequest" title="app.models.models.UserRequest"><span class="pre">UserRequest</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#app.controllers.handler.Controllers.create_user" title="Link to this definition">¶</a></dt>
-<dd><p>Creates new user in  the database</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>body</strong> (<a class="reference internal" href="models.html#app.models.models.UserRequest" title="app.models.models.UserRequest"><em>models.UserRequest</em></a>) – The request body containing the user data.</p>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>A dictionary with the status of the creation operation.</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>dict</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="app.controllers.handler.Controllers.delete_user">
-<span class="sig-name descname"><span class="pre">delete_user</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#app.controllers.handler.Controllers.delete_user" title="Link to this definition">¶</a></dt>
-<dd><p>Deletes user by its UID</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>id</strong> (<em>int</em>) – The UID of the user to delete.</p>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>A dictionary with the status of the delete operation.</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>dict</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="app.controllers.handler.Controllers.get_all">
-<span class="sig-name descname"><span class="pre">get_all</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#app.controllers.handler.Controllers.get_all" title="Link to this definition">¶</a></dt>
-<dd><p>Gets all users</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>A list of all user records.</p>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>list</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
 <dt class="sig sig-object py" id="app.controllers.handler.Controllers.healthz">
 <span class="sig-name descname"><span class="pre">healthz</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#app.controllers.handler.Controllers.healthz" title="Link to this definition">¶</a></dt>
 <dd><p>Checks server status</p>
@@ -333,23 +285,6 @@
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p>dict</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="app.controllers.handler.Controllers.update_user">
-<span class="sig-name descname"><span class="pre">update_user</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">body</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="models.html#app.models.models.UpdateRequest" title="app.models.models.UpdateRequest"><span class="pre">UpdateRequest</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#app.controllers.handler.Controllers.update_user" title="Link to this definition">¶</a></dt>
-<dd><p>Updates user by its ID</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>body</strong> (<a class="reference internal" href="models.html#app.models.models.UpdateRequest" title="app.models.models.UpdateRequest"><em>models.UpdateRequest</em></a>) – The request body containing the updated user data.</p>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>A dictionary with the status of the update operation.</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>dict</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1116,11 +1051,7 @@
 <li><a class="reference internal" href="#">Controllers</a><ul>
 <li><a class="reference internal" href="#module-app.controllers.handler">Handler Module</a><ul>
 <li><a class="reference internal" href="#app.controllers.handler.Controllers"><code class="docutils literal notranslate"><span class="pre">Controllers</span></code></a><ul>
-<li><a class="reference internal" href="#app.controllers.handler.Controllers.create_user"><code class="docutils literal notranslate"><span class="pre">Controllers.create_user()</span></code></a></li>
-<li><a class="reference internal" href="#app.controllers.handler.Controllers.delete_user"><code class="docutils literal notranslate"><span class="pre">Controllers.delete_user()</span></code></a></li>
-<li><a class="reference internal" href="#app.controllers.handler.Controllers.get_all"><code class="docutils literal notranslate"><span class="pre">Controllers.get_all()</span></code></a></li>
 <li><a class="reference internal" href="#app.controllers.handler.Controllers.healthz"><code class="docutils literal notranslate"><span class="pre">Controllers.healthz()</span></code></a></li>
-<li><a class="reference internal" href="#app.controllers.handler.Controllers.update_user"><code class="docutils literal notranslate"><span class="pre">Controllers.update_user()</span></code></a></li>
 </ul>
 </li>
 </ul>
